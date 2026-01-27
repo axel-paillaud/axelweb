@@ -1,0 +1,12 @@
+seo-writer:
+  access:
+    site:
+      login: true
+    admin:
+      login: true
+      cache: true
+      pages: true
+      statistics: true
+  readableName: 'Seo Writer'
+  description: 'Web editor, can write and edit web pages'
+  enabled: true
