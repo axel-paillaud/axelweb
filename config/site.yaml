@@ -4,4 +4,5 @@ author:
   email: 'contact@axelweb.fr'
 metadata:
     description: 'Axel, développeur expert PrestaShop, modules et migrations'
+    robots: noindex, nofollow
 
