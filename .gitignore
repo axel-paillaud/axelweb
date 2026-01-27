@@ -1,0 +1,10 @@
+accounts/*
+!accounts/.*
+data/*
+!data/.*
+languages/*
+!languages/.*
+themes/*
+!themes/.*
+!themes/axelweb/
+**/config/security.yaml
