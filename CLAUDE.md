@@ -20,6 +20,7 @@ Freelance portfolio/lead-generation website for **Axel Paillaud**, PHP back-end 
 - **Preprocessor:** SCSS
 - **JavaScript:** Vanilla JS only (no frameworks)
 - **Icons:** Line Awesome
+- **SCSS compiler:** Dart Sass (via gulp-sass v5)
 - **Build tool:** Gulp (SCSS compilation, autoprefixer, minification, sourcemaps)
 
 ### Build Commands
@@ -43,7 +44,7 @@ No CI/CD pipeline. Direct push deployment.
 
 ### Git Scope
 
-Only the `user/` directory is versioned. The `.gitignore` excludes accounts, data, languages, other themes, and `config/security.yaml`. Only the `axelweb` theme is tracked.
+Only the `user/` directory is versioned. The `.gitignore` excludes accounts, data, languages, other themes, `config/security.yaml`, and `node_modules/`. Only the `axelweb` theme is tracked. The `css-compiled/` directory IS versioned (needed for prod deployment).
 
 ## Site Structure & SEO Architecture
 
@@ -128,6 +129,42 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 - Custom theme styles: `scss/theme/`
 - Compiled output: `css-compiled/`
 - Always compile via Gulp, never edit `css-compiled/` directly
+- Import order in `theme.scss`: `theme/variables` → `spectre/variables` → `spectre/mixins` → `theme/fonts` → rest of theme
+- Theme variables MUST be declared in `_variables.scss` (loaded before Spectre) to override `!default` values
+
+### Design Tokens
+
+#### Color Palette (Gruvbox-inspired warm)
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `$color-dark` | `#282120` | Text, dark blocks |
+| `$color-dark-light` | `#584c4c` | Buttons on dark bg |
+| `$color-accent-1` | `#fe6038` | Primary CTA (orange) → `$primary-color` |
+| `$color-accent-2` | `#75999b` | Secondary accent (blue) → `$secondary-color` |
+| `$color-accent-2-light` | `#d9edee` | Light blue variant |
+| `$color-bg-white` | `#ffffff` | Block background |
+| `$color-bg-base` | `#f9f9f6` | Page background |
+| `$color-bg-light` | `#f8f8f1` | Light text bg |
+| `$color-bg-grey` | `#e5e6e2` | Grey background |
+| `$color-bg-accent` | `#ebecdb` | Accent block bg |
+| `$color-success` | `#98971a` | Gruvbox green |
+| `$color-warning` | `#d79921` | Gruvbox amber |
+| `$color-error` | `#cc241d` | Gruvbox red |
+
+#### Typography
+
+| Element | Font | Weight | Size | Line-height | Extra |
+|---------|------|--------|------|-------------|-------|
+| H1 | Space Grotesk | 500 | 3.75rem | 1.033 | letter-spacing: -.03em |
+| H2 | Space Grotesk | 500 | 2.625rem | 0.929 | letter-spacing: -.03em |
+| H3 | Space Grotesk | 500 | 1.625rem | 1.077 | letter-spacing: -.03em |
+| H4 | Space Grotesk | 400 | 1rem | 1.125 | letter-spacing: -.03em, uppercase |
+| Body | Plus Jakarta Sans | 400 | 1.125rem | 1.167 | |
+| Caption | Plus Jakarta Sans | 400 | 1rem | 1.188 | |
+| Buttons | Space Grotesk | 400 | 1rem | — | letter-spacing: .07em, uppercase |
+
+Font files are self-hosted as `.woff2` in `themes/axelweb/fonts/`. Declared in `scss/theme/_fonts.scss`, family variables in `scss/theme/_variables.scss`.
 
 ### Coding Standards
 
@@ -185,3 +222,7 @@ user/
 - `system.yaml` still references `theme: quark` — intentional until dev setup is ready
 - Demo pages (home, typography) need to be replaced with actual content
 - `js/` directory is empty — vanilla JS will be added as needed during integration
+- Priority 3 cleanup remaining: `assets/quark-screenshots.jpg`, `screenshot.jpg`, `thumbnail.jpg` to replace with actual branding
+- `README.md` / `CHANGELOG.md` in theme are Quark originals — to rewrite or remove
+- `css/custom.css` is empty — decide if keeping as override layer or removing
+- Notices override markdown-notices plugin colors in `_typography.scss` with Gruvbox palette
