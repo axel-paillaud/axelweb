@@ -23,7 +23,7 @@ function build() {
   return gulp.src(paths.source)
       .pipe(sourcemaps.init())
       .pipe(sass({
-            outputStyle: 'compact',
+            outputStyle: 'expanded',
             precision: 10
           }).on('error', sass.logError)
       )
