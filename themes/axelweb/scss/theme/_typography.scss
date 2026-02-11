@@ -6,7 +6,7 @@ html {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 2rem;
   font-family: $title-font-family;
-  color: darken($body-font-color, 10%);
+  color: $body-font-color;
 }
 
 h1, .h1 {
@@ -167,12 +167,38 @@ ol {
   list-style: decimal outside;
 }
 
-// Notices
+// Notices (override markdown-notices plugin colors)
 .notices {
   margin: 1.5rem 0;
   p {
     margin: 1rem 0;
   }
+
+  // Warning (yellow)
+  &.yellow {
+    border-left-color: $color-warning;
+    background: lighten($color-warning, 45%);
+    p { color: darken($color-warning, 10%); }
+  }
+
+  // Error (red)
+  &.red {
+    border-left-color: $color-error;
+    background: lighten($color-error, 50%);
+    p { color: $color-error; }
+  }
+
+  // Info (blue)
+  &.blue {
+    border-left-color: $color-accent-2;
+    background: lighten($color-accent-2-light, 3%);
+    p { color: darken($color-accent-2, 15%); }
+  }
+
+  // Success (green)
+  &.green {
+    border-left-color: $color-success;
+    background: lighten($color-success, 60%);
+    p { color: darken($color-success, 10%); }
+  }
 }
-
-
