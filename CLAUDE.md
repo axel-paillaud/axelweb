@@ -134,7 +134,7 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 - PHP: Follow PSR-12
 - Twig: Use Grav's Twig conventions, leverage `autoescape: true` (configured in system.yaml)
 - SCSS: Use variables and mixins from Spectre where possible before writing custom styles
-- JS: Vanilla only, no jQuery dependency (legacy jQuery scripts from Quark should be removed when encountered)
+- JS: Vanilla only, no jQuery. All legacy jQuery from Quark has been removed
 - All content and UI text in French
 - Code comments in English
 
@@ -182,6 +182,6 @@ user/
 
 ## Known Issues / TODOs
 
-- `system.yaml` still references `theme: quark` — needs to be changed to `axelweb`
+- `system.yaml` still references `theme: quark` — intentional until dev setup is ready
 - Demo pages (home, typography) need to be replaced with actual content
-- jQuery-dependent scripts inherited from Quark should be phased out
+- `js/` directory is empty — vanilla JS will be added as needed during integration

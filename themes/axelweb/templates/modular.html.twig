@@ -3,25 +3,11 @@
 {% set show_onpage_menu = header.onpage_menu == true or header.onpage_menu is null %}
 
 {% block javascripts %}
-    {% if show_onpage_menu %}
-        {% do assets.add('theme://js/singlepagenav.min.js') %}
-    {% endif %}
     {{ parent() }}
 {% endblock %}
 
 {% block bottom %}
     {{ parent() }}
-    {% if show_onpage_menu %}
-        <script>
-        // singlePageNav initialization & configuration
-        $('ul.navigation').singlePageNav({
-            offset: $('#header').outerHeight(),
-            filter: ':not(.external)',
-            updateHash: true,
-            currentClass: 'active'
-        });
-        </script>
-    {% endif %}
 {% endblock %}
 
 {% block header_navigation %}
