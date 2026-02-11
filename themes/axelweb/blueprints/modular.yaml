@@ -18,8 +18,8 @@ form:
             header.onpage_menu:
               type: toggle
               style: vertical
-              label: THEME_QUARK.ADMIN.MODULAR.COMMON.SHOW_ONPAGE_MENU
-              help: THEME_QUARK.ADMIN.MODULAR.COMMON.SHOW_ONPAGE_MENU_HELP
+              label: THEME_AXELWEB.ADMIN.MODULAR.COMMON.SHOW_ONPAGE_MENU
+              help: THEME_AXELWEB.ADMIN.MODULAR.COMMON.SHOW_ONPAGE_MENU_HELP
               default: 0
               highlight: 0
               options:

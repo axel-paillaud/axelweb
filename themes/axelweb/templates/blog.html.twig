@@ -7,14 +7,11 @@
 {% set show_pagination = header_var('show_pagination', [page, blog])|defined(true) %}
 
 {% block stylesheets %}
-    {% do assets.addCss('theme://css/bricklayer.css') %}
     {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {% do assets.add('theme://js/bricklayer.min.js') %}
-    {% do assets.add('theme://js/scopedQuerySelectorShim.min.js') %}
 {% endblock %}
 
 
@@ -33,11 +30,9 @@
         {% embed 'partials/layout.html.twig' with {blog: page} %}
             {% block item %}
 
-                <div class="bricklayer">
                 {% for child in collection %}
                     {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
                 {% endfor %}
-                </div>
 
                 {% if show_pagination and config.plugins.pagination.enabled and collection.params.pagination %}
                     <div id="listing-footer">
@@ -53,10 +48,6 @@
         {% endembed %}
         </section>
     </section>
-    <script>
-        //Bricklayer
-        var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
-    </script>
 {% endblock %}
 
 
