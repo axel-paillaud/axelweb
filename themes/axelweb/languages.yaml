@@ -2,7 +2,7 @@ en:
   THEME_AXELWEB:
     ADMIN:
       PRODUCTION_MODE: "Production Mode"
-      PRODUCTION_MODE_HELP: "When enabled, Quark will render with minified CSS"
+      PRODUCTION_MODE_HELP: "When enabled, Axelweb will render with minified CSS"
       GRID_SIZE: "Grid Size"
       GRID_SIZE_HELP: "The maximum width of the theme"
       GRID_SIZE_NONE: "None (full width)"
@@ -87,7 +87,7 @@ es:
   THEME_AXELWEB:
     ADMIN:
       PRODUCTION_MODE: "Modo de producción"
-      PRODUCTION_MODE_HELP: "Cuando está habilitado, Quark renderizará con CSS minificado"
+      PRODUCTION_MODE_HELP: "Cuando está habilitado, Axelweb renderizará con CSS minificado"
       GRID_SIZE: "Tamaño de la cuadrícula"
       GRID_SIZE_HELP: "El ancho máximo del tema"
       GRID_SIZE_NONE: "Ninguno (ancho completo)"
@@ -172,7 +172,7 @@ et:
 
 fr:
   THEME_AXELWEB:
-    TRANSLATION_TEST: Quark !
+    TRANSLATION_TEST: Axelweb !
     BLOG:
       ITEM:
         CONTINUE_READING: Continuer la lecture...
