@@ -8,4 +8,3 @@ themes/*
 !themes/.*
 !themes/axelweb/
 **/config/security.yaml
-filedoesnnotexist
