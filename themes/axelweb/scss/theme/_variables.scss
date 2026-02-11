@@ -45,6 +45,10 @@ $horiz-padding: 1rem;
 $vert-padding: 2rem 0 2rem;
 
 // Fonts
+$fallback-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$base-font-family: 'Plus Jakarta Sans', $fallback-font-family;
+$body-font-family: $base-font-family;
+$title-font-family: 'Space Grotesk', $fallback-font-family;
 $min-responsive-font-size: 16px;
 
 // Header
