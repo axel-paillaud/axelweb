@@ -32,4 +32,30 @@
       border-color: darken($primary-color, 12%);
     }
   }
+
+  // Secondary button (ghost/link style)
+  &.btn-secondary {
+    background-color: transparent;
+    border-color: transparent;
+    color: $body-font-color;
+    text-decoration: underline;
+
+    &::after {
+      content: " \2192"; // →
+      display: inline-block; // Allows transform for future animation
+      text-decoration: underline;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: transparent;
+      border-color: transparent;
+      color: $primary-color;
+    }
+
+    &:active,
+    &.active {
+      color: darken($primary-color, 8%);
+    }
+  }
 }
