@@ -1,12 +1,44 @@
+// =============================================================================
+// Color Palette (Gruvbox-inspired warm palette)
+// =============================================================================
+
+// Core brand colors
+$color-dark: #282120;
+$color-dark-light: #584c4c;
+$color-accent-1: #fe6038;
+$color-accent-2: #75999b;
+$color-accent-2-light: #d9edee;
+
+// Backgrounds
+$color-bg-white: #ffffff;
+$color-bg-base: #f9f9f6;
+$color-bg-light: #f8f8f1;
+$color-bg-grey: #e5e6e2;
+$color-bg-accent: #ebecdb;
+
+// Semantic colors (Gruvbox-derived)
+$color-success: #98971a;
+$color-warning: #d79921;
+$color-error: #cc241d;
+
+// =============================================================================
 // Spectre Overrides
-$primary-color: #3085EE !default;
-$dark-color: #454d5d !default;
-$light-color: #fff !default;
-$gray-color: lighten($dark-color, 40%) !default;
-$gray-color-dark: darken($gray-color, 25%) !default;
-$border-color: lighten($dark-color, 60%) !default;
-$bg-color: lighten($dark-color, 66%) !default;
-$body-font-color: lighten($dark-color, 5%) !default;
+// =============================================================================
+
+$primary-color: $color-accent-1;
+$secondary-color: $color-accent-2;
+$dark-color: $color-dark;
+$light-color: $color-bg-white;
+$gray-color: $color-dark-light;
+$gray-color-dark: darken($gray-color, 15%);
+$border-color: $color-bg-grey;
+$bg-color: $color-bg-base;
+$bg-color-dark: $color-bg-grey;
+$bg-color-light: $color-bg-white;
+$body-font-color: $color-dark;
+$success-color: $color-success;
+$warning-color: $color-warning;
+$error-color: $color-error;
 
 // Layout
 $horiz-padding: 1rem;
@@ -18,9 +50,9 @@ $min-responsive-font-size: 16px;
 // Header
 $header-height-large: 4rem;
 $header-height-small: 2.3rem;
-$header-color-dark: #222;
+$header-color-dark: $color-dark;
 $header-text-light: $light-color;
-$header-text-dark: darken($dark-color, 15%);
+$header-text-dark: $color-dark;
 
 // Dropdown Menu
 $dropmenu-bg: $light-color;
