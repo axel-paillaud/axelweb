@@ -8,3 +8,4 @@ themes/*
 !themes/.*
 !themes/axelweb/
 **/config/security.yaml
+**/node_modules/
