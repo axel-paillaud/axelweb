@@ -1,17 +1,14 @@
 name: Axelweb
 slug: axelweb
 type: theme
-version: 2.1.2
-description: New Grav Default Theme
+version: 1.0.0
+description: Custom theme for axelweb.fr
 icon: microchip
 author:
-  name: Team Grav
-  email: devs@getgrav.org
-  url: https://getgrav.org
-homepage: https://github.com/getgrav/grav-theme-axelweb
-demo: https://demo.getgrav.org/onepage-skeleton
-keywords: axelweb, spectre, theme, core, modern, fast, responsive, html5, css3
-bugs: https://github.com/getgrav/grav-theme-axelweb/issues
+  name: Axel Paillaud
+  email: contact@axelweb.fr
+  url: https://axelweb.fr
+keywords: axelweb, spectre, theme, modern, fast, responsive
 license: MIT
 
 dependencies:
@@ -23,8 +20,8 @@ form:
   fields:
     production-mode:
       type: toggle
-      label: THEME_QUARK.ADMIN.PRODUCTION_MODE
-      help: THEME_QUARK.ADMIN.PRODUCTION_MODE_HELP
+      label: THEME_AXELWEB.ADMIN.PRODUCTION_MODE
+      help: THEME_AXELWEB.ADMIN.PRODUCTION_MODE_HELP
       highlight: 1
       default: 1
       options:
@@ -35,34 +32,34 @@ form:
 
     grid-size:
       type: select
-      label: THEME_QUARK.ADMIN.GRID_SIZE
-      help: THEME_QUARK.ADMIN.GRID_SIZE_HELP
+      label: THEME_AXELWEB.ADMIN.GRID_SIZE
+      help: THEME_AXELWEB.ADMIN.GRID_SIZE_HELP
       size: small
       options:
-        '': THEME_QUARK.ADMIN.GRID_SIZE_NONE
-        grid-xl: THEME_QUARK.ADMIN.GRID_SIZE_EXTRA_LARGE
-        grid-lg: THEME_QUARK.ADMIN.GRID_SIZE_LARGE
-        grid-md: THEME_QUARK.ADMIN.GRID_SIZE_MEDIUM
+        '': THEME_AXELWEB.ADMIN.GRID_SIZE_NONE
+        grid-xl: THEME_AXELWEB.ADMIN.GRID_SIZE_EXTRA_LARGE
+        grid-lg: THEME_AXELWEB.ADMIN.GRID_SIZE_LARGE
+        grid-md: THEME_AXELWEB.ADMIN.GRID_SIZE_MEDIUM
 
     header_section:
       type: section
-      title: THEME_QUARK.ADMIN.HEADER_DEFAULTS
+      title: THEME_AXELWEB.ADMIN.HEADER_DEFAULTS
       underline: true
 
     custom_logo:
       type: file
-      label: THEME_QUARK.ADMIN.CUSTOM_LOGO
+      label: THEME_AXELWEB.ADMIN.CUSTOM_LOGO
       size: large
       destination: 'theme://images/logo'
       multiple: false
       markdown: true
-      description: THEME_QUARK.ADMIN.CUSTOM_LOGO_DESCRIPTION
+      description: THEME_AXELWEB.ADMIN.CUSTOM_LOGO_DESCRIPTION
       accept:
         - image/*
 
     custom_logo_mobile:
       type: file
-      label: THEME_QUARK.ADMIN.CUSTOM_LOGO_MOBILE
+      label: THEME_AXELWEB.ADMIN.CUSTOM_LOGO_MOBILE
       size: large
       destination: 'theme://images/logo'
       multiple: false
@@ -71,8 +68,8 @@ form:
 
     header-fixed:
       type: toggle
-      label: THEME_QUARK.ADMIN.HEADER_FIXED
-      help: THEME_QUARK.ADMIN.HEADER_FIXED_HELP
+      label: THEME_AXELWEB.ADMIN.HEADER_FIXED
+      help: THEME_AXELWEB.ADMIN.HEADER_FIXED_HELP
       highlight: 1
       default: 1
       options:
@@ -83,8 +80,8 @@ form:
 
     header-animated:
       type: toggle
-      label: THEME_QUARK.ADMIN.HEADER_ANIMATED
-      help: THEME_QUARK.ADMIN.HEADER_ANIMATED_HELP
+      label: THEME_AXELWEB.ADMIN.HEADER_ANIMATED
+      help: THEME_AXELWEB.ADMIN.HEADER_ANIMATED_HELP
       highlight: 1
       default: 1
       options:
@@ -95,8 +92,8 @@ form:
 
     header-dark:
       type: toggle
-      label: THEME_QUARK.ADMIN.HEADER_DARK
-      help: THEME_QUARK.ADMIN.HEADER_DARK_HELP
+      label: THEME_AXELWEB.ADMIN.HEADER_DARK
+      help: THEME_AXELWEB.ADMIN.HEADER_DARK_HELP
       highlight: 0
       default: 0
       options:
@@ -107,8 +104,8 @@ form:
 
     header-transparent:
       type: toggle
-      label: THEME_QUARK.ADMIN.HEADER_TRANSPARENT
-      help: THEME_QUARK.ADMIN.HEADER_TRANSPARENT_HELP
+      label: THEME_AXELWEB.ADMIN.HEADER_TRANSPARENT
+      help: THEME_AXELWEB.ADMIN.HEADER_TRANSPARENT_HELP
       highlight: 0
       default: 0
       options:
@@ -119,13 +116,13 @@ form:
 
     footer_section:
       type: section
-      title: THEME_QUARK.ADMIN.FOOTER_DEFAULTS
+      title: THEME_AXELWEB.ADMIN.FOOTER_DEFAULTS
       underline: true
 
     sticky-footer:
       type: toggle
-      label: THEME_QUARK.ADMIN.STICKY_FOOTER
-      help: THEME_QUARK.ADMIN.STICKY_FOOTER_HELP
+      label: THEME_AXELWEB.ADMIN.STICKY_FOOTER
+      help: THEME_AXELWEB.ADMIN.STICKY_FOOTER_HELP
       highlight: 1
       default: 1
       options:
@@ -136,25 +133,25 @@ form:
 
     blog_section:
       type: section
-      title: THEME_QUARK.ADMIN.BLOG_DEFAULTS
+      title: THEME_AXELWEB.ADMIN.BLOG_DEFAULTS
       underline: true
 
     blog-page:
       type: text
-      label: THEME_QUARK.ADMIN.BLOG_PAGE
-      help: THEME_QUARK.ADMIN.BLOG_PAGE_HELP
+      label: THEME_AXELWEB.ADMIN.BLOG_PAGE
+      help: THEME_AXELWEB.ADMIN.BLOG_PAGE_HELP
       size: medium
       default: '/blog'
 
     spectre_section:
       type: section
-      title: THEME_QUARK.ADMIN.SPECTRE_OPTIONS
+      title: THEME_AXELWEB.ADMIN.SPECTRE_OPTIONS
       underline: true
 
     spectre.exp:
       type: toggle
-      label: THEME_QUARK.ADMIN.SPECTRE_EXP
-      help: THEME_QUARK.ADMIN.SPECTRE_EXP_HELP
+      label: THEME_AXELWEB.ADMIN.SPECTRE_EXP
+      help: THEME_AXELWEB.ADMIN.SPECTRE_EXP_HELP
       highlight: 0
       default: 0
       options:
@@ -165,8 +162,8 @@ form:
 
     spectre.icons:
       type: toggle
-      label: THEME_QUARK.ADMIN.SPECTRE_ICONS
-      help: THEME_QUARK.ADMIN.SPECTRE_ICONS_HELP
+      label: THEME_AXELWEB.ADMIN.SPECTRE_ICONS
+      help: THEME_AXELWEB.ADMIN.SPECTRE_ICONS_HELP
       highlight: 0
       default: 0
       options:

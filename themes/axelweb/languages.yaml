@@ -1,5 +1,5 @@
 en:
-  THEME_QUARK:
+  THEME_AXELWEB:
     ADMIN:
       PRODUCTION_MODE: "Production Mode"
       PRODUCTION_MODE_HELP: "When enabled, Quark will render with minified CSS"
@@ -60,7 +60,7 @@ en:
         HEADLINE: Syndicate
 
 de:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
       ITEM:
         CONTINUE_READING: Weiterlesen...
@@ -84,7 +84,7 @@ de:
         HEADLINE: Abonnements
 
 es:
-  THEME_QUARK:
+  THEME_AXELWEB:
     ADMIN:
       PRODUCTION_MODE: "Modo de producción"
       PRODUCTION_MODE_HELP: "Cuando está habilitado, Quark renderizará con CSS minificado"
@@ -145,7 +145,7 @@ es:
         HEADLINE: Distribuir
 
 et:
-  THEME_QUARK:
+  THEME_AXELWEB:
     ADMIN:
       GRID_SIZE: Ruudustiku suurus
     BLOG:
@@ -171,7 +171,7 @@ et:
         HEADLINE: Voog
 
 fr:
-  THEME_QUARK:
+  THEME_AXELWEB:
     TRANSLATION_TEST: Quark !
     BLOG:
       ITEM:
@@ -196,7 +196,7 @@ fr:
         HEADLINE: Syndication
 
 it:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
       ITEM:
         CONTINUE_READING: Continua a leggere...
@@ -220,7 +220,7 @@ it:
         HEADLINE: Feed
 
 pl:
-  THEME_QUARK:
+  THEME_AXELWEB:
     ADMIN:
       GRID_SIZE: Rozmiar siatki
     BLOG:
@@ -246,7 +246,7 @@ pl:
         HEADLINE: Syndykacja
 
 ro:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
      ITEM:
         CONTINUE_READING: Mai multe...
@@ -270,7 +270,7 @@ ro:
         HEADLINE: Abonați-vă
 
 ru:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
       ITEM:
         CONTINUE_READING: Читать далее...
@@ -294,7 +294,7 @@ ru:
         HEADLINE: Синдикация
 
 uk:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
       ITEM:
         CONTINUE_READING: Читати далі...
@@ -318,7 +318,7 @@ uk:
         HEADLINE: Синдикація
 
 hr:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
       ITEM:
         CONTINUE_READING: Nastavi s čitanjem...
@@ -342,7 +342,7 @@ hr:
         HEADLINE: Kanali
 
 nl:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
       ITEM:
         CONTINUE_READING: Lees Meer...
@@ -366,7 +366,7 @@ nl:
         HEADLINE: Syndicatie
 
 cs:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
       ITEM:
         CONTINUE_READING: Pokračovat ve čtení...
@@ -390,7 +390,7 @@ cs:
         HEADLINE: Syndikace
 
 zh:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
       ITEM:
         CONTINUE_READING: 继续阅读...
@@ -414,7 +414,7 @@ zh:
         HEADLINE: 订阅流
 
 ja:
-  THEME_QUARK:
+  THEME_AXELWEB:
     BLOG:
       ITEM:
         CONTINUE_READING: 続きを読む...
