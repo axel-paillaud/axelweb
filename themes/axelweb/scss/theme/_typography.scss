@@ -2,22 +2,48 @@ html {
   @include fluid-type($size-xs, $size-xl, $min-responsive-font-size, $html-font-size);
 }
 
-// Header Overrides
+// Heading Overrides
 h1, h2, h3, h4, h5, h6 {
   margin-top: 2rem;
   font-family: $title-font-family;
   color: $body-font-color;
+  letter-spacing: -.03em;
 }
 
 h1, .h1 {
-  font-size: 3rem;
+  font-size: 3.75rem;
+  line-height: 1.033;
+  font-weight: 500;
 }
 
 h2, .h2 {
-  font-size: 1.8rem;
+  font-size: 2.625rem;
+  line-height: 0.929;
+  font-weight: 500;
+}
+
+h3, .h3 {
+  font-size: 1.625rem;
+  line-height: 1.077;
+  font-weight: 500;
+}
+
+h4, .h4 {
+  font-size: 1rem;
+  line-height: 1.125;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+h5, .h5 {
+  font-size: .875rem;
+  line-height: 1.2;
+  font-weight: 500;
 }
 
 h6, .h6 {
+  font-size: .75rem;
+  line-height: 1.2;
   font-weight: 400;
 }
 
