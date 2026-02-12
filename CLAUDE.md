@@ -117,7 +117,11 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 - Templates live in `user/themes/axelweb/templates/`
 - Template naming must match the page type (e.g., `blog.html.twig` for a page with `template: blog`)
 - Partials go in `templates/partials/`
-- Modular page sections go in `templates/modular/`
+- Modular page sections go in `templates/modular/` — template name must match the `.md` filename in the `_module/` subfolder
+- Reusable component partials go in `templates/partials/components/`
+- Modular templates read data from `page.header.*` (YAML frontmatter)
+- Homepage is a modular page (`pages/01.home/modular.md` with `content.items: '@self.modular'`)
+- Module subfolders are prefixed with `_` (e.g. `_faq/`)
 - Theme configuration: `axelweb.yaml`
 - Theme logic: `axelweb.php` (extends Grav Theme class, hooks into Grav events)
 - Blueprints define admin panel forms: `blueprints.yaml` and `blueprints/*.yaml`
@@ -127,10 +131,42 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 - Source: `user/themes/axelweb/scss/`
 - Spectre framework source: `scss/spectre/`
 - Custom theme styles: `scss/theme/`
+- Components: `scss/theme/components/` (buttons, tag, collapse, chevron, faq, section-faq)
 - Compiled output: `css-compiled/`
 - Always compile via Gulp, never edit `css-compiled/` directly
-- Import order in `theme.scss`: `theme/variables` → `spectre/variables` → `spectre/mixins` → `theme/fonts` → rest of theme
+- Import order in `theme.scss`: `theme/variables` → `spectre/variables` → `spectre/mixins` → `theme/fonts` → rest of theme → `theme/components/*`
 - Theme variables MUST be declared in `_variables.scss` (loaded before Spectre) to override `!default` values
+
+### Spectre Overrides
+
+Spectre defaults are often incompatible with the design. Key overrides in `_variables.scss`:
+- `$html-font-size: 16px` (Spectre default is 20px — caused all rem-based sizes to be wrong)
+- `$font-size: 1.125rem` (body text at 18px, Spectre default .8rem was too small with 16px base)
+- `$size-xl: 1440px` (grid container matches mockup width)
+
+### Component Library
+
+Reusable UI components in `scss/theme/components/`:
+
+| Component | SCSS | Twig | JS | Description |
+|-----------|------|------|----|-------------|
+| Buttons | `_buttons.scss` | — | — | Primary (CTA orange) + Secondary (ghost/link with Line Awesome arrow) |
+| Tag | `_tag.scss` | — | — | Taxonomy label (blog tags, service cards). CSS square icon, uppercase |
+| Collapse | `_collapse.scss` | — | `js/collapse.js` | Toggle +/- button. CSS-drawn icon (no font dependency) |
+| Chevron | `_chevron.scss` | — | — | Left/right nav arrows for sliders. Line Awesome icons |
+| FAQ Item | `_faq.scss` | `partials/components/faq-item.html.twig` | — | Single Q&A block with collapse toggle |
+| Section FAQ | `_section-faq.scss` | `modular/section-faq.html.twig` | — | Full-width 2-column layout (heading left, FAQ items right) |
+
+### Icon Strategy
+
+- **Line Awesome** (v4.7, font-family `FontAwesome`) for standard icons (arrows, chevrons)
+- **CSS-drawn shapes** for simple geometric icons (collapse +/-, tag square) — avoids font dependency, pixel-perfect centering
+- Line Awesome v4.7 is missing some newer icons (e.g. `la-square-full`). Do NOT update the lib for single icons — use CSS alternatives instead
+
+### French Typography
+
+- Twig templates apply `&nbsp;` before double punctuation (`?`, `!`, `:`, `;`) via `|replace` + `|raw` filter
+- This ensures non-breaking spaces per French typographic rules
 
 ### Design Tokens
 
@@ -171,7 +207,8 @@ Font files are self-hosted as `.woff2` in `themes/axelweb/fonts/`. Declared in `
 - PHP: Follow PSR-12
 - Twig: Use Grav's Twig conventions, leverage `autoescape: true` (configured in system.yaml)
 - SCSS: Use variables and mixins from Spectre where possible before writing custom styles
-- JS: Vanilla only, no jQuery. All legacy jQuery from Quark has been removed
+- JS: Vanilla only, no jQuery, arrow functions + `const`/`let`. All legacy jQuery from Quark has been removed
+- JS files loaded via `assets.addJs()` in `base.html.twig` with `group: 'bottom'` + `defer`
 - All content and UI text in French
 - Code comments in English
 
@@ -210,19 +247,39 @@ user/
         ├── scss/          ← SCSS source
         ├── css-compiled/  ← Build output (do not edit)
         ├── css/           ← Additional CSS (Line Awesome, custom)
-        ├── js/            ← JavaScript files
+        ├── js/            ← JavaScript files (collapse.js)
         ├── fonts/         ← Icon fonts
         ├── images/        ← Theme images (logo, favicon)
         ├── templates/     ← Twig templates
         └── blueprints/    ← Page type blueprints
 ```
 
-## Known Issues / TODOs
+## Current Status
 
+### Done
+- Component library: buttons (primary + secondary), tag, collapse, chevron, FAQ item, section FAQ
+- Homepage converted to modular page
+- Section FAQ modular template working with frontmatter data
+- Spectre overrides: `$html-font-size`, `$font-size`, `$size-xl`
+- Grid container set to `grid-xl` (1440px)
+- Zed editor config (`.zed/settings.json`) for 4-space Twig indentation
+- `default.html.twig` contains component examples for visual testing
+
+### Next Steps — Homepage Sections
+- Cards "Comment je travaille" (carousel with tags + chevrons)
+- Card "Article" (full-width, blog latest articles)
+- Top nav menu
+- Animations pass (collapse transitions, hover states, etc.)
+
+### Pending — Design System
+- Waiting on graphic designer for component specs (states, spacings, variants)
+- Missing: hover/focus states on most components, card designs, form field styles
+
+### Cleanup (Low Priority)
 - `system.yaml` still references `theme: quark` — intentional until dev setup is ready
-- Demo pages (home, typography) need to be replaced with actual content
-- `js/` directory is empty — vanilla JS will be added as needed during integration
-- Priority 3 cleanup remaining: `assets/quark-screenshots.jpg`, `screenshot.jpg`, `thumbnail.jpg` to replace with actual branding
+- Demo pages (typography) need to be replaced with actual content
+- Quark branding: `assets/quark-screenshots.jpg`, `screenshot.jpg`, `thumbnail.jpg` to replace
 - `README.md` / `CHANGELOG.md` in theme are Quark originals — to rewrite or remove
 - `css/custom.css` is empty — decide if keeping as override layer or removing
 - Notices override markdown-notices plugin colors in `_typography.scss` with Gruvbox palette
+- Admin back-office: clean up unused theme config options (keep only `grid-size` and `production-mode`)
