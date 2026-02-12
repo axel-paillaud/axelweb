@@ -1,0 +1,31 @@
+// =============================================================================
+// Chevron
+// Navigation arrows for sliders / carousels
+// =============================================================================
+
+.btn-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 50px;
+  padding: 0;
+  border: 1px solid $color-bg-accent;
+  border-radius: 5px;
+  background-color: $light-color;
+  color: $body-font-color;
+  cursor: pointer;
+
+  &::before {
+    font-family: FontAwesome;
+    font-size: 14px;
+  }
+
+  &-left::before {
+    content: "\f053"; // chevron-left
+  }
+
+  &-right::before {
+    content: "\f054"; // chevron-right
+  }
+}
