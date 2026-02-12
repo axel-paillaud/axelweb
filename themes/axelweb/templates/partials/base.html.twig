@@ -27,6 +27,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    {% do assets.addJs('theme://js/collapse.js', {group: 'bottom', defer: null}) %}
 {% endblock %}
 
 {% block assets deferred %}

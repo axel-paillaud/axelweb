@@ -1,0 +1,44 @@
+// =============================================================================
+// Collapse
+// Toggle button (+/-) for expandable/collapsible content
+// =============================================================================
+
+.btn-collapse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 1.6rem;
+  padding: 0;
+  border: none;
+  border-radius: 20px;
+  background-color: $color-dark-light;
+  color: $light-color;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient($light-color, $light-color),
+                linear-gradient($light-color, $light-color);
+    background-size: 12px 2px, 2px 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &.active::before {
+    background-size: 12px 2px, 0 0;
+  }
+}
+
+.collapse-content {
+  display: none;
+
+  .btn-collapse.active + & {
+    display: block;
+  }
+}
