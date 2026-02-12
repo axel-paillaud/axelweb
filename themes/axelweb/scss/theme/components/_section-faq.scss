@@ -1,0 +1,28 @@
+// =============================================================================
+// Section FAQ
+// Full-width section with title (left) and FAQ items (right)
+// =============================================================================
+
+.section-faq {
+  background-color: $color-dark;
+  border-radius: 40px;
+  padding: 75px 125px 84px;
+
+  &-inner {
+    display: flex;
+    gap: 60px;
+  }
+
+  &-heading {
+    flex: 1;
+
+    h2 {
+      color: $light-color;
+      margin: 0;
+    }
+  }
+
+  &-list {
+    flex: 1;
+  }
+}

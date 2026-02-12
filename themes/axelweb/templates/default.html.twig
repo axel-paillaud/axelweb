@@ -21,15 +21,14 @@
 
     </div>
 
-    <div style="background-color: #282120; padding: 40px; margin-top: 20px;">
-        {% for i in 1..3 %}
-            {% include 'partials/components/faq-item.html.twig' with {
-                question: 'Question exemple numéro ' ~ i ~ ' ?',
-                answer: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
-                index: i
-            } %}
-        {% endfor %}
-    </div>
+    {% include 'partials/components/section-faq.html.twig' with {
+        heading: 'Je réponds à toutes vos questions',
+        items: [
+            { question: 'Comment se déroule une collaboration ?', answer: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.' },
+            { question: 'Quels sont vos délais de réalisation ?', answer: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.' },
+            { question: 'Proposez-vous un suivi après la mise en ligne ?', answer: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.' },
+        ]
+    } %}
 
     {{ page.content|raw }}
 {% endblock %}

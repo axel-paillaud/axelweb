@@ -1,0 +1,16 @@
+<section class="section-faq">
+    <div class="section-faq-inner">
+        <div class="section-faq-heading">
+            <h2>{{ heading }}</h2>
+        </div>
+        <div class="section-faq-list">
+            {% for item in items %}
+                {% include 'partials/components/faq-item.html.twig' with {
+                    question: item.question,
+                    answer: item.answer,
+                    index: loop.index
+                } %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
