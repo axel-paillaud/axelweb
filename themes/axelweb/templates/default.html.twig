@@ -21,5 +21,15 @@
 
     </div>
 
+    <div style="background-color: #282120; padding: 40px; margin-top: 20px;">
+        {% for i in 1..3 %}
+            {% include 'partials/components/faq-item.html.twig' with {
+                question: 'Question exemple numéro ' ~ i ~ ' ?',
+                answer: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
+                index: i
+            } %}
+        {% endfor %}
+    </div>
+
     {{ page.content|raw }}
 {% endblock %}

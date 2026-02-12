@@ -1,0 +1,36 @@
+// =============================================================================
+// FAQ Item
+// Single question/answer block with collapse toggle
+// =============================================================================
+
+.faq-item {
+  width: 100%;
+  padding-bottom: 32px;
+  border-bottom: 1px solid $color-dark-light;
+
+  + .faq-item {
+    padding-top: 32px;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-title {
+    color: $color-bg-accent;
+    margin: 0;
+  }
+
+  .collapse-content {
+    margin-top: 13px;
+    max-width: 65ch;
+    color: #f5f5eca1;
+  }
+}
