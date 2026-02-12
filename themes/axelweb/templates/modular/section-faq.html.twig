@@ -1,10 +1,10 @@
 <section class="section-faq">
     <div class="section-faq-inner">
         <div class="section-faq-heading">
-            <h2>{{ heading }}</h2>
+            <h2>{{ page.header.heading }}</h2>
         </div>
         <div class="section-faq-list">
-            {% for item in items %}
+            {% for item in page.header.items %}
                 {% include 'partials/components/faq-item.html.twig' with {
                     question: item.question,
                     answer: item.answer,
