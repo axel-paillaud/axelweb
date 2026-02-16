@@ -283,7 +283,11 @@ user/
 - Blog structure with category folders and taxonomy tags
 
 ### Next Steps — Homepage Sections
+- hero
+- about
+- services
 - Top nav menu
+- footer
 - Animations pass (collapse transitions, hover states, etc.)
 
 ### Pending — Design System
