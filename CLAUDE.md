@@ -168,8 +168,9 @@ Reusable UI components in `scss/theme/components/`:
 
 ### French Typography
 
-- Twig templates apply `&nbsp;` before double punctuation (`?`, `!`, `:`, `;`) via `|replace` + `|raw` filter
-- This ensures non-breaking spaces per French typographic rules
+- Custom Twig filter `|french_typo` (registered in `axelweb.php`) replaces spaces before `:`, `;`, `?`, `!` with `&nbsp;`
+- Declared with `is_safe: ['html']` — no need for `|raw` after it
+- Use `{{ text|french_typo }}` in any template for French non-breaking space rules
 
 ### Design Tokens
 

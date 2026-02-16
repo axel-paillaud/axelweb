@@ -33,6 +33,16 @@ class Axelweb extends Theme
     {
         $twig = $this->grav['twig'];
 
+        $twig->twig()->addFilter(
+            new \Twig\TwigFilter('french_typo', function (string $text): string {
+                return str_replace(
+                    [' ?', ' !', ' :', ' ;'],
+                    ['&nbsp;?', '&nbsp;!', '&nbsp;:', '&nbsp;;'],
+                    $text
+                );
+            }, ['is_safe' => ['html']])
+        );
+
         $form_class_variables = [
 //            'form_outer_classes' => 'form-horizontal',
             'form_button_outer_classes' => 'button-wrapper',
