@@ -1,0 +1,7 @@
+<div class="process-card">
+    <div class="tag">
+        <span class="tag-text">{{ tag }}</span>
+    </div>
+    <h3 class="process-card-title">{{ title|replace({' ?': '&nbsp;?', ' !': '&nbsp;!', ' :': '&nbsp;:', ' ;': '&nbsp;;'})|raw }}</h3>
+    <p class="process-card-desc">{{ description }}</p>
+</div>
