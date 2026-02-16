@@ -1,4 +1,15 @@
-{% set grid_size = theme_var('grid-size') %}
-{% set hero_image = page.header.hero_image ? page.media[page.header.hero_image] : page.media.images|first %}
-
-{% include 'partials/hero.html.twig' %}
+<section class="section-hero">
+    <div class="section-hero-inner">
+        <div class="section-hero-heading">
+            <h1>{{ page.header.heading|french_typo }}</h1>
+        </div>
+        <div class="section-hero-content">
+            <p>{{ page.header.description|french_typo }}</p>
+            <div class="section-hero-actions">
+                {% for cta in page.header.ctas %}
+                    <a href="{{ cta.url }}" class="btn {{ cta.class }}">{{ cta.label }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+// =============================================================================
+// Section Hero
+// Two-column hero: heading (left) + description & CTAs (right)
+// =============================================================================
+
+.section-hero {
+  padding: 125px $horiz-padding;
+
+  &-inner {
+    display: flex;
+    gap: 196px;
+    max-width: $content-max-width;
+    margin: 0 auto;
+    align-items: flex-end;
+  }
+
+  &-heading {
+    flex: 1;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  &-content {
+    flex: 1;
+
+    p {
+      margin: 0 0 32px;
+      max-width: 65ch;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+}
