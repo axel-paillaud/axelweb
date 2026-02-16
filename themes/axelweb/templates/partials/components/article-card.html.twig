@@ -17,6 +17,6 @@
             {% endif %}
         </div>
         <h3 class="article-card-title">{{ article.title|french_typo }}</h3>
-        <p class="article-card-excerpt">{{ article.summary|striptags|truncate(150, true, '…') }}</p>
+        <p class="article-card-excerpt">{{ article.summary|striptags|truncate(150)|raw }}</p>
     </div>
 </article>
