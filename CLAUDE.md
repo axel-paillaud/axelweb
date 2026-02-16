@@ -143,6 +143,7 @@ Spectre defaults are often incompatible with the design. Key overrides in `_vari
 - `$html-font-size: 16px` (Spectre default is 20px — caused all rem-based sizes to be wrong)
 - `$font-size: 1.125rem` (body text at 18px, Spectre default .8rem was too small with 16px base)
 - `$size-xl: 1440px` (grid container matches mockup width)
+- `$content-max-width: 1250px` (max-width for section inner content)
 
 ### Component Library
 
@@ -156,6 +157,8 @@ Reusable UI components in `scss/theme/components/`:
 | Chevron | `_chevron.scss` | — | — | Left/right nav arrows for sliders. Line Awesome icons |
 | FAQ Item | `_faq.scss` | `partials/components/faq-item.html.twig` | — | Single Q&A block with collapse toggle |
 | Section FAQ | `_section-faq.scss` | `modular/section-faq.html.twig` | — | Full-width 2-column layout (heading left, FAQ items right) |
+| Process Card | `_process-card.scss` | `partials/components/process-card.html.twig` | — | Step card with tag, title, description. White bg, border, 20px radius |
+| Section Process | `_section-process.scss` | `modular/section-process.html.twig` | `js/carousel.js` | "Comment je travaille" carousel. 3 visible cards, chevron nav, peek effect |
 
 ### Icon Strategy
 
@@ -247,7 +250,7 @@ user/
         ├── scss/          ← SCSS source
         ├── css-compiled/  ← Build output (do not edit)
         ├── css/           ← Additional CSS (Line Awesome, custom)
-        ├── js/            ← JavaScript files (collapse.js)
+        ├── js/            ← JavaScript files (collapse.js, carousel.js)
         ├── fonts/         ← Icon fonts
         ├── images/        ← Theme images (logo, favicon)
         ├── templates/     ← Twig templates
@@ -264,9 +267,10 @@ user/
 - Grid container set to `grid-xl` (1440px)
 - Zed editor config (`.zed/settings.json`) for 4-space Twig indentation
 - `default.html.twig` contains component examples for visual testing
+- Section "Comment je travaille" (process carousel with cards, tags, chevrons, JS carousel)
+- `$content-max-width` variable for consistent section inner widths
 
 ### Next Steps — Homepage Sections
-- Cards "Comment je travaille" (carousel with tags + chevrons)
 - Card "Article" (full-width, blog latest articles)
 - Top nav menu
 - Animations pass (collapse transitions, hover states, etc.)
