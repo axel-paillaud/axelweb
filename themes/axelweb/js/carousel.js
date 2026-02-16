@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
 
     const cards = Array.from(track.children);
-    const visibleCount = 3;
+    const visibleCount = parseInt(carousel.dataset.visibleCount, 10) || 1;
     const maxIndex = Math.max(0, cards.length - visibleCount);
 
     const getCardWidthWithGap = () => {
