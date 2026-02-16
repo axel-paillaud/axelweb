@@ -1,0 +1,22 @@
+<article class="article-card">
+    {% set image = article.media.images|first %}
+    {% if image %}
+        <div class="article-card-image">
+            <img src="{{ image.url }}" alt="{{ article.title|e('html') }}" loading="lazy">
+        </div>
+    {% endif %}
+    <div class="article-card-content">
+        <div class="article-card-meta">
+            <div class="article-card-tags">
+                {% for tag in article.taxonomy.tag %}
+                    <span class="tag"><span class="tag-text">{{ tag }}</span></span>
+                {% endfor %}
+            </div>
+            {% if article.date %}
+                <time class="article-card-date" datetime="{{ article.date|date('Y-m-d') }}">{{ article.date|date('d/m/Y') }}</time>
+            {% endif %}
+        </div>
+        <h3 class="article-card-title">{{ article.title|french_typo }}</h3>
+        <p class="article-card-excerpt">{{ article.summary|striptags|truncate(200) }}</p>
+    </div>
+</article>

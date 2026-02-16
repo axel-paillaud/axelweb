@@ -122,6 +122,8 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 - Modular templates read data from `page.header.*` (YAML frontmatter)
 - Homepage is a modular page (`pages/01.home/modular.md` with `content.items: '@self.modular'`)
 - Module subfolders are prefixed with `_` (e.g. `_faq/`)
+- Non-hero modules are wrapped in `.modular-sections` (flex column, gap 85px) in `modular.html.twig`
+- Section spacing is managed via `gap` on `.modular-sections` in `_onepage.scss` — do not add vertical margins on sections
 - Theme configuration: `axelweb.yaml`
 - Theme logic: `axelweb.php` (extends Grav Theme class, hooks into Grav events)
 - Blueprints define admin panel forms: `blueprints.yaml` and `blueprints/*.yaml`
@@ -131,7 +133,7 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 - Source: `user/themes/axelweb/scss/`
 - Spectre framework source: `scss/spectre/`
 - Custom theme styles: `scss/theme/`
-- Components: `scss/theme/components/` (buttons, tag, collapse, chevron, faq, section-faq)
+- Components: `scss/theme/components/` (buttons, tag, collapse, chevron, faq, section-faq, process-card, section-process)
 - Compiled output: `css-compiled/`
 - Always compile via Gulp, never edit `css-compiled/` directly
 - Import order in `theme.scss`: `theme/variables` → `spectre/variables` → `spectre/mixins` → `theme/fonts` → rest of theme → `theme/components/*`
@@ -144,6 +146,7 @@ Spectre defaults are often incompatible with the design. Key overrides in `_vari
 - `$font-size: 1.125rem` (body text at 18px, Spectre default .8rem was too small with 16px base)
 - `$size-xl: 1440px` (grid container matches mockup width)
 - `$content-max-width: 1250px` (max-width for section inner content)
+- `$body-bg: $color-bg-base` (page background `#f9f9f6` — Spectre default was white)
 
 ### Component Library
 
@@ -159,6 +162,8 @@ Reusable UI components in `scss/theme/components/`:
 | Section FAQ | `_section-faq.scss` | `modular/section-faq.html.twig` | — | Full-width 2-column layout (heading left, FAQ items right) |
 | Process Card | `_process-card.scss` | `partials/components/process-card.html.twig` | — | Step card with tag, title, description. White bg, border, 20px radius |
 | Section Process | `_section-process.scss` | `modular/section-process.html.twig` | `js/carousel.js` | "Comment je travaille" carousel. 3 visible cards, chevron nav, peek effect |
+| Article Card | `_article-card.scss` | `partials/components/article-card.html.twig` | — | Blog article card. Two-column (image left, content right). White bg, border, 20px radius |
+| Section Articles | `_section-articles.scss` | `modular/section-articles.html.twig` | `js/carousel.js` | "Derniers articles" carousel. 1 card per slide, dynamic collection from /blog |
 
 ### Icon Strategy
 
@@ -269,10 +274,15 @@ user/
 - Zed editor config (`.zed/settings.json`) for 4-space Twig indentation
 - `default.html.twig` contains component examples for visual testing
 - Section "Comment je travaille" (process carousel with cards, tags, chevrons, JS carousel)
+- Section "Derniers articles" (article carousel, dynamic blog collection, 1 card per slide)
 - `$content-max-width` variable for consistent section inner widths
+- `$body-bg` override for page background (#f9f9f6)
+- `.modular-sections` wrapper with gap for section spacing
+- `carousel.js` supports `data-visible-count` attribute for configurable visible cards
+- `|french_typo` custom Twig filter for non-breaking spaces
+- Blog structure with category folders and taxonomy tags
 
 ### Next Steps — Homepage Sections
-- Card "Article" (full-width, blog latest articles)
 - Top nav menu
 - Animations pass (collapse transitions, hover states, etc.)
 
