@@ -7,6 +7,8 @@
   background-color: $color-dark;
   border-radius: 40px;
   padding: 75px 125px 84px;
+  max-width: $size-xl;
+  margin: 0 auto;
 
   &-inner {
     display: flex;
