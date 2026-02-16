@@ -1,0 +1,27 @@
+// =============================================================================
+// Process Card
+// Individual step card for the "Comment je travaille" carousel
+// =============================================================================
+
+.process-card {
+  flex: 0 0 auto;
+  width: calc((100% - 21px * 2) / 3);
+  background-color: $light-color;
+  border: 1px solid $color-bg-accent;
+  border-radius: 20px;
+  padding: 32px;
+
+  .tag {
+    margin-bottom: 24px;
+  }
+
+  &-title {
+    color: $color-dark;
+    margin: 0 0 12px;
+  }
+
+  &-desc {
+    color: $color-dark-light;
+    margin: 0;
+  }
+}

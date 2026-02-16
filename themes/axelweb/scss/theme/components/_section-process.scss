@@ -1,0 +1,45 @@
+// =============================================================================
+// Section Process
+// "Comment je travaille" carousel section
+// =============================================================================
+
+.section-process {
+  &-inner {
+    max-width: $content-max-width;
+    margin: 0 auto;
+
+    h2 {
+      margin: 0 0 40px;
+    }
+  }
+
+  .carousel {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    // Chevrons sit outside the content max-width
+    margin: 0 -50px;
+  }
+
+  .carousel-track-wrapper {
+    overflow: hidden;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 21px;
+    transition: transform 0.4s ease;
+  }
+
+  .btn-chevron {
+    flex-shrink: 0;
+
+    &[disabled] {
+      opacity: 0.3;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}
