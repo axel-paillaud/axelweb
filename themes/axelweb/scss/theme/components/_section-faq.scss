@@ -11,7 +11,7 @@
   &-inner {
     display: flex;
     gap: 60px;
-    max-width: 1250px;
+    max-width: $content-max-width;
     margin: 0 auto;
   }
 
