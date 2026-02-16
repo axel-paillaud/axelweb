@@ -8,7 +8,7 @@ taxonomy:
         - prestashop
 ---
 
-## Integer dignissim luctus lacus vel porttitor.
+## **Integer** dignissim luctus lacus vel porttitor.
 
 Suspendisse iaculis ex nisl, **eu lacinia lacus aliquet eget**. Pellentesque accumsan nibh posuere erat facilisis vehicula. 
 
