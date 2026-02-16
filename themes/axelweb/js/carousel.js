@@ -8,27 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
 
-    const getCards = () => Array.from(track.children);
-    const getVisibleCount = () => 3;
+    const cards = Array.from(track.children);
+    const visibleCount = 3;
+    const maxIndex = Math.max(0, cards.length - visibleCount);
 
     const getCardWidthWithGap = () => {
-      const cards = getCards();
       if (cards.length < 2) return cards[0]?.offsetWidth || 0;
       return cards[1].offsetLeft - cards[0].offsetLeft;
     };
 
-    const getMaxIndex = () => {
-      const cards = getCards();
-      return Math.max(0, cards.length - getVisibleCount());
-    };
-
     const updateButtons = () => {
       btnPrev.disabled = currentIndex <= 0;
-      btnNext.disabled = currentIndex >= getMaxIndex();
+      btnNext.disabled = currentIndex >= maxIndex;
     };
 
     const slideTo = (index) => {
-      currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
+      currentIndex = Math.max(0, Math.min(index, maxIndex));
       const offset = currentIndex * getCardWidthWithGap();
       track.style.transform = `translateX(-${offset}px)`;
       updateButtons();
