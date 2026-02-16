@@ -14,4 +14,8 @@ items:
         tag: "Etape 3"
         title: 'Livraison et suivi'
         description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
+    -
+        tag: "Etape 4"
+        title: 'Support et maintenance'
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
 ---
