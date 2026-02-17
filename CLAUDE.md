@@ -133,7 +133,7 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 - Source: `user/themes/axelweb/scss/`
 - Spectre framework source: `scss/spectre/`
 - Custom theme styles: `scss/theme/`
-- Components: `scss/theme/components/` (buttons, tag, collapse, chevron, faq, section-faq, process-card, section-process, section-hero)
+- Components: `scss/theme/components/` (buttons, tag, collapse, chevron, faq, section-faq, process-card, section-process, section-hero, section-about)
 - Compiled output: `css-compiled/`
 - Always compile via Gulp, never edit `css-compiled/` directly
 - Import order in `theme.scss`: `theme/variables` → `spectre/variables` → `spectre/mixins` → `theme/fonts` → rest of theme → `theme/components/*`
@@ -165,6 +165,7 @@ Reusable UI components in `scss/theme/components/`:
 | Article Card | `_article-card.scss` | `partials/components/article-card.html.twig` | — | Blog article card. Two-column (image left, content right). White bg, border, 20px radius |
 | Section Articles | `_section-articles.scss` | `modular/section-articles.html.twig` | `js/carousel.js` | "Derniers articles" carousel. 1 card per slide, dynamic collection from /blog |
 | Section Hero | `_section-hero.scss` | `modular/hero.html.twig` | — | Two-column hero: H1 left, description + CTA buttons right. Rendered in `{% block hero %}` (before other sections) |
+| Section About | `_section-about.scss` | `modular/section-about.html.twig` | — | Two-column: photo left (border-radius 20px), content right (heading, 2 paragraphs side by side, badge image, primary CTA). Images from page media |
 
 ### Icon Strategy
 
@@ -284,9 +285,9 @@ user/
 - Blog structure with category folders and taxonomy tags
 - Section Hero (two-column, H1 left, description + CTAs right, own padding independent of modular-sections gap)
 - Cleaned up Quark legacy hero styles from `_framework.scss` and `_onepage.scss`, removed `partials/hero.html.twig`
+- Section About (two-column: photo + content with heading, dual paragraphs, badge, CTA). Frontmatter-driven content, images via page media
 
 ### Next Steps — Homepage Sections
-- about
 - services
 - Top nav menu
 - footer
