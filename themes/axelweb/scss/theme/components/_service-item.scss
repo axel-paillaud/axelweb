@@ -10,10 +10,14 @@
 
   &-inner {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 32px;
-    padding: 24px 40px;
+    padding: 32px 40px 56px;
+  }
+
+  &:last-child &-inner {
+    padding-bottom: 32px;
   }
 
   &-heading {
@@ -48,7 +52,7 @@
   &-description {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease;
+    transition: max-height 0.4s cubic-bezier(.22,.61,.36,1);
 
     p {
       margin: 12px 0 0;
@@ -57,7 +61,7 @@
   }
 
   &.is-open &-description {
-    max-height: 200px;
+    max-height: 80px;
   }
 
   &-action {
