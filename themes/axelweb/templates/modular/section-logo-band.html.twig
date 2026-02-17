@@ -5,7 +5,9 @@
                 {% set image = page.media[logo.file] %}
                 {% if image %}
                     <div class="marquee-item">
-                        <img src="{{ image.url }}" alt="{{ logo.alt }}" loading="lazy">
+                        <a href="{{ logo.url }}" target="_blank" rel="noopener noreferrer nofollow">
+                            <img src="{{ image.url }}" alt="{{ logo.alt }}" loading="lazy">
+                        </a>
                     </div>
                 {% endif %}
             {% endfor %}
@@ -14,7 +16,9 @@
                 {% set image = page.media[logo.file] %}
                 {% if image %}
                     <div class="marquee-item" aria-hidden="true">
-                        <img src="{{ image.url }}" alt="" loading="lazy">
+                        <a href="{{ logo.url }}" target="_blank" rel="noopener noreferrer nofollow" tabindex="-1">
+                            <img src="{{ image.url }}" alt="" loading="lazy">
+                        </a>
                     </div>
                 {% endif %}
             {% endfor %}

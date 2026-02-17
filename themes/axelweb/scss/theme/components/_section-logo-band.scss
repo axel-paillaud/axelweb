@@ -5,8 +5,7 @@
 
 .marquee {
   &-track {
-    display: flex;
-    width: max-content;
+    display: inline-flex;
     animation: marquee-scroll 30s linear infinite;
   }
 
@@ -15,10 +14,13 @@
     padding: 0 40px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     img {
       height: 40px;
+      max-width: 180px;
       width: auto;
+      object-fit: contain;
       filter: grayscale(1);
       opacity: 0.5;
       transition: filter 0.3s ease, opacity 0.3s ease;
