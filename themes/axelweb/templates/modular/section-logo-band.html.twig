@@ -1,0 +1,23 @@
+<section class="section-logo-band">
+    <div class="marquee">
+        <div class="marquee-track">
+            {% for logo in page.header.logos %}
+                {% set image = page.media[logo.file] %}
+                {% if image %}
+                    <div class="marquee-item">
+                        <img src="{{ image.url }}" alt="{{ logo.alt }}" loading="lazy">
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {# Duplicate for seamless loop #}
+            {% for logo in page.header.logos %}
+                {% set image = page.media[logo.file] %}
+                {% if image %}
+                    <div class="marquee-item" aria-hidden="true">
+                        <img src="{{ image.url }}" alt="" loading="lazy">
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

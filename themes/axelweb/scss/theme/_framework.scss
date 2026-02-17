@@ -18,3 +18,10 @@ section.section {
   padding-right: $horiz-padding;
   position: relative;
 }
+
+// Wide layout utility: full-width with 5% side padding
+.section-wide {
+  max-width: none;
+  padding-left: 5%;
+  padding-right: 5%;
+}
