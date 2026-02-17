@@ -59,6 +59,7 @@
     text-transform: uppercase;
     text-decoration: none;
     color: $body-font-color;
+    text-wrap: nowrap;
 
     &:hover,
     &:focus {
