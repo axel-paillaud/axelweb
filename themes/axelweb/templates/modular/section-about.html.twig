@@ -1,0 +1,23 @@
+<section class="section-about">
+    <div class="section-about-inner">
+        <div class="section-about-photo">
+            {% set photo = page.media[header.photo] %}
+            {% if photo %}
+                <img src="{{ photo.url }}" alt="{{ header.heading }}" loading="lazy">
+            {% endif %}
+        </div>
+        <div class="section-about-content">
+            <h2>{{ header.heading|french_typo }}</h2>
+            <div class="section-about-columns">
+                {% for col in header.columns %}
+                    <p>{{ col.text|french_typo }}</p>
+                {% endfor %}
+            </div>
+            {% set badge = page.media[header.badge] %}
+            {% if badge %}
+                <img class="section-about-badge" src="{{ badge.url }}" alt="PrestaShop Expert" loading="lazy">
+            {% endif %}
+            <a href="{{ header.cta.url }}" class="btn btn-primary">{{ header.cta.label }}</a>
+        </div>
+    </div>
+</section>

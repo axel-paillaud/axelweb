@@ -1,0 +1,45 @@
+.section-about {
+  &-inner {
+    display: flex;
+    gap: 60px;
+    max-width: $content-max-width;
+    margin: 0 auto;
+    align-items: flex-start;
+  }
+
+  &-photo {
+    flex: 1;
+
+    img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+    }
+  }
+
+  &-content {
+    flex: 1;
+
+    h2 {
+      margin: 0 0 32px;
+    }
+  }
+
+  &-columns {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    p {
+      flex: 1;
+      margin: 0;
+    }
+  }
+
+  &-badge {
+    display: block;
+    margin-bottom: 32px;
+    max-width: 200px;
+    height: auto;
+  }
+}
