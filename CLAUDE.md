@@ -168,6 +168,8 @@ Reusable UI components in `scss/theme/components/`:
 | Section Articles | `_section-articles.scss` | `modular/section-articles.html.twig` | `js/carousel.js` | "Derniers articles" carousel. 1 card per slide, dynamic collection from /blog |
 | Section Hero | `_section-hero.scss` | `modular/hero.html.twig` | — | Two-column hero: H1 left, description + CTA buttons right. Rendered in `{% block hero %}` (before other sections) |
 | Section About | `_section-about.scss` | `modular/section-about.html.twig` | — | Two-column: photo left (border-radius 20px), content right (heading, 2 paragraphs side by side, badge image, primary CTA). Images from page media |
+| Service Item | `_service-item.scss` | `partials/components/service-item.html.twig` | `js/services.js` | Accordion item: 3 fixed-width columns (icon+title, subtitle+description, btn-secondary). Colors via SCSS variables per item. `h2.h3` for SEO h2 with h3 visual size |
+| Section Services | `_section-services.scss` | `modular/section-services.html.twig` | `js/services.js` | Stacked "tab divider" effect: 3 items with negative margin overlap, z-index stacking. Hover opens on desktop, touch tap on mobile. JS-driven max-height animation via scrollHeight |
 
 ### Icon Strategy
 
@@ -288,9 +290,9 @@ user/
 - Section Hero (two-column, H1 left, description + CTAs right, own padding independent of modular-sections gap)
 - Cleaned up Quark legacy hero styles from `_framework.scss` and `_onepage.scss`, removed `partials/hero.html.twig`
 - Section About (two-column: photo + content with heading, dual paragraphs, badge, CTA). Frontmatter-driven content, images via page media
+- Section Services (3 accordion items with "tab divider" overlap effect). Fixed-width columns for alignment, SCSS variables for per-item colors, `h2.h3` pattern for SEO/visual decoupling, JS scrollHeight animation, hover (desktop) + pointerup touch (mobile)
 
 ### Next Steps — Homepage Sections
-- services
 - Top nav menu
 - footer
 - Animations pass (collapse transitions, hover states, etc.)
