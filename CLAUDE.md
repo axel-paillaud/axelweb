@@ -135,7 +135,7 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 - Source: `user/themes/axelweb/scss/`
 - Spectre framework source: `scss/spectre/`
 - Custom theme styles: `scss/theme/`
-- Components: `scss/theme/components/` (buttons, tag, collapse, chevron, faq, section-faq, process-card, section-process, section-hero, section-about)
+- Components: `scss/theme/components/` (buttons, tag, collapse, chevron, faq, section-faq, process-card, section-process, section-hero, section-about, service-item, section-services, section-logo-band)
 - Compiled output: `css-compiled/`
 - Always compile via Gulp, never edit `css-compiled/` directly
 - Import order in `theme.scss`: `theme/variables` → `spectre/variables` → `spectre/mixins` → `theme/fonts` → rest of theme → `theme/components/*`
@@ -170,6 +170,7 @@ Reusable UI components in `scss/theme/components/`:
 | Section About | `_section-about.scss` | `modular/section-about.html.twig` | — | Two-column: photo left (border-radius 20px), content right (heading, 2 paragraphs side by side, badge image, primary CTA). Images from page media |
 | Service Item | `_service-item.scss` | `partials/components/service-item.html.twig` | `js/services.js` | Accordion item: 3 fixed-width columns (icon+title, subtitle+description, btn-secondary). Colors via SCSS variables per item. `h2.h3` for SEO h2 with h3 visual size |
 | Section Services | `_section-services.scss` | `modular/section-services.html.twig` | `js/services.js` | Stacked "tab divider" effect: 3 items with negative margin overlap, z-index stacking. Hover opens on desktop, touch tap on mobile. JS-driven max-height animation via scrollHeight |
+| Section Logo Band | `_section-logo-band.scss` | `modular/section-logo-band.html.twig` | — | CSS marquee (3x content duplication, translateX -33.33%). Full-width, logos grayscale+opacity → color on hover. Links with `target="_blank" rel="noopener noreferrer nofollow"`. Pause on hover |
 
 ### Icon Strategy
 
@@ -291,6 +292,8 @@ user/
 - Cleaned up Quark legacy hero styles from `_framework.scss` and `_onepage.scss`, removed `partials/hero.html.twig`
 - Section About (two-column: photo + content with heading, dual paragraphs, badge, CTA). Frontmatter-driven content, images via page media
 - Section Services (3 accordion items with "tab divider" overlap effect). Fixed-width columns for alignment, SCSS variables for per-item colors, `h2.h3` pattern for SEO/visual decoupling, JS scrollHeight animation, hover (desktop) + pointerup touch (mobile)
+- Section Logo Band (CSS marquee, 3x duplication for seamless loop up to 2K+, full-width, grayscale→color hover, linked logos with nofollow)
+- `.section-wide` utility class in `_framework.scss` (padding 0 5%) for wider-than-default sections
 
 ### Next Steps — Homepage Sections
 - Top nav menu
