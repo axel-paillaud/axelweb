@@ -19,9 +19,9 @@ section.section {
   position: relative;
 }
 
-// Wide layout utility: full-width with 5% side padding
+// Wide layout utility: full-width with 5% side margin
 .section-wide {
   max-width: none;
-  padding-left: 5%;
-  padding-right: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
