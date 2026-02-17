@@ -4,8 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const canHover = window.matchMedia('(hover: hover)').matches;
 
-  const open = (item) => item.classList.add('is-open');
-  const close = (item) => item.classList.remove('is-open');
+  const open = (item) => {
+    const desc = item.querySelector('[data-service-description]');
+    if (desc) desc.style.maxHeight = desc.scrollHeight + 'px';
+    item.classList.add('is-open');
+  };
+
+  const close = (item) => {
+    const desc = item.querySelector('[data-service-description]');
+    if (desc) desc.style.maxHeight = '';
+    item.classList.remove('is-open');
+  };
+
   const closeAll = () => items.forEach(close);
 
   if (canHover) {

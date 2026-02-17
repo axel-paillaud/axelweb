@@ -60,9 +60,7 @@
     }
   }
 
-  &.is-open &-description {
-    max-height: 80px;
-  }
+  // max-height is set dynamically by services.js (scrollHeight)
 
   &-action {
     width: 180px;
