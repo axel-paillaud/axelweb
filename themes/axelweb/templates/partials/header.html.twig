@@ -1,0 +1,17 @@
+<header class="site-header">
+    <div class="site-header-inner">
+        <a href="{{ home_url }}" class="site-logo">Axelweb</a>
+        <nav class="site-nav">
+            <ul>
+                {% for p in pages.children.visible %}
+                    <li>
+                        <a href="{{ p.url }}" class="{{ (p.active or p.activeChild) ? 'active' : '' }}{{ p.url == '/contact' ? ' site-nav-cta' : '' }}">
+                            {{ p.menu }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="site-header-border"></div>

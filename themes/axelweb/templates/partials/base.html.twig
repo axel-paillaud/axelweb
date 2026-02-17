@@ -40,28 +40,7 @@
 <body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}">
     <div id="page-wrapper">
     {% block header %}
-        <section id="header" class="section">
-            <section class="container {{ grid_size }}">
-                <nav class="navbar">
-                    <section class="navbar-section logo">
-                        {% include 'partials/logo.html.twig' %}
-                    </section>
-                    <section class="navbar-section desktop-menu">
-
-                        <nav class="dropmenu animated">
-                        {% block header_navigation %}
-                            {% include 'partials/navigation.html.twig' %}
-                        {% endblock %}
-                        </nav>
-
-                        {% if config.plugins.login.enabled and grav.user.username %}
-                            <span class="login-status-wrapper"><i class="fa fa-user"></i> {% include 'partials/login-status.html.twig' ignore missing %}</span>
-                        {% endif %}
-
-                    </section>
-                </nav>
-            </section>
-        </section>
+        {% include 'partials/header.html.twig' %}
         <div class="mobile-menu">
             <div class="button_container" id="toggle">
                 <span class="top"></span>

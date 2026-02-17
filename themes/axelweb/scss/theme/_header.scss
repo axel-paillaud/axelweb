@@ -1,101 +1,85 @@
-#header {
-  width: 100%;
-  height: $header-height-large;
-  border-bottom: 1px solid rgba($gray-color, 0.2);
-  @extend .default-animation;
+.site-header {
+  padding: 28px $horiz-padding;
 
-  font-size: 0.7rem;
-  font-weight: 700;
-
-  background: $light-color;
-  color: $dark-color;
-
-  a {
-    color: $dark-color;
+  &-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: $content-max-width;
+    margin: 0 auto;
   }
 
-  .logo svg path {
-    fill: $header-color-dark;
+  &-border {
+    max-width: $content-max-width;
+    margin: 0 auto;
+    border-bottom: 1px solid $color-bg-accent;
+  }
+}
+
+.site-logo {
+  font-family: $title-font-family;
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: $body-font-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $body-font-color;
+    text-decoration: none;
+  }
+  &:visited {
+      color: $body-font-color;
+      text-decoration: none;
+  }
+}
+
+.site-nav {
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    list-style: none;
+    background-color: $light-color;
+    border: 1px solid $color-bg-accent;
+    border-radius: 10px;
   }
 
-  .header-dark &:not(.scrolled) {
-    background: $header-color-dark;
+  li {
+    margin-top: 0;
+  }
+
+  li a {
+    display: block;
+    padding: 10px 20px;
+    font-family: $title-font-family;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $body-font-color;
+
+    &:hover,
+    &:focus {
+      color: lighten($primary-color, 10%);
+    }
+
+    &.active {
+      color: $primary-color;
+    }
+  }
+
+  .site-nav-cta {
+    background-color: $primary-color;
     color: $light-color;
-    a {
-      color: rgba($light-color, 0.7) !important;
-    }
-    a.active {
-      color: $light-color !important;
-    }
-    .dropmenu ul ul a {
-        color: $dark-color !important;
-    }
-    .logo svg path {
-      fill: $light-color;
+    border-radius: 10px;
+    margin: -1px;
+
+    &:hover,
+    &:focus {
+      background-color: darken($primary-color, 8%);
+      color: $light-color;
     }
   }
-
-  .header-dark.header-transparent &:not(.scrolled) {
-    background: rgba(#000, 0.05);
-  }
-
-  .header-transparent &:not(.scrolled) {
-    background: rgba(#fff, 0.05);
-    //border-bottom: 0 !important;
-  }
-
-  .navbar-section {
-    height: $header-height-large;
-    @extend .default-animation;
-
-    @include breakpoint(md) {
-      margin-right: 2rem;
-    }
-  }
-
-  .navbar-section.desktop-menu {
-    @include breakpoint(md) {
-      display: none;
-    }
-  }
-
-  .logo {
-    svg, img {
-      height: 42px;
-      display: inherit;
-      @extend .default-animation;
-    }
-  }
-
-  // Fixed Header solution
-  .header-fixed & {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-  }
-}
-
-// Animate Fixed Header
-body.header-fixed.header-animated {
-  #header.scrolled {
-    height: $header-height-small;
-
-    .navbar-section {
-      height: $header-height-small;
-    }
-
-    .logo {
-      svg, img {
-        height: 28px;
-      }
-    }
-
-    ~ .mobile-menu .button_container {
-      top: 0.5rem;
-    }
-  }
-}
-
-.login-status-wrapper {
-  white-space: nowrap;
 }
