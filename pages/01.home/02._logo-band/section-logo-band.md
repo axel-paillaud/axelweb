@@ -18,9 +18,9 @@ logos:
         alt: 'Dialog'
         url: 'https://www.askdialog.com/fr/'
     -
-        file: logo-client-delzongle.svg
+        file: logo-client-delzongle.png
         alt: 'Delzongle'
-        url: '#'
+        url: 'https://www.delzongle.com/'
     -
         file: logo-client-guiltek.png
         alt: 'Guiltek'
