@@ -17,7 +17,7 @@ logos:
         file: logo-client-delzongle.svg
         alt: 'Delzongle'
     -
-        file: logo-client-guiltek.svg
+        file: logo-client-guiltek.png
         alt: 'Guiltek'
     -
         file: logo-client-equipjardin.svg
