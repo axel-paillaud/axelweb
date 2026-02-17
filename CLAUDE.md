@@ -171,6 +171,7 @@ Reusable UI components in `scss/theme/components/`:
 | Service Item | `_service-item.scss` | `partials/components/service-item.html.twig` | `js/services.js` | Accordion item: 3 fixed-width columns (icon+title, subtitle+description, btn-secondary). Colors via SCSS variables per item. `h2.h3` for SEO h2 with h3 visual size |
 | Section Services | `_section-services.scss` | `modular/section-services.html.twig` | `js/services.js` | Stacked "tab divider" effect: 3 items with negative margin overlap, z-index stacking. Hover opens on desktop, touch tap on mobile. JS-driven max-height animation via scrollHeight |
 | Section Logo Band | `_section-logo-band.scss` | `modular/section-logo-band.html.twig` | — | CSS marquee (3x content duplication, translateX -33.33%). Full-width, logos grayscale+opacity → color on hover. Links with `target="_blank" rel="noopener noreferrer nofollow"`. Pause on hover |
+| Header | `_header.scss` | `partials/base.html.twig` (block header) | — | Logo text "Axelweb" + nav in rounded bordered container. Dynamic nav via `pages.children.visible`. Contact CTA detected via URL. Border separator below |
 
 ### Icon Strategy
 
@@ -294,10 +295,11 @@ user/
 - Section Services (3 accordion items with "tab divider" overlap effect). Fixed-width columns for alignment, SCSS variables for per-item colors, `h2.h3` pattern for SEO/visual decoupling, JS scrollHeight animation, hover (desktop) + pointerup touch (mobile)
 - Section Logo Band (CSS marquee, 3x duplication for seamless loop up to 2K+, full-width, grayscale→color hover, linked logos with nofollow)
 - `.section-wide` utility class in `_framework.scss` (padding 0 5%) for wider-than-default sections
+- Header navigation: logo text "Axelweb" + nav with rounded bordered container. Dynamic Grav nav (`pages.children.visible`), Contact as CTA (detected via URL `/contact`). Modular `header_navigation` override removed. Requires pages to exist in `user/pages/` for nav items to appear
 
 ### Next Steps — Homepage Sections
-- Top nav menu
-- footer
+- Footer
+- Mobile menu redesign
 - Animations pass (collapse transitions, hover states, etc.)
 
 ### Pending — Design System
