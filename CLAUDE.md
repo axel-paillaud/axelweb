@@ -32,6 +32,8 @@ npm run dev        # Gulp watch (development)
 npm run build      # Gulp build (production)
 ```
 
+**Note:** Do NOT run `npm run build` automatically after SCSS/JS changes — the developer runs `gulp watch` during development and builds manually.
+
 ### Deployment
 
 Git is installed on both local and production server. Workflow:
