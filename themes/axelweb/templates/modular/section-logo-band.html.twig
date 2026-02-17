@@ -1,26 +1,17 @@
 <section class="section-logo-band">
     <div class="marquee">
         <div class="marquee-track">
-            {% for logo in page.header.logos %}
-                {% set image = page.media[logo.file] %}
-                {% if image %}
-                    <div class="marquee-item">
-                        <a href="{{ logo.url }}" target="_blank" rel="noopener noreferrer nofollow">
-                            <img src="{{ image.url }}" alt="{{ logo.alt }}" loading="lazy">
-                        </a>
-                    </div>
-                {% endif %}
-            {% endfor %}
-            {# Duplicate for seamless loop #}
-            {% for logo in page.header.logos %}
-                {% set image = page.media[logo.file] %}
-                {% if image %}
-                    <div class="marquee-item" aria-hidden="true">
-                        <a href="{{ logo.url }}" target="_blank" rel="noopener noreferrer nofollow" tabindex="-1">
-                            <img src="{{ image.url }}" alt="" loading="lazy">
-                        </a>
-                    </div>
-                {% endif %}
+            {% for i in 1..3 %}
+                {% for logo in page.header.logos %}
+                    {% set image = page.media[logo.file] %}
+                    {% if image %}
+                        <div class="marquee-item"{% if i > 1 %} aria-hidden="true"{% endif %}>
+                            <a href="{{ logo.url }}" target="_blank" rel="noopener noreferrer nofollow"{% if i > 1 %} tabindex="-1"{% endif %}>
+                                <img src="{{ image.url }}" alt="{% if i == 1 %}{{ logo.alt }}{% endif %}" loading="lazy">
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
         </div>
     </div>

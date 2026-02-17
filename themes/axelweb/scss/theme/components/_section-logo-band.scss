@@ -6,7 +6,7 @@
 .marquee {
   &-track {
     display: inline-flex;
-    animation: marquee-scroll 30s linear infinite;
+    animation: marquee-scroll 60s linear infinite;
   }
 
   &-item {
@@ -40,5 +40,5 @@
 
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-33.33%); }
 }
