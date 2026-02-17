@@ -1,34 +1,5 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-    <div>
-        <button class="btn btn-secondary">Click me</button>
-
-        <div class="tag">
-            <span class="tag-text">Tag</span>
-        </div>
-
-        <button class="btn-collapse" aria-expanded="false" aria-controls="desc-1">
-        </button>
-        <div class="collapse-content" id="desc-1">
-            <p>Description longue...</p>
-        </div>
-
-        <button class="btn-chevron btn-chevron-left" aria-label="Previous">
-        </button>
-        <button class="btn-chevron btn-chevron-right" aria-label="Next">
-        </button>
-
-    </div>
-
-    {% include 'partials/components/section-faq.html.twig' with {
-        heading: 'Je réponds à toutes vos questions',
-        items: [
-            { question: 'Comment se déroule une collaboration ?', answer: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.' },
-            { question: 'Quels sont vos délais de réalisation ?', answer: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.' },
-            { question: 'Proposez-vous un suivi après la mise en ligne ?', answer: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.' },
-        ]
-    } %}
-
     {{ page.content|raw }}
 {% endblock %}
