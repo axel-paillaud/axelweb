@@ -1,0 +1,79 @@
+.service-item {
+  border-radius: 20px;
+  color: $color-bg-accent;
+  position: relative;
+
+  // Background colors per item
+  &--1 { background-color: $color-accent-2; }
+  &--2 { background-color: $color-dark; }
+  &--3 { background-color: $color-dark-light; }
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 24px 40px;
+  }
+
+  &-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+
+    i { font-size: 1.5rem; }
+
+    h2 {
+      margin: 0;
+      color: inherit;
+      white-space: nowrap;
+    }
+  }
+
+  &-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &-subtitle {
+    font-family: $title-font-family;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  &-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+
+    p {
+      margin: 12px 0 0;
+      max-width: 50ch;
+    }
+  }
+
+  &.is-open &-description {
+    max-height: 200px;
+  }
+
+  &-action {
+    flex-shrink: 0;
+  }
+
+  // btn-secondary override for light-on-dark
+  .btn-secondary {
+    color: $color-bg-accent;
+
+    &::before {
+      background-color: $color-bg-accent;
+    }
+
+    &:hover,
+    &:focus {
+      color: $light-color;
+    }
+  }
+}

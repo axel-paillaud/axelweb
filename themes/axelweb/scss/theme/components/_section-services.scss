@@ -1,0 +1,18 @@
+.section-services {
+  &-inner {
+    max-width: $content-max-width;
+    margin: 0 auto;
+  }
+
+  // Overlap between items
+  .service-item + .service-item {
+    margin-top: -10px;
+  }
+
+  // Z-index stacking: 1st under 2nd under 3rd
+  @for $i from 1 through 3 {
+    .service-item:nth-child(#{$i}) {
+      z-index: $i;
+    }
+  }
+}
