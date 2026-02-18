@@ -102,9 +102,11 @@ form:
             classes: 'btn-primary'
     process:
         email:
+            from: '{{ config.plugins.email.from }}'
+            to: '{{ config.plugins.email.to }}'
             subject: '[axelweb.fr] Nouveau message de {{ form.value.firstname }} {{ form.value.lastname }}'
             body: '{% include ''forms/data.html.twig'' %}'
-        message: 'Merci ! Votre message a bien été envoyé.'
+            reply_to: '{{ form.value.email }}'
         reset: true
-        display: /
+        display: /merci
 ---
