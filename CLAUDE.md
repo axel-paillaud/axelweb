@@ -172,7 +172,8 @@ Reusable UI components in `scss/theme/components/`:
 | Section Services | `_section-services.scss` | `modular/section-services.html.twig` | `js/services.js` | Stacked "tab divider" effect: 3 items with negative margin overlap, z-index stacking. Hover opens on desktop, touch tap on mobile. JS-driven max-height animation via scrollHeight |
 | Section Logo Band | `_section-logo-band.scss` | `modular/section-logo-band.html.twig` | — | CSS marquee (3x content duplication, translateX -33.33%). Full-width, logos grayscale+opacity → color on hover. Links with `target="_blank" rel="noopener noreferrer nofollow"`. Pause on hover |
 | Header | `_header.scss` | `partials/header.html.twig` | — | Logo text "Axelweb" + nav in rounded bordered container. Dynamic nav via `pages.children.visible`. Contact CTA detected via URL. Border separator below |
-| Footer | `_footer.scss` | `partials/footer.html.twig` | — | 3 columns (Ressources, Légal, Réseaux) + copyright signature. Full-width bg #e5e6e2, border-top-radius 40px. Hardcoded links. `{% block footer_cta %}` placeholder for future homepage contact form |
+| Section Contact | `_section-contact.scss` | `modular/section-contact.html.twig` | — | Contact form in footer (homepage only). Rendered via `{% embed %}` in `modular.html.twig` into `{% block footer_cta %}`. Uses Grav form plugin with honeypot. Surtitle (Space Grotesk 500) + large title (Jakarta 700, uppercase). Excluded from `.modular-sections` flow |
+| Footer | `_footer.scss` | `partials/footer.html.twig` | — | 3 columns (Ressources, Légal, Réseaux) + copyright signature. Full-width bg #e5e6e2, border-top-radius 40px. Hardcoded links. `{% block footer_cta %}` used by Section Contact via `{% embed %}` in `modular.html.twig` |
 
 ### Icon Strategy
 
@@ -300,9 +301,9 @@ user/
 - Footer: 3 columns (Ressources, Légal, Réseaux) + copyright signature. Full-width bg, border-top-radius 40px, hardcoded links. `{% block footer_cta %}` ready for future homepage contact form
 - `default.html.twig` cleaned up (removed component demo examples)
 - `blog.html.twig` cleaned up (removed reference to deleted Quark `partials/hero.html.twig`)
+- Section Contact form in footer (homepage only). Module `07._contact/section-contact.md` with Grav form plugin. Rendered via `{% embed %}` of footer partial in `modular.html.twig`. Fields: firstname, lastname, company, email, phone, select (request type), textarea, checkbox RGPD, honeypot. Excluded from `.modular-sections`, injected into `{% block footer_cta %}`
 
 ### Next Steps — Homepage Sections
-- Footer CTA contact (homepage only, dans le `{% block footer_cta %}`)
 - Mobile menu redesign
 - Animations pass (collapse transitions, hover states, etc.)
 

@@ -1,0 +1,13 @@
+<section class="section-contact">
+    <div class="section-contact-inner">
+        <div class="section-contact-heading">
+            {% if page.header.surtitle %}
+                <p class="section-contact-surtitle">{{ page.header.surtitle|french_typo }}</p>
+            {% endif %}
+            <h2 class="section-contact-title">{{ page.header.heading|french_typo }}</h2>
+        </div>
+        <div class="section-contact-form">
+            {% include "forms/form.html.twig" with {form: forms({route: page.route})} %}
+        </div>
+    </div>
+</section>

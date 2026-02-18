@@ -17,8 +17,23 @@
 
 {% block body %}
     <div class="modular-sections">
-        {% for module in page.collection() if module.template != 'modular/hero' %}
+        {% for module in page.collection() if module.template != 'modular/hero' and module.template != 'modular/section-contact' %}
             {{ module.content|raw }}
         {% endfor %}
     </div>
+{% endblock %}
+
+{% block footer %}
+    {% set contact_module = null %}
+    {% for module in page.collection() if module.template == 'modular/section-contact' %}
+        {% set contact_module = module %}
+    {% endfor %}
+
+    {% embed 'partials/footer.html.twig' %}
+        {% block footer_cta %}
+            {% if contact_module %}
+                {% include 'modular/section-contact.html.twig' with {page: contact_module} %}
+            {% endif %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
