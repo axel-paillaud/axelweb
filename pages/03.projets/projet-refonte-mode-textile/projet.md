@@ -1,16 +1,23 @@
 ---
 title: 'Refonte e-commerce Mode & Textile'
-date: '2025-09-15'
+date: '15-09-2025 00:00'
 taxonomy:
     category:
         - prestashop
+        - prestashop
     tag:
+        - module
         - theme
         - migration
         - module
+        - theme
+        - migration
 client: 'Mode & Textile'
+client_logo: dialog.svg
 excerpt: 'Migration complète de Magento vers PrestaShop 8 avec création d''un thème sur-mesure et développement de modules spécifiques pour la gestion de tailles et coloris.'
 url_projet: 'https://example.com'
+media_order: 'dialog.svg,dialog-example.png'
+image: dialog-example.png
 ---
 
 ## Contexte

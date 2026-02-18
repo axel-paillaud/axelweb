@@ -6,11 +6,6 @@ html {
   .container {
     padding: $vert-padding;
   }
-
-  // Fixed Header solution
-  .header-fixed & {
-    padding-top: $header-height-large;
-  }
 }
 
 section.section {

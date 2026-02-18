@@ -19,9 +19,9 @@
                 {% endif %}
             </header>
 
-            {% if page.media.images|first %}
+            {% if page.header.image %}
                 <div class="projet-detail-image">
-                    {{ page.media.images|first.cropResize(1200, 700).html('', '', 'loading=lazy') }}
+                    {{ page.media[page.header.image].cropResize(1200, 700).html('', '', 'loading=lazy') }}
                 </div>
             {% endif %}
 

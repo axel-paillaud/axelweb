@@ -6,35 +6,9 @@
     <div class="default-content">
         <h1>{{ page.title }}</h1>
 
-        <div class="projets-grid">
+        <div class="projets-list">
             {% for child in collection %}
-                <article class="projet-card" data-category="{{ child.taxonomy.category|join(' ') }}">
-                    {% if child.media.images|first %}
-                        <div class="projet-card-thumbnail">
-                            <a href="{{ child.url }}">
-                                {{ child.media.images|first.cropResize(600, 400).html('', '', 'loading=lazy') }}
-                            </a>
-                        </div>
-                    {% endif %}
-                    <div class="projet-card-content">
-                        {% if child.header.taxonomy.category %}
-                            <div class="projet-card-tags">
-                                {% for cat in child.header.taxonomy.category %}
-                                    <span class="tag">{{ cat }}</span>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                        <h2 class="projet-card-title">
-                            <a href="{{ child.url }}">{{ child.title }}</a>
-                        </h2>
-                        {% if child.header.client %}
-                            <p class="projet-card-client">{{ child.header.client }}</p>
-                        {% endif %}
-                        {% if child.header.excerpt %}
-                            <p class="projet-card-excerpt">{{ child.header.excerpt }}</p>
-                        {% endif %}
-                    </div>
-                </article>
+                {% include 'partials/components/projet-card.html.twig' with {projet: child} %}
             {% endfor %}
         </div>
 

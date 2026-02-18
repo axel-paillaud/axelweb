@@ -15,10 +15,32 @@ form:
           title: Projet
 
           fields:
+            header.image:
+              type: filepicker
+              label: Image principale
+              help: Visuel du projet affiché sur la carte et en haut de la page détail
+              preview_images: true
+              folder: 'self@'
+              accept:
+                - .png
+                - .jpg
+                - .webp
+
             header.client:
               type: text
               label: Client
-              help: Nom du client ou de l'entreprise
+              help: "Nom du client ou de l'entreprise (laisser vide pour un projet personnel)"
+
+            header.client_logo:
+              type: filepicker
+              label: Logo client
+              preview_images: true
+              folder: 'self@'
+              accept:
+                - .png
+                - .svg
+                - .jpg
+                - .webp
 
             header.excerpt:
               type: textarea

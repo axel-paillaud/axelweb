@@ -1,0 +1,36 @@
+<article class="projet-card" data-category="{{ projet.taxonomy.category|join(' ') }}">
+    {% if projet.header.image %}
+        <div class="projet-card-image">
+            <a href="{{ projet.url }}">
+                <img src="{{ projet.media[projet.header.image].url }}" alt="{{ projet.title|e('html') }}" loading="lazy">
+            </a>
+        </div>
+    {% endif %}
+    <div class="projet-card-content">
+        <div class="projet-card-meta">
+            <div class="projet-card-tags">
+                {% for cat in projet.taxonomy.category %}
+                    <span class="tag"><span class="tag-text">{{ cat }}</span></span>
+                {% endfor %}
+            </div>
+            {% if projet.date %}
+                <time class="projet-card-date" datetime="{{ projet.date|date('Y-m-d') }}">{{ projet.date|date('d/m/Y') }}</time>
+            {% endif %}
+        </div>
+        {% if projet.header.client_logo %}
+            <div class="projet-card-client">
+                <img class="projet-card-client-logo" src="{{ projet.media[projet.header.client_logo].url }}" alt="{{ projet.header.client|e('html') }}" loading="lazy">
+            </div>
+        {% elseif projet.header.client %}
+            <div class="projet-card-client">
+                <span class="projet-card-client-name">{{ projet.header.client }}</span>
+            </div>
+        {% endif %}
+        <h3 class="projet-card-title">
+            <a href="{{ projet.url }}">{{ projet.title|french_typo }}</a>
+        </h3>
+        {% if projet.header.excerpt %}
+            <p class="projet-card-excerpt">{{ projet.header.excerpt }}</p>
+        {% endif %}
+    </div>
+</article>

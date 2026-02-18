@@ -1,6 +1,6 @@
 ---
 title: 'Module de gestion de stock multi-entrepôts'
-date: '2025-06-10'
+date: '10-06-2025 00:00'
 taxonomy:
     category:
         - prestashop
@@ -9,7 +9,6 @@ taxonomy:
         - erp
 client: 'Outillage Pro'
 excerpt: 'Développement d''un module PrestaShop sur-mesure pour la gestion de stock réparti sur 3 entrepôts, avec synchronisation ERP en temps réel.'
-url_projet: ~
 ---
 
 ## Contexte

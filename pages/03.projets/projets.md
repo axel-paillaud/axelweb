@@ -1,5 +1,5 @@
 ---
-title: Projets
+title: Projets Axelweb
 child_type: projet
 content:
     items:
@@ -10,4 +10,3 @@ content:
     pagination: true
     limit: 12
 ---
-
