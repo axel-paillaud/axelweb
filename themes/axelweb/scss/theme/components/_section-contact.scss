@@ -31,16 +31,5 @@
   }
 
   &-form {
-    .form-label-wrapper {
-      @extend .sr-only;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .button-wrapper {
-      margin-top: 1.5rem;
-    }
   }
 }

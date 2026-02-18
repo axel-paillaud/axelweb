@@ -195,8 +195,8 @@ Reusable UI components in `scss/theme/components/`:
 |----------|-------|-------|
 | `$color-dark` | `#282120` | Text, dark blocks |
 | `$color-dark-light` | `#584c4c` | Buttons on dark bg |
-| `$color-accent-1` | `#fe6038` | Primary CTA (orange) → `$primary-color` |
-| `$color-accent-2` | `#75999b` | Secondary accent (blue) → `$secondary-color` |
+| `$color-accent-1` | `#fe6038` | CTA orange (buttons only: `.btn-primary`, `.site-nav-cta`, `@mixin button-primary`) |
+| `$color-accent-2` | `#75999b` | Primary accent (blue-green) → `$primary-color`. Links, focus states, form controls, checkboxes |
 | `$color-accent-2-light` | `#d9edee` | Light blue variant |
 | `$color-bg-white` | `#ffffff` | Block background |
 | `$color-bg-base` | `#f9f9f6` | Page background |
@@ -235,7 +235,13 @@ Font files are self-hosted as `.woff2` in `themes/axelweb/fonts/`. Declared in `
 
 - Use Grav's built-in `form` plugin for all forms
 - Contact form is the primary lead capture mechanism
-- Form styling uses Spectre.css classes (configured in `axelweb.php`)
+- Form styling uses Spectre.css classes (configured in `axelweb.php`) with custom overrides in `_forms.scss`
+- Form field styles (inputs, select, textarea, checkbox, columns) are global in `_forms.scss` — shared across all frontend forms
+- Labels hidden with `.sr-only` (in `_forms.scss`), placeholders used instead. Optional fields marked "(optionnel)" in placeholder
+- `form.html.twig` theme override wraps content in `.default-content` (max-width 1250px)
+- Contact form defined in `pages/01.home/07._contact/section-contact.md`, reused on `/contact` page
+- Email config: `user/config/plugins/email.yaml` (SMTP, from/to addresses)
+- Post-submission redirect to `/merci` page
 
 ### Performance
 
@@ -302,6 +308,13 @@ user/
 - `default.html.twig` cleaned up (removed component demo examples)
 - `blog.html.twig` cleaned up (removed reference to deleted Quark `partials/hero.html.twig`)
 - Section Contact form in footer (homepage only). Module `07._contact/section-contact.md` with Grav form plugin. Rendered via `{% embed %}` of footer partial in `modular.html.twig`. Fields: firstname, lastname, company, email, phone, select (request type), textarea, checkbox RGPD, honeypot. Excluded from `.modular-sections`, injected into `{% block footer_cta %}`
+- Page `/contact` (`pages/06.contact/form.md`) with same form fields. Theme override `form.html.twig` with `.default-content` max-width wrapper
+- Page `/merci` (`pages/merci/default.md`) — post-submission confirmation page, `visible: false`
+- `$primary-color` changed from `$color-accent-1` (orange) to `$color-accent-2` (blue-green). Orange preserved on `.btn-primary`, `.site-nav-cta`, `@mixin button-primary`
+- Global form styles in `_forms.scss`: field sizing, border-radius, colors, columns layout, sr-only labels, checkbox customization
+- `.sr-only` utility class in `_framework.scss`
+- `.default-content` layout class in `_framework.scss` (max-width 1250px)
+- Email plugin configured: `user/config/plugins/email.yaml` (SMTP localhost:1025 for DDEV/Mailpit)
 
 ### Next Steps — Homepage Sections
 - Mobile menu redesign

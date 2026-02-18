@@ -1,9 +1,4 @@
 form {
-  .button-wrapper {
-    margin-top: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
   span.required {
     color: $error-color;
     font-weight: 700;
@@ -33,6 +28,19 @@ form {
         }
       }
     }
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .button-wrapper {
+    margin-top: 1.5rem;
+  }
+
+  // Hide labels visually, keep for screen readers
+  .form-label-wrapper {
+    @extend .sr-only;
   }
 
   // Column layout for side-by-side fields
