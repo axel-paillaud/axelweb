@@ -1,0 +1,63 @@
+title: Projets
+'@extends':
+    type: default
+    context: 'blueprints://pages'
+
+child_type: projet
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        projets:
+          type: tab
+          title: Projets Config
+
+          fields:
+            header.content.items:
+              type: textarea
+              yaml: true
+              label: Items
+              default: '@self.children'
+              validate:
+                type: yaml
+
+            header.content.limit:
+              type: text
+              label: Projets par page
+              default: 12
+              validate:
+                required: true
+                type: int
+                min: 1
+
+            header.content.order.by:
+              type: select
+              label: Trier par
+              default: date
+              options:
+                date: Date
+                title: Titre
+                folder: Dossier
+
+            header.content.order.dir:
+              type: select
+              label: Ordre
+              default: desc
+              options:
+                asc: Croissant
+                desc: Décroissant
+
+            header.content.pagination:
+              type: toggle
+              label: Pagination
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool

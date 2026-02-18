@@ -1,0 +1,45 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="default-content">
+        <article class="projet-detail">
+            <header class="projet-detail-header">
+                {% if page.header.taxonomy.category %}
+                    <div class="projet-detail-tags">
+                        {% for cat in page.header.taxonomy.category %}
+                            <span class="tag">{{ cat }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <h1>{{ page.title }}</h1>
+
+                {% if page.header.client %}
+                    <p class="projet-detail-client">Client : {{ page.header.client }}</p>
+                {% endif %}
+            </header>
+
+            {% if page.media.images|first %}
+                <div class="projet-detail-image">
+                    {{ page.media.images|first.cropResize(1200, 700).html('', '', 'loading=lazy') }}
+                </div>
+            {% endif %}
+
+            <div class="projet-detail-content">
+                {{ page.content|raw }}
+            </div>
+
+            {% if page.header.url_projet %}
+                <div class="projet-detail-link">
+                    <a href="{{ page.header.url_projet }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        Voir le site
+                    </a>
+                </div>
+            {% endif %}
+
+            <div class="projet-detail-back">
+                <a href="/projets" class="btn btn-secondary">Tous les projets</a>
+            </div>
+        </article>
+    </div>
+{% endblock %}

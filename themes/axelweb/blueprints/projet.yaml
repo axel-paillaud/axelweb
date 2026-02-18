@@ -1,0 +1,39 @@
+title: Projet
+'@extends':
+    type: default
+    context: 'blueprints://pages'
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        projet:
+          type: tab
+          title: Projet
+
+          fields:
+            header.client:
+              type: text
+              label: Client
+              help: Nom du client ou de l'entreprise
+
+            header.excerpt:
+              type: textarea
+              label: Extrait
+              help: Description courte affichée sur la carte du projet
+              validate:
+                required: true
+
+            header.url_projet:
+              type: text
+              label: URL du projet
+              help: Lien vers le site en ligne (laisser vide si non applicable)
+              placeholder: 'https://example.com'
+
+            header.taxonomy:
+              type: taxonomy
+              label: Taxonomie
+              multiple: true

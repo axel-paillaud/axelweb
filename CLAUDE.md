@@ -174,6 +174,8 @@ Reusable UI components in `scss/theme/components/`:
 | Header | `_header.scss` | `partials/header.html.twig` | — | Logo text "Axelweb" + nav in rounded bordered container. Dynamic nav via `pages.children.visible`. Contact CTA detected via URL. Border separator below |
 | Section Contact | `_section-contact.scss` | `modular/section-contact.html.twig` | — | Contact form in footer (homepage only). Rendered via `{% embed %}` in `modular.html.twig` into `{% block footer_cta %}`. Uses Grav form plugin with honeypot. Surtitle (Space Grotesk 500) + large title (Jakarta 700, uppercase). Excluded from `.modular-sections` flow |
 | Footer | `_footer.scss` | `partials/footer.html.twig` | — | 3 columns (Ressources, Légal, Réseaux) + copyright signature. Full-width bg #e5e6e2, border-top-radius 40px. Hardcoded links. `{% block footer_cta %}` used by Section Contact via `{% embed %}` in `modular.html.twig` |
+| Projet Card | — | `projets.html.twig` (inline) | — | Project card in listing grid. Thumbnail, tags, title, client, excerpt. `data-category` attribute for future JS filtering |
+| Projet Detail | — | `projet.html.twig` | — | Single project page. Header (tags, h1, client), hero image, content body, external link CTA, back button |
 
 ### Icon Strategy
 
@@ -230,6 +232,18 @@ Font files are self-hosted as `.woff2` in `themes/axelweb/fonts/`. Declared in `
 - JS files loaded via `assets.addJs()` in `base.html.twig` with `group: 'bottom'` + `defer`
 - All content and UI text in French
 - Code comments in English
+
+### Projects (Portfolio)
+
+- **Architecture:** Child pages pattern (same as blog). Listing page `projets.md` collects `@self.children`, each child is a `projet.md`
+- **Listing page:** `pages/03.projets/projets.md` — template `projets.html.twig`, collection with pagination (12 per page), ordered by date desc
+- **Project pages:** `pages/03.projets/<slug>/projet.md` — template `projet.html.twig`
+- **Admin blueprints:** `blueprints/projets.yaml` (listing config: items, limit, order, pagination) + `blueprints/projet.yaml` (project fields: client, excerpt, url_projet, taxonomy)
+- **child_type:** `projet` — new project pages created via Admin default to `projet` template
+- **Frontmatter fields:** `title`, `client`, `excerpt` (short description for card), `url_projet` (external link), `taxonomy.category` (for tags + future JS filtering), `date`
+- **Images:** via Grav page media (drop images in the project's folder). Listing uses `cropResize(600, 400)`, detail uses `cropResize(1200, 700)`
+- **Grid:** `.projets-grid` in listing template, cards have `data-category` attribute for future client-side filtering
+- **Styling:** Not yet styled (waiting on wireframes from designer). Templates use `.default-content` wrapper, `.tag` component for categories
 
 ### Forms
 
@@ -315,6 +329,7 @@ user/
 - `.sr-only` utility class in `_framework.scss`
 - `.default-content` layout class in `_framework.scss` (max-width 1250px)
 - Email plugin configured: `user/config/plugins/email.yaml` (SMTP localhost:1025 for DDEV/Mailpit)
+- Projects (portfolio) structure: listing page `projets.md` with child pages pattern, `projet.md` template for individual projects, admin blueprints for both, `data-category` attributes for future JS filtering. Two example projects created. Styling pending (waiting on wireframes)
 
 ### Next Steps — Homepage Sections
 - Mobile menu redesign
