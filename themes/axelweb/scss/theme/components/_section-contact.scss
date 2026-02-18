@@ -68,11 +68,30 @@
     }
 
     .form-checkbox {
-      font-size: 0.875rem;
-      color: $gray-color;
+      font-size: .875rem;
+      color: $color-dark-light;
+      padding-left: 2rem;
+
+      .form-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 4px;
+      }
+
+      input {
+        &:checked + .form-icon {
+          background: $color-accent-2;
+          border-color: $color-accent-2;
+        }
+
+        &:focus + .form-icon {
+          border-color: $color-accent-2;
+          box-shadow: 0 0 0 2px rgba($color-accent-2, .2);
+        }
+      }
 
       a {
-        color: $primary-color;
+        color: $color-accent-2;
         text-decoration: underline;
       }
     }
