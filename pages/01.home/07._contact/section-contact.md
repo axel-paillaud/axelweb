@@ -25,7 +25,7 @@ form:
         company:
             type: text
             label: Entreprise
-            placeholder: 'Nom de l''entreprise'
+            placeholder: 'Nom de l''entreprise (optionnel)'
             autocomplete: organization
         email:
             type: email
@@ -37,7 +37,7 @@ form:
         phone:
             type: tel
             label: Téléphone
-            placeholder: 'Numéro de téléphone'
+            placeholder: 'Numéro de téléphone (optionnel)'
             autocomplete: tel
         request_type:
             type: select

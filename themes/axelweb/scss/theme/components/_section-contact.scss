@@ -31,6 +31,10 @@
   }
 
   &-form {
+    .form-label-wrapper {
+      @extend .sr-only;
+    }
+
     .form-group {
       margin-bottom: 1rem;
     }
@@ -38,25 +42,27 @@
     .form-input,
     .form-select {
       background-color: $color-bg-white;
-      border: 1px solid $border-color;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
+      border: 1px solid $color-bg-accent;
+      border-radius: 10px;
+      height: 3rem;
+      padding: .75rem 1rem;
       font-family: $body-font-family;
       font-size: 1rem;
-      color: $body-font-color;
+      color: $color-dark-light;
       width: 100%;
 
       &::placeholder {
-        color: $gray-color;
+        color: $color-dark-light;
       }
 
       &:focus {
-        border-color: $primary-color;
-        box-shadow: 0 0 0 2px rgba($primary-color, 0.15);
+        border-color: $color-accent-2;
+        box-shadow: 0 0 0 2px rgba($color-accent-2, 0.2);
       }
     }
 
     textarea.form-input {
+      height: auto;
       resize: vertical;
       min-height: 120px;
     }
