@@ -35,6 +35,64 @@ form {
     }
   }
 
+  // Frontend form field styles
+  .form-input,
+  .form-select {
+    background-color: $color-bg-white;
+    border: 1px solid $color-bg-accent;
+    border-radius: 10px;
+    height: 3rem;
+    padding: .75rem 1rem;
+    font-family: $body-font-family;
+    font-size: 1rem;
+    color: $color-dark-light;
+    width: 100%;
+
+    &::placeholder {
+      color: $color-dark-light;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, .2);
+    }
+  }
+
+  textarea.form-input {
+    height: auto;
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-checkbox {
+    font-size: .875rem;
+    color: $color-dark-light;
+    padding-left: 2rem;
+
+    .form-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 4px;
+    }
+
+    input {
+      &:checked + .form-icon {
+        background: $primary-color;
+        border-color: $primary-color;
+      }
+
+      &:focus + .form-icon {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, .2);
+      }
+    }
+
+    a {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+
 }
 
 #grav-login {
