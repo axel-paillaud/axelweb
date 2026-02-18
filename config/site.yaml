@@ -1,8 +1,20 @@
-title: Axelweb 
+title: Axelweb
+default_lang: fr
 author:
-  name: Axel Paillaud 
-  email: 'contact@axelweb.fr'
+  name: 'Axel Paillaud'
+  email: contact@axelweb.fr
+taxonomies:
+  - category
+  - tag
 metadata:
-    description: 'Axel, développeur expert PrestaShop, modules et migrations'
-    robots: noindex, nofollow
-
+  description: 'Axel, développeur expert PrestaShop, modules et migrations'
+  robots: 'noindex, nofollow'
+summary:
+  enabled: true
+  format: short
+  size: 300
+  delimiter: '==='
+redirects: null
+routes: null
+blog:
+  route: /blog
