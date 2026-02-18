@@ -35,6 +35,21 @@ form {
     }
   }
 
+  // Column layout for side-by-side fields
+  .form-columns {
+    display: flex;
+    gap: 1rem;
+
+    @include breakpoint(sm) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  .form-column {
+    flex: 1;
+  }
+
   // Frontend form field styles
   .form-input,
   .form-select {

@@ -8,51 +8,78 @@ form:
     action: /
     inline_errors: true
     fields:
-        firstname:
-            type: text
-            label: Prénom
-            placeholder: Prénom
-            autocomplete: given-name
-            validate:
-                required: true
-        lastname:
-            type: text
-            label: Nom
-            placeholder: Nom
-            autocomplete: family-name
-            validate:
-                required: true
-        company:
-            type: text
-            label: Entreprise
-            placeholder: 'Nom de l''entreprise (optionnel)'
-            autocomplete: organization
-        email:
-            type: email
-            label: Email
-            placeholder: 'Adresse email'
-            autocomplete: email
-            validate:
-                required: true
-        phone:
-            type: tel
-            label: Téléphone
-            placeholder: 'Numéro de téléphone (optionnel)'
-            autocomplete: tel
-        request_type:
-            type: select
-            label: 'Type de demande'
-            placeholder: 'Type de demande'
-            validate:
-                required: true
-            options:
-                module: 'Développement de module PrestaShop'
-                theme: 'Création de thème PrestaShop'
-                maintenance: 'Maintenance / TMA'
-                migration: 'Migration PrestaShop'
-                audit: 'Audit technique'
-                recrutement: 'Recrutement'
-                autre: 'Autre'
+        row_name:
+            type: columns
+            fields:
+                column1:
+                    type: column
+                    fields:
+                        firstname:
+                            type: text
+                            label: Prénom
+                            placeholder: Prénom
+                            autocomplete: given-name
+                            validate:
+                                required: true
+                column2:
+                    type: column
+                    fields:
+                        lastname:
+                            type: text
+                            label: Nom
+                            placeholder: Nom
+                            autocomplete: family-name
+                            validate:
+                                required: true
+        row_email:
+            type: columns
+            fields:
+                column1:
+                    type: column
+                    fields:
+                        email:
+                            type: email
+                            label: Email
+                            placeholder: 'Adresse email'
+                            autocomplete: email
+                            validate:
+                                required: true
+                column2:
+                    type: column
+                    fields:
+                        company:
+                            type: text
+                            label: Entreprise
+                            placeholder: 'Nom de l''entreprise (optionnel)'
+                            autocomplete: organization
+        row_request:
+            type: columns
+            fields:
+                column1:
+                    type: column
+                    fields:
+                        request_type:
+                            type: select
+                            label: 'Type de demande'
+                            placeholder: 'Type de demande'
+                            validate:
+                                required: true
+                            options:
+                                module: 'Développement de module PrestaShop'
+                                theme: 'Création de thème PrestaShop'
+                                maintenance: 'Maintenance / TMA'
+                                migration: 'Migration PrestaShop'
+                                audit: 'Audit technique'
+                                recrutement: 'Recrutement'
+                                autre: 'Autre'
+                column2:
+                    type: column
+                    fields:
+                        phone:
+                            type: tel
+                            label: Téléphone
+                            placeholder: 'Numéro de téléphone (optionnel)'
+                            autocomplete: tel
         message:
             type: textarea
             label: Message
