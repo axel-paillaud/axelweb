@@ -82,5 +82,10 @@
       background-color: darken($color-accent-1, 8%);
       color: $light-color;
     }
+
+    &.active {
+      color: $light-color;
+      box-shadow: inset 0 0 0 2px darken($color-accent-1, 15%);
+    }
   }
 }
