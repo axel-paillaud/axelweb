@@ -26,6 +26,12 @@ section.section {
   margin-right: 5%;
 }
 
+// Default page content constraint
+.default-content {
+  max-width: $content-max-width;
+  margin: 0 auto;
+}
+
 // Visually hidden but accessible to screen readers
 .sr-only {
   position: absolute;
