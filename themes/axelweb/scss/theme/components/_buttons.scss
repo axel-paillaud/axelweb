@@ -13,23 +13,23 @@
     padding: 10px 15px;
     height: auto; // Override Spectre's fixed height
 
-  // Primary button
+  // Primary button — forced orange (CTA), independent of $primary-color
   &.btn-primary {
-    background-color: $primary-color;
-    border-color: $primary-color;
+    background-color: $color-accent-1;
+    border-color: $color-accent-1;
     color: $light-color;
 
     &:focus,
     &:hover {
-      background-color: darken($primary-color, 8%);
-      border-color: darken($primary-color, 8%);
+      background-color: darken($color-accent-1, 8%);
+      border-color: darken($color-accent-1, 8%);
       color: $light-color;
     }
 
     &:active,
     &.active {
-      background-color: darken($primary-color, 12%);
-      border-color: darken($primary-color, 12%);
+      background-color: darken($color-accent-1, 12%);
+      border-color: darken($color-accent-1, 12%);
     }
   }
 

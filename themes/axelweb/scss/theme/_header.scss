@@ -72,14 +72,14 @@
   }
 
   .site-nav-cta {
-    background-color: $primary-color;
+    background-color: $color-accent-1;
     color: $light-color;
     border-radius: 10px;
     margin: -1px;
 
     &:hover,
     &:focus {
-      background-color: darken($primary-color, 8%);
+      background-color: darken($color-accent-1, 8%);
       color: $light-color;
     }
   }
