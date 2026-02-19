@@ -83,6 +83,10 @@ a:focus {
   box-shadow: none !important;
 }
 
+a:visited {
+  color: $link-color-dark;
+}
+
 img {
   max-width: 100%;
 }
@@ -191,6 +195,13 @@ ul {
 
 ol {
   list-style: decimal outside;
+}
+
+// break-line
+
+hr {
+  border: none;
+  border-top: 2px solid $color-bg-accent;
 }
 
 // Notices (override markdown-notices plugin colors)
