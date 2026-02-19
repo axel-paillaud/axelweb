@@ -20,43 +20,6 @@
   }
 }
 
-// Burger button — hidden on desktop, shown on mobile
-.site-burger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  width: 32px;
-  height: 24px;
-  position: relative;
-  flex-shrink: 0;
-
-  span {
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: $body-font-color;
-    transition: transform 0.3s, opacity 0.3s;
-
-    &:nth-child(1) { top: 0; }
-    &:nth-child(2) { top: 50%; transform: translateY(-50%); }
-    &:nth-child(3) { bottom: 0; }
-  }
-
-  .is-nav-open & {
-    span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
-    span:nth-child(2) { opacity: 0; }
-    span:nth-child(3) { bottom: auto; top: 50%; transform: translateY(-50%) rotate(-45deg); }
-  }
-
-  @media (max-width: $size-sm) {
-    display: block;
-  }
-}
-
 .site-logo {
   font-family: $title-font-family;
   font-size: 2.25rem;
@@ -79,23 +42,8 @@
   }
 }
 
+// Desktop navigation
 .site-nav {
-  @media (max-width: $size-sm) {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: $light-color;
-    border-bottom: 1px solid $color-bg-accent;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.25s ease;
-
-    .is-nav-open & {
-      max-height: 400px;
-    }
-  }
-
   ul {
     display: flex;
     align-items: center;
@@ -105,13 +53,6 @@
     background-color: $light-color;
     border: 1px solid $color-bg-accent;
     border-radius: 10px;
-
-    @media (max-width: $size-sm) {
-      flex-direction: column;
-      align-items: stretch;
-      border: none;
-      border-radius: 0;
-    }
   }
 
   li {
@@ -152,11 +93,6 @@
     border-radius: 10px;
     margin: -1px;
 
-    @media (max-width: $size-sm) {
-      border-radius: 0;
-      margin: 0;
-    }
-
     &:hover,
     &:focus {
       background-color: darken($color-accent-1, 8%);
@@ -167,5 +103,37 @@
       color: $light-color;
       box-shadow: inset 0 0 0 2px darken($color-accent-1, 15%);
     }
+  }
+}
+
+// Burger button — visible only via Spectre .show-sm
+.site-burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 32px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+
+  span {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $body-font-color;
+    transition: transform 0.3s, opacity 0.3s;
+
+    &:nth-child(1) { top: 0; }
+    &:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    &:nth-child(3) { bottom: 0; }
+  }
+
+  .is-nav-open & {
+    span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { bottom: auto; top: 50%; transform: translateY(-50%) rotate(-45deg); }
   }
 }

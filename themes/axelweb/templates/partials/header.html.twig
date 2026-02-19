@@ -1,12 +1,7 @@
 <header class="site-header">
     <div class="site-header-inner">
         <a href="{{ home_url }}" class="site-logo">Axelweb</a>
-        <button class="site-burger" aria-label="Menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav class="site-nav">
+        <nav class="site-nav hide-sm">
             <ul>
                 {% for p in pages.children.visible if not p.home %}
                     <li>
@@ -17,5 +12,21 @@
                 {% endfor %}
             </ul>
         </nav>
+        <button class="site-burger show-sm" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 </header>
+<nav class="mobile-nav show-sm" aria-label="Menu principal">
+    <ul>
+        {% for p in pages.children.visible if not p.home %}
+            <li>
+                <a href="{{ p.url }}" class="{{ (p.active or p.activeChild) ? 'active' : '' }}{{ p.url == '/contact' ? ' mobile-nav-cta' : '' }}">
+                    {{ p.menu }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!burger) return;
 
   burger.addEventListener('click', () => {
-    const isOpen = header.classList.toggle('is-nav-open');
+    const isOpen = document.body.classList.toggle('is-nav-open');
     burger.setAttribute('aria-expanded', isOpen);
   });
 });

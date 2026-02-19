@@ -1,0 +1,70 @@
+// =============================================================================
+// Mobile Navigation
+// Fixed panel that slides down from below the header
+// Toggled via .is-nav-open on body
+// =============================================================================
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background-color: $light-color;
+  border-bottom: 1px solid $color-bg-accent;
+  transform: translateY(-100%);
+  transition: transform 0.25s ease;
+
+  .is-nav-open & {
+    transform: translateY(0);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 16px 0;
+    list-style: none;
+  }
+
+  li {
+    margin-top: 0;
+  }
+
+  li a {
+    display: block;
+    padding: 12px $horiz-padding;
+    font-family: $title-font-family;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $body-font-color;
+
+    &:hover,
+    &:focus {
+      color: lighten($primary-color, 10%);
+      text-decoration: none;
+    }
+
+    &.active {
+      color: $primary-color;
+    }
+  }
+
+  .mobile-nav-cta {
+    background-color: $color-accent-1;
+    color: $light-color;
+
+    &:hover,
+    &:focus {
+      background-color: darken($color-accent-1, 8%);
+      color: $light-color;
+    }
+
+    &.active {
+      color: $light-color;
+    }
+  }
+}
