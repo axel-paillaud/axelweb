@@ -362,6 +362,7 @@ user/
 - Blog card: single `<a>` wrapping entire card (no nested links). First tag only. `.blog-card--no-image` variant. Hover translateY effect. `|raw` after `truncate` for `&hellip;`
 - Blog detail page (`item.html.twig`): same structure as project detail (`.content-layout` + TOC + `.prose`). Tags, h1, date in header. No cover image from template (avoids duplication with Markdown content). Prev/next article navigation + "Tous les articles" in actions bar
 - `.btn-no-arrow` modifier on `btn-secondary` to hide auto `::after` arrow
+- Blog tag filter: server-side via Grav native taxonomy URL params (`/blog/tag:xxx`), same pattern as projects. Mono-tag toggle. Tags collected recursively from `item` children (handles category subfolder structure). Styles: `.blog-filters` in `_blog-card.scss`, same visual as `.projets-filters`
 
 ### Next Steps
 - Responsive: homepage sections (hero, services, about, process, articles, contact, footer)

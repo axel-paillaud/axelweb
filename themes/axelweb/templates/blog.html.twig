@@ -1,6 +1,7 @@
 {% extends 'partials/base.html.twig' %}
 
 {% set collection = page.collection() %}
+{% set active_tag = uri.param('tag') %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -17,6 +18,29 @@
         {% if page.content|striptags|trim %}
             <div class="prose">
                 {{ page.content|raw }}
+            </div>
+        {% endif %}
+
+        {% set all_tags = [] %}
+        {% for category in page.children %}
+            {% for child in category.children %}
+                {% for tag in child.taxonomy.tag %}
+                    {% if tag not in all_tags %}
+                        {% set all_tags = all_tags|merge([tag]) %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+
+        {% if all_tags|length > 0 %}
+            <div class="blog-filters">
+                {% for tag in all_tags|sort %}
+                    {% if active_tag == tag %}
+                        <a href="{{ page.url }}" class="tag tag--active">{{ tag }}</a>
+                    {% else %}
+                        <a href="{{ page.url }}/tag{{ config.system.param_sep }}{{ tag }}" class="tag">{{ tag }}</a>
+                    {% endif %}
+                {% endfor %}
             </div>
         {% endif %}
 

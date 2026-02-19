@@ -4,6 +4,43 @@
 // Displayed in a responsive grid (3 cols desktop, 2 tablet, 1 mobile)
 // =============================================================================
 
+.blog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+
+  .tag {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: $color-bg-grey;
+    color: $color-dark-light;
+    border: none;
+
+    &:visited {
+      color: $color-dark-light;
+    }
+
+    &:hover {
+      color: $color-dark;
+      text-decoration: none;
+    }
+
+    &--active {
+      background-color: $color-dark-light;
+      color: $color-bg-accent;
+
+      &:visited {
+        color: $color-bg-accent;
+      }
+
+      &:hover {
+        color: $color-bg-accent;
+      }
+    }
+  }
+}
+
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
