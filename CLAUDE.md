@@ -156,7 +156,7 @@ Reusable UI components in `scss/theme/components/`:
 
 | Component | SCSS | Twig | JS | Description |
 |-----------|------|------|----|-------------|
-| Buttons | `_buttons.scss` | — | — | Primary (CTA orange) + Secondary (ghost/link with Line Awesome arrow) |
+| Buttons | `_buttons.scss` | — | — | Primary (CTA orange) + Secondary (ghost/link with Line Awesome arrow). `.btn-no-arrow` modifier hides the auto `::after` arrow on secondary buttons |
 | Tag | `_tag.scss` | — | — | Taxonomy label (blog tags, service cards). CSS square icon, uppercase |
 | Collapse | `_collapse.scss` | — | `js/collapse.js` | Toggle +/- button. CSS-drawn icon (no font dependency) |
 | Chevron | `_chevron.scss` | — | — | Left/right nav arrows for sliders. Line Awesome icons |
@@ -178,6 +178,8 @@ Reusable UI components in `scss/theme/components/`:
 | Projet Detail | `_projet-detail.scss` | `projet.html.twig` | — | Single project page using `.content-layout`. Header (tags, h1, client), hero image, `.prose` content, actions bar (btn-primary "Voir le site" + btn-secondary "Tous les projets" in flex space-between) |
 | Content Layout | `_content-layout.scss` | — | `js/toc.js` | 3-column layout (toc sidebar + main content + empty). Reusable across blog/project. TOC auto-generated from h2/h3 headings with Intersection Observer active state. Sticky sidebar, white bg, border-radius 20px, border accent |
 | Mobile Nav | `_mobile-nav.scss` | `partials/header.html.twig` | `js/header.js` | Mobile menu (visible via Spectre `.show-sm` <= 600px). Fixed panel, slides down from under header via `translateY`. Toggled by `.is-nav-open` on `body`. Sibling of header (not child) to allow independent z-index stacking |
+| Blog Card | `_blog-card.scss` | `partials/components/blog-card.html.twig` | — | Vertical card for blog listing. Entire card is a single `<a>` link. Image top (aspect-ratio 16/9, cropZoom 600x340), content bottom (single tag, date, title, excerpt). `.blog-card--no-image` variant pushes body to bottom via `margin-top: auto`. Grid: 3 cols desktop, 2 tablet, 1 mobile. Hover: `translateY(-4px)` |
+| Blog Detail | `_blog-detail.scss` | `item.html.twig` | `js/toc.js` | Single blog article page using `.content-layout`. Header (tags, h1, date), `.prose` content with `data-toc-content` for TOC. Actions bar: prev/next article navigation + "Tous les articles" link (all `btn-no-arrow`) |
 | Pagination | `_pagination.scss` | — | — | Grav pagination plugin override. Centered, Space Grotesk font, `$color-dark-light` default, `$primary-color` active/hover, no border |
 
 ### Icon Strategy
@@ -356,9 +358,12 @@ user/
 - Mobile header: always shrunk via CSS media query (no scroll effect)
 - Mobile burger menu: `.site-burger` in header (`.show-sm`), `.mobile-nav` as sibling of header (`.show-sm`). Fixed panel slides down from under header via `translateY(-100%→0)`. Toggled by `.is-nav-open` on `body`. Desktop nav hidden via Spectre `.hide-sm`. Old Grav mobile overlay system removed (`_mobile.scss` import removed, overlay block deleted from `base.html.twig`)
 - Responsive: project cards stack vertically at <= 600px, `#body-wrapper .container` padding reduced to 0.5rem on mobile
+- Blog listing rewritten: `@self.descendants` collection with `filter.type: item` (excludes category pages). Grid of vertical blog-cards (3/2/1 cols). No sidebar, no breadcrumbs. Old Quark card/layout styles removed from `_blog.scss`
+- Blog card: single `<a>` wrapping entire card (no nested links). First tag only. `.blog-card--no-image` variant. Hover translateY effect. `|raw` after `truncate` for `&hellip;`
+- Blog detail page (`item.html.twig`): same structure as project detail (`.content-layout` + TOC + `.prose`). Tags, h1, date in header. No cover image from template (avoids duplication with Markdown content). Prev/next article navigation + "Tous les articles" in actions bar
+- `.btn-no-arrow` modifier on `btn-secondary` to hide auto `::after` arrow
 
 ### Next Steps
-- Blog pages: apply `.content-layout` + `toc.js` to blog item template, review blog listing
 - Responsive: homepage sections (hero, services, about, process, articles, contact, footer)
 - Animations pass (collapse transitions, hover states, etc.)
 
