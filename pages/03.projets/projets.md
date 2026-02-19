@@ -1,5 +1,6 @@
 ---
-title: Projets Axelweb
+title: 'Projets Axelweb'
+menu: Projets
 child_type: projet
 content:
     items:
