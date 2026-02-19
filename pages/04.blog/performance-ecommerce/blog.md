@@ -3,7 +3,7 @@ title: 'Performance Ecommerce'
 content:
     items:
         - '@self.children'
-    limit: 5
+    limit: 12 
     order:
         by: date
         dir: desc

@@ -1,30 +1,24 @@
-<article class="blog-card">
+<a href="{{ article.url }}" class="blog-card{{ not article.media.images|first ? ' blog-card--no-image' : '' }}">
     {% set image = article.media.images|first %}
     {% if image %}
         <div class="blog-card-image">
-            <a href="{{ article.url }}" aria-hidden="true" tabindex="-1">
-                <img src="{{ image.cropZoom(600, 340).url }}" alt="" loading="lazy">
-            </a>
+            <img src="{{ image.cropZoom(600, 340).url }}" alt="" loading="lazy">
         </div>
     {% endif %}
     <div class="blog-card-content">
         <div class="blog-card-meta">
-            {% if article.taxonomy.tag %}
-                <div class="blog-card-tags">
-                    {% for tag in article.taxonomy.tag %}
-                        <span class="tag"><span class="tag-text">{{ tag }}</span></span>
-                    {% endfor %}
-                </div>
+            {% if article.taxonomy.tag|first %}
+                <span class="tag"><span class="tag-text">{{ article.taxonomy.tag|first }}</span></span>
             {% endif %}
             {% if article.date %}
                 <time class="blog-card-date" datetime="{{ article.date|date('Y-m-d') }}">{{ article.date|date('d/m/Y') }}</time>
             {% endif %}
         </div>
-        <h3 class="blog-card-title">
-            <a href="{{ article.url }}">{{ article.title|french_typo }}</a>
-        </h3>
-        {% if article.summary != article.content %}
-            <p class="blog-card-excerpt">{{ article.summary|striptags|truncate(150) }}</p>
-        {% endif %}
+        <div class="blog-card-body">
+            <h3 class="blog-card-title">{{ article.title|french_typo }}</h3>
+            {% if article.summary != article.content %}
+                <p class="blog-card-excerpt">{{ article.summary|striptags|truncate(150)|raw }}</p>
+            {% endif %}
+        </div>
     </div>
-</article>
+</a>

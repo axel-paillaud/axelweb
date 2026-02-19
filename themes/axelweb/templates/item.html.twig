@@ -1,41 +1,43 @@
 {% extends 'partials/base.html.twig' %}
-{% set blog = page.find(header_var('blog_url')|defined(theme_var('blog-page'))) %}
-{% set show_breadcrumbs = header_var('show_breadcrumbs', [page, blog])|defined(true) %}
-{% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(true)  %}
-{% set show_pagination = header_var('show_pagination', [page, blog])|defined(true) %}
-{% set hero_image_name = page.header.hero_image %}
 
-{% block hero %}
-    {% if hero_image_name %}
-        {% set hero_image = page.media[hero_image_name] %}
-        {% set content %}
-            <h1>{{ page.title }}</h1>
-            <h2>{{ page.header.subtitle }}</h2>
-            {% include 'partials/blog/date.html.twig' %}
-            {% include 'partials/blog/taxonomy.html.twig' %}
-        {% endset %}
-        {% include 'partials/hero.html.twig' with {id: 'blog-hero'} %}
-
-    {% endif %}
+{% block stylesheets %}
+    {{ parent() }}
 {% endblock %}
 
-{% block body %}
-<section id="body-wrapper" class="section blog-listing">
-    <section class="container {{ grid_size }}">
+{% block javascripts %}
+    {{ parent() }}
+    {% do assets.addJs('theme://js/toc.js', {group: 'bottom', defer: null}) %}
+{% endblock %}
 
-        {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
-            {% include 'partials/breadcrumbs.html.twig' %}
-        {% endif %}
+{% block content %}
+    <div class="default-content">
+        <article class="blog-detail content-layout">
+            <aside class="content-layout-toc"></aside>
+            <div class="content-layout-main">
+                <header class="blog-detail-header">
+                    {% if page.header.taxonomy.tag %}
+                        <div class="blog-detail-tags">
+                            {% for tag in page.header.taxonomy.tag %}
+                                <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
 
-        {% embed 'partials/layout.html.twig' %}
-            {% block item %}
-                {% include 'partials/blog-item.html.twig' %}
-            {% endblock %}
-            {% block sidebar %}
-                {% include 'partials/sidebar.html.twig' %}
-            {% endblock %}
-        {% endembed %}
+                    <h1>{{ page.title }}</h1>
 
-    </section>
-</section>
+                    {% if page.date %}
+                        <time class="blog-detail-date" datetime="{{ page.date|date('Y-m-d') }}">{{ page.date|date('d/m/Y') }}</time>
+                    {% endif %}
+                </header>
+
+                <div class="prose" data-toc-content>
+                    {{ page.content|raw }}
+                </div>
+
+                <div class="blog-detail-actions">
+                    <a href="/blog" class="btn btn-secondary">Tous les articles</a>
+                </div>
+            </div>
+        </article>
+    </div>
 {% endblock %}

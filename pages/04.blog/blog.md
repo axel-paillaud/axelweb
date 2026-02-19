@@ -3,7 +3,9 @@ title: Blog
 content:
     items:
         - '@self.descendants'
-    limit: 12
+    filter:
+        type: item
+    limit: 6 
     order:
         by: date
         dir: desc

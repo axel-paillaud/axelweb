@@ -25,6 +25,18 @@
   border: 1px solid $color-bg-accent;
   border-radius: 20px;
   overflow: hidden;
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    text-decoration: none;
+  }
 
   &-image {
     aspect-ratio: 16 / 9;
@@ -43,6 +55,10 @@
     }
   }
 
+  &--no-image &-body {
+    margin-top: auto;
+  }
+
   &-content {
     display: flex;
     flex-direction: column;
@@ -51,15 +67,16 @@
     flex: 1;
   }
 
+  &-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   &-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  &-tags {
-    display: flex;
-    gap: 8px;
   }
 
   &-date {
@@ -70,15 +87,7 @@
 
   &-title {
     margin: 0;
-
-    a {
-      color: $color-dark;
-      text-decoration: none;
-
-      &:hover {
-        color: $primary-color;
-      }
-    }
+    color: $color-dark;
   }
 
   &-excerpt {
