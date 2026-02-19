@@ -7,10 +7,22 @@
 .content-layout {
   display: flex;
   gap: 48px;
+
+  @media (max-width: $size-sm) {
+    gap: 0;
+  }
 }
 
 .content-layout-toc {
   flex: 0 0 250px;
+
+  @media (max-width: $size-md) {
+    flex: 0 0 200px;
+  }
+
+  @media (max-width: $size-sm) {
+    display: none;
+  }
 }
 
 .content-layout-main {
