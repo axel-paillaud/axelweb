@@ -1,0 +1,42 @@
+// =============================================================================
+// Pagination
+// Override for Grav pagination plugin (ul.pagination > li > a/span)
+// =============================================================================
+
+.pagination {
+  justify-content: center;
+  gap: 4px;
+  margin-top: 48px;
+
+  li {
+    border: none;
+
+    a,
+    span {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: $base-font-family;
+      font-size: 1rem;
+      color: $color-dark-light;
+      text-decoration: none;
+    }
+
+    a {
+      &:hover,
+      &:focus {
+        color: $primary-color;
+        text-decoration: none;
+      }
+    }
+
+    span.active {
+      background-color: $primary-color;
+      color: $light-color;
+    }
+  }
+
+  .gap span {
+    color: $color-dark-light;
+  }
+}

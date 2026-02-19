@@ -9,5 +9,5 @@ content:
         by: date
         dir: desc
     pagination: true
-    limit: 12
+    limit: 3 
 ---
