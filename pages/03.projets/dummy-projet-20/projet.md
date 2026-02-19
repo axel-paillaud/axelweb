@@ -20,6 +20,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendi
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat.
 
+! Un premier toast
+
+!! Attention, ne pas faire ça !
+
+!!! Vous pouvez copier-coller du texte librement
+
 !!!! Et un toast de succes
 
 ![image](pexels-shvets-production.jpg)

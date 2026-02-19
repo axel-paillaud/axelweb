@@ -97,7 +97,7 @@ img {
 
 // Codeblocks
 pre code, pre.xdebug-var-dump{
-  background: #fafafa;
+  background: $light-color;
   display: block;
   padding: 1rem !important;
   line-height: 1.5;
@@ -203,8 +203,8 @@ ol {
   // Warning (yellow)
   &.yellow {
     border-left-color: $color-warning;
-    background: lighten($color-warning, 45%);
-    p { color: darken($color-warning, 10%); }
+    background: lighten($color-warning, 43%);
+    p { color: darken($color-warning, 20%); }
   }
 
   // Error (red)
@@ -224,7 +224,19 @@ ol {
   // Success (green)
   &.green {
     border-left-color: $color-success;
-    background: lighten($color-success, 60%);
+    background: rgb(236, 236, 194);
     p { color: darken($color-success, 10%); }
+  }
+}
+
+// Prose — scoped styles for editorial/Markdown content (blog, project, etc.)
+.prose {
+  max-width: 70ch;
+
+  img {
+    border-radius: 20px;
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 }
