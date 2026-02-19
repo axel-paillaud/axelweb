@@ -1,10 +1,32 @@
 {% extends 'partials/base.html.twig' %}
 
 {% set collection = page.collection() %}
+{% set active_tag = uri.param('tag') %}
 
 {% block content %}
     <div class="default-content">
         <h1>{{ page.title }}</h1>
+
+        {% set all_tags = [] %}
+        {% for child in page.children %}
+            {% for tag in child.taxonomy.tag %}
+                {% if tag not in all_tags %}
+                    {% set all_tags = all_tags|merge([tag]) %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+        {% if all_tags|length > 0 %}
+            <div class="projets-filters">
+                {% for tag in all_tags|sort %}
+                    {% if active_tag == tag %}
+                        <a href="{{ page.url }}" class="tag tag--active">{{ tag }}</a>
+                    {% else %}
+                        <a href="{{ page.url }}/tag{{ config.system.param_sep }}{{ tag }}" class="tag">{{ tag }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
 
         <div class="projets-list">
             {% for child in collection %}
