@@ -21,7 +21,7 @@
 
             {% if page.header.image %}
                 <div class="projet-detail-image">
-                    {{ page.media[page.header.image].cropResize(1200, 700).html('', '', 'loading=lazy') }}
+                    {{ page.media[page.header.image].cropResize(1200, 700).html('', '', 'loading="lazy"')|raw }}
                 </div>
             {% endif %}
 
