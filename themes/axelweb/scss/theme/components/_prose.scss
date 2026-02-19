@@ -1,0 +1,16 @@
+// =============================================================================
+// Prose
+// Unified styles for editorial/Markdown content (blog, project, etc.)
+// Text-level only: width constraint, image treatment, typography
+// =============================================================================
+
+.prose {
+  max-width: 70ch;
+
+  img {
+    border-radius: 20px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}

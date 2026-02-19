@@ -1,13 +1,11 @@
 // =============================================================================
 // Projet Detail
-// Single project page layout
+// Styles specific to single project pages
 // =============================================================================
 
-.projet-detail-image {
-  img {
-    border-radius: 20px;
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+.projet-detail-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 48px;
 }

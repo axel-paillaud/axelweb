@@ -1,0 +1,19 @@
+// =============================================================================
+// Content Layout
+// 3-column layout for editorial pages (toc | content | empty)
+// Reusable across blog, project, and future content pages
+// =============================================================================
+
+.content-layout {
+  display: flex;
+  gap: 48px;
+}
+
+.content-layout-toc {
+  flex: 0 0 200px;
+}
+
+.content-layout-main {
+  flex: 1;
+  min-width: 0;
+}
