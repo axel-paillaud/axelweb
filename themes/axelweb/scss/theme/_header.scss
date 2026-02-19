@@ -11,6 +11,10 @@
     padding: 12px $horiz-padding;
   }
 
+  @media (max-width: $size-sm) {
+    padding: 12px $horiz-padding;
+  }
+
   &-inner {
     display: flex;
     align-items: center;
@@ -29,6 +33,10 @@
   transition: font-size 0.3s;
 
   .is-scrolled & {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: $size-sm) {
     font-size: 1.5rem;
   }
 
