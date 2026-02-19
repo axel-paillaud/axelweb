@@ -1,5 +1,15 @@
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $color-bg-base;
   padding: 28px $horiz-padding;
+  transition: padding 0.3s;
+  border-bottom: 1px solid $color-bg-accent;
+
+  &.is-scrolled {
+    padding: 12px $horiz-padding;
+  }
 
   &-inner {
     display: flex;
@@ -22,6 +32,11 @@
   font-weight: 500;
   color: $body-font-color;
   text-decoration: none;
+  transition: font-size 0.3s;
+
+  .is-scrolled & {
+    font-size: 1.5rem;
+  }
 
   &:hover {
     color: $body-font-color;
@@ -60,6 +75,12 @@
     text-decoration: none;
     color: $body-font-color;
     text-wrap: nowrap;
+    transition: padding 0.3s, font-size 0.3s;
+
+    .is-scrolled & {
+      padding: 8px 16px;
+      font-size: 13px;
+    }
 
     &:hover,
     &:focus {
