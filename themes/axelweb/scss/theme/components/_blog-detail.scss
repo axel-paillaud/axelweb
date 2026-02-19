@@ -26,5 +26,8 @@
 }
 
 .blog-detail-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 48px;
 }

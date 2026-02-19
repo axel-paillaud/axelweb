@@ -35,7 +35,13 @@
                 </div>
 
                 <div class="blog-detail-actions">
-                    <a href="/blog" class="btn btn-secondary">Tous les articles</a>
+                    {% if not page.isLast %}
+                        <a href="{{ page.prevSibling.url }}" class="btn btn-secondary btn-no-arrow"><i class="la la-arrow-left"></i> Article precedent</a>
+                    {% endif %}
+                    <a href="/blog" class="btn btn-secondary btn-no-arrow">Tous les articles</a>
+                    {% if not page.isFirst %}
+                        <a href="{{ page.nextSibling.url }}" class="btn btn-secondary btn-no-arrow">Article suivant <i class="la la-arrow-right"></i></a>
+                    {% endif %}
                 </div>
             </div>
         </article>
