@@ -6,6 +6,10 @@ html {
 #body-wrapper {
   .container {
     padding: $vert-padding;
+
+    @media (max-width: $size-sm) {
+      padding: 0.5rem 0;
+    }
   }
 }
 

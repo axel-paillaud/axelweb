@@ -16,6 +16,11 @@ body.sticky-footer {
   border-radius: 40px 40px 0 0;
   padding: 60px $horiz-padding 40px;
 
+  @media (max-width: $size-sm) {
+    margin-top: 32px;
+    padding: 40px $horiz-padding 20px;
+  }
+
   &-inner {
     max-width: $content-max-width;
     margin: 0 auto;
