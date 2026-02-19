@@ -4,10 +4,10 @@
     <div class="default-content">
         <article class="projet-detail">
             <header class="projet-detail-header">
-                {% if page.header.taxonomy.category %}
+                {% if page.header.taxonomy.tag %}
                     <div class="projet-detail-tags">
-                        {% for cat in page.header.taxonomy.category %}
-                            <span class="tag">{{ cat }}</span>
+                        {% for tag in page.header.taxonomy.tag %}
+                            <span class="tag">{{ tag }}</span>
                         {% endfor %}
                     </div>
                 {% endif %}

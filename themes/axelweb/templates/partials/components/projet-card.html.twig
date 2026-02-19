@@ -1,4 +1,4 @@
-<article class="projet-card" data-category="{{ projet.taxonomy.category|join(' ') }}">
+<article class="projet-card" data-category="{{ projet.taxonomy.tag|join(' ') }}">
     {% if projet.header.image %}
         <div class="projet-card-image">
             <a href="{{ projet.url }}" aria-hidden="true" tabindex="-1">
@@ -9,8 +9,8 @@
     <div class="projet-card-content">
         <div class="projet-card-meta">
             <div class="projet-card-tags">
-                {% for cat in projet.taxonomy.category %}
-                    <span class="tag"><span class="tag-text">{{ cat }}</span></span>
+                {% for tag in projet.taxonomy.tag %}
+                    <span class="tag"><span class="tag-text">{{ tag }}</span></span>
                 {% endfor %}
             </div>
             {% if projet.date %}
