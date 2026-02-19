@@ -28,6 +28,18 @@
     text-transform: uppercase;
     color: $body-font-color;
     letter-spacing: -0.00em;
+
+    @media (max-width: $size-md) {
+      font-size: 4rem;
+    }
+
+    @media (max-width: $size-sm) {
+      font-size: 3rem;
+    }
+
+    @media (max-width: $size-xs) {
+      font-size: 2rem;
+    }
   }
 
   &-form {

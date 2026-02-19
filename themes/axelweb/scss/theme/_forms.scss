@@ -31,11 +31,11 @@ form {
   }
 
   .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   .button-wrapper {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
   }
 
   // Hide labels visually, keep for screen readers
@@ -46,7 +46,7 @@ form {
   // Column layout for side-by-side fields
   .form-columns {
     display: flex;
-    gap: 1rem;
+    gap: 1.25rem;
 
     @include breakpoint(sm) {
       flex-direction: column;
