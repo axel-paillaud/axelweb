@@ -1,6 +1,11 @@
 <header class="site-header">
     <div class="site-header-inner">
         <a href="{{ home_url }}" class="site-logo">Axelweb</a>
+        <button class="site-burger" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav class="site-nav">
             <ul>
                 {% for p in pages.children.visible if not p.home %}

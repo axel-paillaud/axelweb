@@ -42,13 +42,6 @@
     <div id="page-wrapper">
     {% block header %}
         {% include 'partials/header.html.twig' %}
-        <div class="mobile-menu">
-            <div class="button_container" id="toggle">
-                <span class="top"></span>
-                <span class="middle"></span>
-                <span class="bottom"></span>
-            </div>
-        </div>
     {% endblock %}
 
     {% block hero %}{% endblock %}
@@ -72,18 +65,7 @@
         {% include 'partials/footer.html.twig' %}
     {% endblock %}
 
-    {% block mobile %}
-    <div class="mobile-container">
-        <div class="overlay" id="overlay">
-            <div class="mobile-logo">
-                {% include 'partials/logo.html.twig' with {mobile: true} %}
-            </div>
-            <nav class="overlay-menu">
-                {% include 'partials/navigation.html.twig' with {tree: true} %}
-            </nav>
-        </div>
-    </div>
-    {% endblock %}
+
 
 {% block bottom %}
     {{ assets.js('bottom')|raw }}
