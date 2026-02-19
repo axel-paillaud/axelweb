@@ -55,11 +55,26 @@
   border-radius: 20px;
   padding: 32px;
 
+  @media (max-width: $size-md) {
+    padding: 24px;
+  }
+
+  @media (max-width: $size-sm) {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
   &-image {
     flex: 0 0 45%;
     height: 300px;
     border-radius: 20px;
     overflow: hidden;
+
+    @media (max-width: $size-sm) {
+      flex: none;
+      height: auto;
+    }
 
     a {
       display: block;
