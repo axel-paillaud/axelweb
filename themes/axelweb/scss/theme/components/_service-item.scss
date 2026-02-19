@@ -1,5 +1,6 @@
 .service-item {
   border-radius: 20px;
+  padding: 0 $horiz-padding;
   color: $color-bg-accent;
   position: relative;
 
@@ -13,7 +14,15 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 32px;
-    padding: 32px 40px 56px;
+    max-width: $content-max-width;
+    margin: 0 auto;
+    padding: 32px 0 56px;
+
+    @media (max-width: $size-md) {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
   }
 
   &:last-child &-inner {
@@ -26,6 +35,14 @@
     gap: 16px;
     width: 400px;
     flex-shrink: 0;
+
+    @media (max-width: $size-xl) {
+      width: 280px;
+    }
+
+    @media (max-width: $size-md) {
+      width: auto;
+    }
 
     i { font-size: 1.5rem; }
 
@@ -47,9 +64,15 @@
     font-size: 1rem;
     letter-spacing: 0.07em;
     text-transform: uppercase;
+
+    @media (max-width: $size-md) {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &-description {
+    text-align: center;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(.22,.61,.36,1);
@@ -66,6 +89,15 @@
     width: 180px;
     flex-shrink: 0;
     text-align: right;
+
+    @media (max-width: $size-xl) {
+      width: 140px;
+    }
+
+    @media (max-width: $size-md) {
+      width: auto;
+      text-align: left;
+    }
   }
 
   // btn-secondary override for light-on-dark
