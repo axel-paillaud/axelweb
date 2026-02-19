@@ -5,6 +5,7 @@
 
 .section-process {
   padding: 0 $horiz-padding;
+  overflow: hidden;
 
   &-inner {
     max-width: $content-max-width;
