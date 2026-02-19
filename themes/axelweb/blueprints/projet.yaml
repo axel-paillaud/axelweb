@@ -55,6 +55,12 @@ form:
               help: Lien vers le site en ligne (laisser vide si non applicable)
               placeholder: 'https://example.com'
 
+            header.url_github:
+              type: text
+              label: Dépôt GitHub
+              help: "Lien vers le dépôt GitHub (affiché uniquement si l'URL du projet est vide)"
+              placeholder: 'https://github.com/...'
+
             header.taxonomy:
               type: taxonomy
               label: Taxonomie

@@ -26,11 +26,18 @@
                 <span class="projet-card-client-name">{{ projet.header.client }}</span>
             </div>
         {% endif %}
-        <h3 class="projet-card-title">
-            <a href="{{ projet.url }}">{{ projet.title|french_typo }}</a>
-        </h3>
-        {% if projet.header.excerpt %}
-            <p class="projet-card-excerpt">{{ projet.header.excerpt }}</p>
+        <div class="projet-card-body">
+            <h3 class="projet-card-title">
+                <a href="{{ projet.url }}">{{ projet.title|french_typo }}</a>
+            </h3>
+            {% if projet.header.excerpt %}
+                <p class="projet-card-excerpt">{{ projet.header.excerpt }}</p>
+            {% endif %}
+        </div>
+        {% if projet.header.url_projet %}
+            <a href="{{ projet.header.url_projet }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Voir le site <i class="la la-arrow-right"></i></a>
+        {% elseif projet.header.url_github %}
+            <a href="{{ projet.header.url_github }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Voir sur GitHub <i class="la la-arrow-right"></i></a>
         {% endif %}
     </div>
 </article>

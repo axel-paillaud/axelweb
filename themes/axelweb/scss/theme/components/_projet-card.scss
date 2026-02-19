@@ -41,6 +41,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 20px;
     min-width: 0;
   }
 
@@ -48,7 +49,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
   }
 
   &-tags {
@@ -60,13 +60,6 @@
     font-family: $title-font-family;
     font-size: 1rem;
     color: $color-dark-light;
-  }
-
-  &-client {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
   }
 
   &-client-logo {
@@ -82,9 +75,15 @@
     letter-spacing: 0.02em;
   }
 
+  &-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   &-title {
     color: $color-dark;
-    margin: 0 0 12px;
+    margin: 0;
 
     a {
       color: inherit;
@@ -100,5 +99,10 @@
     color: $color-dark-light;
     margin: 0;
     max-width: 65ch;
+  }
+
+  &-content > .btn {
+    margin-top: auto;
+    align-self: flex-end;
   }
 }
