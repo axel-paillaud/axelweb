@@ -6,6 +6,10 @@
 .process-card {
   flex: 0 0 auto;
   width: calc((100% - 21px * 2) / 3);
+
+  @media (max-width: $size-md) {
+    width: 100%;
+  }
   background-color: $light-color;
   border: 1px solid $color-bg-accent;
   border-radius: 20px;
