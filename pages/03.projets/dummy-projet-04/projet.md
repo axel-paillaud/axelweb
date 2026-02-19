@@ -2,7 +2,7 @@
 title: 'Plateforme e-commerce cosmétiques'
 date: '22-04-2024 00:00'
 taxonomy:
-    category:
+    tag:
         - prestashop
 client: 'Beauté Naturelle SAS'
 excerpt: 'Mise en place d''une solution e-commerce performante pour une gamme de cosmétiques naturels avec abonnements mensuels.'

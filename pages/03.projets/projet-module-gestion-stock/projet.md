@@ -2,7 +2,7 @@
 title: 'Module de gestion de stock multi-entrepôts'
 date: '10-06-2025 00:00'
 taxonomy:
-    category:
+    tag:
         - prestashop
     tag:
         - module

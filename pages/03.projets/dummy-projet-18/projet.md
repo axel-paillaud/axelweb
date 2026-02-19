@@ -2,7 +2,7 @@
 title: 'E-commerce cave à vins'
 date: '19-06-2025 00:00'
 taxonomy:
-    category:
+    tag:
         - sylius
 client: 'Domaine des Cépages'
 excerpt: 'Mise en place d''une boutique en ligne spécialisée avec fiches détaillées, accords mets-vins et livraison sécurisée.'

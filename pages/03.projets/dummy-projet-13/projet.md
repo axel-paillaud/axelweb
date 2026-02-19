@@ -2,7 +2,7 @@
 title: 'Catalogue produits pharmaceutiques'
 date: '16-01-2025 00:00'
 taxonomy:
-    category:
+    tag:
         - sylius
 client: 'PharmaDistrib'
 excerpt: 'Développement d''un catalogue en ligne avec fiches produits détaillées et espace professionnel sécurisé.'

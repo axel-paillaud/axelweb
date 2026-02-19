@@ -2,7 +2,7 @@
 title: 'Refonte e-commerce Mode & Textile'
 date: '15-09-2025 00:00'
 taxonomy:
-    category:
+    tag:
         - prestashop
     tag:
         - module
