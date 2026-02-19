@@ -9,6 +9,7 @@ taxonomy:
         - erp
 client: 'Outillage Pro'
 excerpt: 'Développement d''un module PrestaShop sur-mesure pour la gestion de stock réparti sur 3 entrepôts, avec synchronisation ERP en temps réel.'
+url_github: 'https://github.com/axel-paillaud/axelweb'
 ---
 
 ## Contexte

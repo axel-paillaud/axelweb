@@ -4,11 +4,7 @@ date: '15-09-2025 00:00'
 taxonomy:
     category:
         - prestashop
-        - prestashop
     tag:
-        - module
-        - theme
-        - migration
         - module
         - theme
         - migration
