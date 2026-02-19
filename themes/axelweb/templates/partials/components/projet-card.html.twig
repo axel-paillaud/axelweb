@@ -1,8 +1,8 @@
 <article class="projet-card" data-category="{{ projet.taxonomy.category|join(' ') }}">
     {% if projet.header.image %}
         <div class="projet-card-image">
-            <a href="{{ projet.url }}">
-                <img src="{{ projet.media[projet.header.image].url }}" alt="{{ projet.title|e('html') }}" loading="lazy">
+            <a href="{{ projet.url }}" aria-hidden="true" tabindex="-1">
+                <img src="{{ projet.media[projet.header.image].url }}" alt="" loading="lazy">
             </a>
         </div>
     {% endif %}
