@@ -174,8 +174,11 @@ Reusable UI components in `scss/theme/components/`:
 | Header | `_header.scss` | `partials/header.html.twig` | — | Logo text "Axelweb" + nav in rounded bordered container. Dynamic nav via `pages.children.visible`. Contact CTA detected via URL. Border separator below |
 | Section Contact | `_section-contact.scss` | `modular/section-contact.html.twig` | — | Contact form in footer (homepage only). Rendered via `{% embed %}` in `modular.html.twig` into `{% block footer_cta %}`. Uses Grav form plugin with honeypot. Surtitle (Space Grotesk 500) + large title (Jakarta 700, uppercase). Excluded from `.modular-sections` flow |
 | Footer | `_footer.scss` | `partials/footer.html.twig` | — | 3 columns (Ressources, Légal, Réseaux) + copyright signature. Full-width bg #e5e6e2, border-top-radius 40px. Hardcoded links. `{% block footer_cta %}` used by Section Contact via `{% embed %}` in `modular.html.twig` |
-| Projet Card | — | `projets.html.twig` (inline) | — | Project card in listing grid. Thumbnail, tags, title, client, excerpt. `data-category` attribute for future JS filtering |
-| Projet Detail | — | `projet.html.twig` | — | Single project page. Header (tags, h1, client), hero image, content body, external link CTA, back button |
+| Projet Card | `_projet-card.scss` | `partials/components/projet-card.html.twig` | — | Two-column card (image left, content right). Flex layout with gap 20px. Tags (from `taxonomy.tag`), date, client logo/name, title, excerpt, btn-secondary link (url_projet priority, fallback url_github). Image link has `aria-hidden` + `tabindex="-1"`. `data-category` for future JS filtering |
+| Projet Detail | `_projet-detail.scss` | `projet.html.twig` | — | Single project page using `.content-layout`. Header (tags, h1, client), hero image, `.prose` content, actions bar (btn-primary "Voir le site" + btn-secondary "Tous les projets" in flex space-between) |
+| Content Layout | `_content-layout.scss` | — | `js/toc.js` | 3-column layout (toc sidebar + main content + empty). Reusable across blog/project. TOC auto-generated from h2/h3 headings with Intersection Observer active state. Sticky sidebar, white bg, border-radius 20px, border accent |
+| Prose | `_prose.scss` | — | — | Unified Markdown content styles. `max-width: 70ch` for readability. Images with border-radius 20px. Applied on `.prose` wrapper in blog and project templates |
+| Pagination | `_pagination.scss` | — | — | Grav pagination plugin override. Centered, Space Grotesk font, `$color-dark-light` default, `$primary-color` active/hover, no border |
 
 ### Icon Strategy
 
@@ -236,14 +239,18 @@ Font files are self-hosted as `.woff2` in `themes/axelweb/fonts/`. Declared in `
 ### Projects (Portfolio)
 
 - **Architecture:** Child pages pattern (same as blog). Listing page `projets.md` collects `@self.children`, each child is a `projet.md`
-- **Listing page:** `pages/03.projets/projets.md` — template `projets.html.twig`, collection with pagination (12 per page), ordered by date desc
+- **Listing page:** `pages/03.projets/projets.md` — template `projets.html.twig`, collection with pagination (12 per page), ordered by date desc. Title "Projets Axelweb" (SEO) with `menu: Projets` override for nav
 - **Project pages:** `pages/03.projets/<slug>/projet.md` — template `projet.html.twig`
-- **Admin blueprints:** `blueprints/projets.yaml` (listing config: items, limit, order, pagination) + `blueprints/projet.yaml` (project fields: client, excerpt, url_projet, taxonomy)
+- **Admin blueprints:** `blueprints/projets.yaml` (listing config: items, limit, order, pagination) + `blueprints/projet.yaml` (project fields: client, client_logo, excerpt, url_projet, url_github, image, taxonomy)
 - **child_type:** `projet` — new project pages created via Admin default to `projet` template
-- **Frontmatter fields:** `title`, `client`, `excerpt` (short description for card), `url_projet` (external link), `taxonomy.category` (for tags + future JS filtering), `date`
-- **Images:** via Grav page media (drop images in the project's folder). Listing uses `cropResize(600, 400)`, detail uses `cropResize(1200, 700)`
-- **Grid:** `.projets-grid` in listing template, cards have `data-category` attribute for future client-side filtering
-- **Styling:** Not yet styled (waiting on wireframes from designer). Templates use `.default-content` wrapper, `.tag` component for categories
+- **Frontmatter fields:** `title`, `client`, `client_logo`, `excerpt` (short description for card), `url_projet` (external link, priority), `url_github` (fallback if no url_projet), `image` (hero image via filepicker), `taxonomy.tag` (for card tags + future JS filtering), `date`
+- **Images:** via Grav page media (drop images in the project's folder). Detail uses `cropResize(1200, 700)` with `|raw` for proper HTML rendering
+- **Listing:** `.projets-list` flex column with 32px gap. Cards have `data-category` attribute for future client-side filtering
+- **Card layout:** Two-column flex (image 45%, content flex-1). Content uses gap 20px: meta (tags+date) → client → body (title+excerpt, gap 8px) → btn-secondary link pushed to bottom via `margin-top: auto`
+- **Detail layout:** Uses `.content-layout` (3-column: toc sidebar + main content). Header, hero image, `.prose` content body (70ch max), actions bar (space-between)
+- **Accessibility:** Image link on cards has `aria-hidden="true"` + `tabindex="-1"` (decorative duplicate, title link carries meaning)
+- **Pagination:** Grav pagination plugin (v1.4.6). Custom styles in `_pagination.scss`
+- **TOC:** Auto-generated sticky table of contents from h2/h3 headings via `toc.js` (loaded only on project pages via `{% block javascripts %}`). Intersection Observer for active state highlighting
 
 ### Forms
 
@@ -286,7 +293,7 @@ user/
         ├── scss/          ← SCSS source
         ├── css-compiled/  ← Build output (do not edit)
         ├── css/           ← Additional CSS (Line Awesome, custom)
-        ├── js/            ← JavaScript files (collapse.js, carousel.js)
+        ├── js/            ← JavaScript files (collapse.js, carousel.js, services.js, toc.js)
         ├── fonts/         ← Icon fonts
         ├── images/        ← Theme images (logo, favicon)
         ├── templates/     ← Twig templates
@@ -329,7 +336,19 @@ user/
 - `.sr-only` utility class in `_framework.scss`
 - `.default-content` layout class in `_framework.scss` (max-width 1250px)
 - Email plugin configured: `user/config/plugins/email.yaml` (SMTP localhost:1025 for DDEV/Mailpit)
-- Projects (portfolio) structure: listing page `projets.md` with child pages pattern, `projet.md` template for individual projects, admin blueprints for both, `data-category` attributes for future JS filtering. Two example projects created. Styling pending (waiting on wireframes)
+- Projects (portfolio) structure: listing page `projets.md` with child pages pattern, `projet.md` template for individual projects, admin blueprints for both, `data-category` attributes for future JS filtering. Two example projects created
+- Projects listing styled: `.projets-list` flex column, two-column cards (image+content), gap 20px vertical spacing in card content, btn-secondary link (url_projet/url_github), pagination
+- Projects listing page title "Projets Axelweb" (SEO) with `menu: Projets` nav override
+- Project card tags switched from `taxonomy.category` to `taxonomy.tag` (categories = structural pages, tags = display labels)
+- Project card image link: `aria-hidden="true"` + `tabindex="-1"` for accessibility (decorative duplicate)
+- Blueprint `projet.yaml`: added `url_github` field (fallback when no url_projet)
+- Pagination plugin installed (v1.4.6). Custom `_pagination.scss`: centered, no border, Space Grotesk font, `$color-dark-light` / `$primary-color` active
+- Project detail page: `.content-layout` 3-column layout (toc sidebar 200px + main content). Header, hero image (border-radius 20px via `.prose`), `.prose` content (70ch), actions bar (space-between)
+- `.prose` component (`_prose.scss`): unified Markdown content styles, `max-width: 70ch`, images with border-radius 20px. Applied on blog `.e-content` and project content
+- `.content-layout` component (`_content-layout.scss`): reusable 3-column flex layout for editorial pages. Includes TOC styles (sticky, white bg, border-radius 20px, border `$color-bg-accent`)
+- `toc.js`: auto-generates sticky TOC from h2/h3 headings. Intersection Observer for active state (border-left indicator on `li`). Loaded conditionally via `{% block javascripts %}` only on content pages
+- `scroll-behavior: smooth` on `html` in `_framework.scss`
+- 20 dummy projects created for pagination testing (`dummy-projet-01` to `dummy-projet-20`)
 
 ### Next Steps — Homepage Sections
 - Mobile menu redesign
@@ -338,6 +357,8 @@ user/
 ### Pending — Design System
 - Waiting on graphic designer for component specs (states, spacings, variants)
 - Missing: hover/focus states on most components, card designs, form field styles
+- Projects listing: future JS filtering by tag (data-category attributes ready)
+- Content layout: apply `.content-layout` + `toc.js` to blog item template
 
 ### Cleanup (Low Priority)
 - `system.yaml` still references `theme: quark` — intentional until dev setup is ready

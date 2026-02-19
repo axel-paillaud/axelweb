@@ -1,5 +1,10 @@
 {% extends 'partials/base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {% do assets.addJs('theme://js/toc.js', {group: 'bottom', defer: null}) %}
+{% endblock %}
+
 {% block content %}
     <div class="default-content">
         <article class="projet-detail content-layout">
@@ -16,8 +21,12 @@
 
                     <h1>{{ page.title }}</h1>
 
-                    {% if page.header.client %}
-                        <p class="projet-detail-client">Client : {{ page.header.client }}</p>
+                    {% if page.header.client_logo %}
+                        <div class="projet-detail-client">
+                            <img src="{{ page.media[page.header.client_logo].url }}" alt="{{ page.header.client|e('html') }}" class="projet-detail-client-logo" loading="lazy">
+                        </div>
+                    {% elseif page.header.client %}
+                        <p class="projet-detail-client">{{ page.header.client }}</p>
                     {% endif %}
                 </header>
 
@@ -27,7 +36,7 @@
                     </div>
                 {% endif %}
 
-                <div class="prose">
+                <div class="prose" data-toc-content>
                     {{ page.content|raw }}
                 </div>
 

@@ -4,7 +4,6 @@ date: '14-09-2025 00:00'
 taxonomy:
     tag:
         - prestashop
-        - prestashop
 client: 'Éclat Bijoux'
 excerpt: 'Création d''une boutique artisanale en ligne avec personnalisation des bijoux et suivi de fabrication.'
 media_order: pexels-shvets-production.jpg
@@ -22,6 +21,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendi
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat.
 
 !!!! Et un toast de succes
+
+![image](pexels-shvets-production.jpg)
 
 **Texte en gras**, *texte en italique*, ~~texte barré~~ et `code inline`.
 

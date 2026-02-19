@@ -3,6 +3,32 @@
 // Styles specific to single project pages
 // =============================================================================
 
+.projet-detail-header {
+  margin-bottom: 32px;
+}
+
+.projet-detail-image img {
+  border-radius: 20px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.projet-detail-client {
+  color: $color-dark-light;
+}
+
+.projet-detail-client-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.projet-detail-tags {
+  display: flex;
+  gap: 8px;
+}
+
 .projet-detail-actions {
   display: flex;
   justify-content: space-between;
