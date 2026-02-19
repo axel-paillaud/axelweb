@@ -171,13 +171,13 @@ Reusable UI components in `scss/theme/components/`:
 | Service Item | `_service-item.scss` | `partials/components/service-item.html.twig` | `js/services.js` | Accordion item: 3 fixed-width columns (icon+title, subtitle+description, btn-secondary). Colors via SCSS variables per item. `h2.h3` for SEO h2 with h3 visual size |
 | Section Services | `_section-services.scss` | `modular/section-services.html.twig` | `js/services.js` | Stacked "tab divider" effect: 3 items with negative margin overlap, z-index stacking. Hover opens on desktop, touch tap on mobile. JS-driven max-height animation via scrollHeight |
 | Section Logo Band | `_section-logo-band.scss` | `modular/section-logo-band.html.twig` | — | CSS marquee (3x content duplication, translateX -33.33%). Full-width, logos grayscale+opacity → color on hover. Links with `target="_blank" rel="noopener noreferrer nofollow"`. Pause on hover |
-| Header | `_header.scss` | `partials/header.html.twig` | — | Logo text "Axelweb" + nav in rounded bordered container. Dynamic nav via `pages.children.visible`. Contact CTA detected via URL. Border separator below |
+| Header | `_header.scss` | `partials/header.html.twig` | `js/header.js` | Sticky header (`position: sticky; top: 0; z-index: 100`). Logo "Axelweb" + desktop nav (`.site-nav.hide-sm`) + burger button (`.site-burger.show-sm`). Shrinks on scroll via `.is-scrolled` class (JS). Mobile: always shrunk (padding 12px, logo 1.5rem). Desktop nav in rounded bordered container, Contact CTA via URL detection |
 | Section Contact | `_section-contact.scss` | `modular/section-contact.html.twig` | — | Contact form in footer (homepage only). Rendered via `{% embed %}` in `modular.html.twig` into `{% block footer_cta %}`. Uses Grav form plugin with honeypot. Surtitle (Space Grotesk 500) + large title (Jakarta 700, uppercase). Excluded from `.modular-sections` flow |
 | Footer | `_footer.scss` | `partials/footer.html.twig` | — | 3 columns (Ressources, Légal, Réseaux) + copyright signature. Full-width bg #e5e6e2, border-top-radius 40px. Hardcoded links. `{% block footer_cta %}` used by Section Contact via `{% embed %}` in `modular.html.twig` |
 | Projet Card | `_projet-card.scss` | `partials/components/projet-card.html.twig` | — | Two-column card (image left, content right). Flex layout with gap 20px. Tags (from `taxonomy.tag`), date, client logo/name, title, excerpt, btn-secondary link (url_projet priority, fallback url_github). Image link has `aria-hidden` + `tabindex="-1"`. `data-category` for future JS filtering |
 | Projet Detail | `_projet-detail.scss` | `projet.html.twig` | — | Single project page using `.content-layout`. Header (tags, h1, client), hero image, `.prose` content, actions bar (btn-primary "Voir le site" + btn-secondary "Tous les projets" in flex space-between) |
 | Content Layout | `_content-layout.scss` | — | `js/toc.js` | 3-column layout (toc sidebar + main content + empty). Reusable across blog/project. TOC auto-generated from h2/h3 headings with Intersection Observer active state. Sticky sidebar, white bg, border-radius 20px, border accent |
-| Prose | `_prose.scss` | — | — | Unified Markdown content styles. `max-width: 70ch` for readability. Images with border-radius 20px. Applied on `.prose` wrapper in blog and project templates |
+| Mobile Nav | `_mobile-nav.scss` | `partials/header.html.twig` | `js/header.js` | Mobile menu (visible via Spectre `.show-sm` <= 600px). Fixed panel, slides down from under header via `translateY`. Toggled by `.is-nav-open` on `body`. Sibling of header (not child) to allow independent z-index stacking |
 | Pagination | `_pagination.scss` | — | — | Grav pagination plugin override. Centered, Space Grotesk font, `$color-dark-light` default, `$primary-color` active/hover, no border |
 
 ### Icon Strategy
@@ -293,7 +293,7 @@ user/
         ├── scss/          ← SCSS source
         ├── css-compiled/  ← Build output (do not edit)
         ├── css/           ← Additional CSS (Line Awesome, custom)
-        ├── js/            ← JavaScript files (collapse.js, carousel.js, services.js, toc.js)
+        ├── js/            ← JavaScript files (header.js, collapse.js, carousel.js, services.js, toc.js)
         ├── fonts/         ← Icon fonts
         ├── images/        ← Theme images (logo, favicon)
         ├── templates/     ← Twig templates
@@ -344,21 +344,27 @@ user/
 - Blueprint `projet.yaml`: added `url_github` field (fallback when no url_projet)
 - Pagination plugin installed (v1.4.6). Custom `_pagination.scss`: centered, no border, Space Grotesk font, `$color-dark-light` / `$primary-color` active
 - Project detail page: `.content-layout` 3-column layout (toc sidebar 200px + main content). Header, hero image (border-radius 20px via `.prose`), `.prose` content (70ch), actions bar (space-between)
-- `.prose` component (`_prose.scss`): unified Markdown content styles, `max-width: 70ch`, images with border-radius 20px. Applied on blog `.e-content` and project content
-- `.content-layout` component (`_content-layout.scss`): reusable 3-column flex layout for editorial pages. Includes TOC styles (sticky, white bg, border-radius 20px, border `$color-bg-accent`)
+- `.prose` styles merged into `_typography.scss`: unified Markdown content styles, `max-width: 70ch`, images with border-radius 20px. Applied on blog `.e-content` and project content. `_prose.scss` deleted
+- `.content-layout` component (`_content-layout.scss`): reusable 3-column flex layout for editorial pages. Includes TOC styles (sticky, white bg, border-radius 20px, border `$color-bg-accent`). Responsive: TOC 200px at <= 840px, hidden at <= 600px
 - `toc.js`: auto-generates sticky TOC from h2/h3 headings. Intersection Observer for active state (border-left indicator on `li`). Loaded conditionally via `{% block javascripts %}` only on content pages
 - `scroll-behavior: smooth` on `html` in `_framework.scss`
 - 20 dummy projects created for pagination testing (`dummy-projet-01` to `dummy-projet-20`)
+- Tag filter on projects listing: server-side via Grav native taxonomy URL params (`/projets/tag:xxx`). Mono-tag toggle (click active = deactivate). Styles: inactive `$color-bg-grey`, active `$color-dark-light` bg with `$color-bg-accent` text
+- Projects listing intro text: Markdown content in `projets.md`, displayed in `.prose` wrapper above filters
+- Typography fixes: code block bg `$light-color` (white), `.notices.green` bg `rgb(236, 236, 194)`, `a:visited` color `$link-color-dark` (darker instead of lighter)
+- Sticky header: `position: sticky; top: 0; z-index: 100`, shrinks on scroll (padding 28px→12px, logo 2.25rem→1.5rem, nav links smaller). JS in `header.js` toggles `.is-scrolled` class
+- Mobile header: always shrunk via CSS media query (no scroll effect)
+- Mobile burger menu: `.site-burger` in header (`.show-sm`), `.mobile-nav` as sibling of header (`.show-sm`). Fixed panel slides down from under header via `translateY(-100%→0)`. Toggled by `.is-nav-open` on `body`. Desktop nav hidden via Spectre `.hide-sm`. Old Grav mobile overlay system removed (`_mobile.scss` import removed, overlay block deleted from `base.html.twig`)
+- Responsive: project cards stack vertically at <= 600px, `#body-wrapper .container` padding reduced to 0.5rem on mobile
 
-### Next Steps — Homepage Sections
-- Mobile menu redesign
+### Next Steps
+- Blog pages: apply `.content-layout` + `toc.js` to blog item template, review blog listing
+- Responsive: homepage sections (hero, services, about, process, articles, contact, footer)
 - Animations pass (collapse transitions, hover states, etc.)
 
 ### Pending — Design System
 - Waiting on graphic designer for component specs (states, spacings, variants)
 - Missing: hover/focus states on most components, card designs, form field styles
-- Projects listing: future JS filtering by tag (data-category attributes ready)
-- Content layout: apply `.content-layout` + `toc.js` to blog item template
 
 ### Cleanup (Low Priority)
 - `system.yaml` still references `theme: quark` — intentional until dev setup is ready
