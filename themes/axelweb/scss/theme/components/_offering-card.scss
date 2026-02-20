@@ -10,13 +10,12 @@
   border-bottom: 2px solid $color-bg-accent;
   transition: transform 0.2s ease;
 
-  &:hover {
+  &, &:hover, &:visited, &:active, &:focus {
     text-decoration: none;
-    transform: translateY(-4px);
   }
 
-  &:visited {
-    text-decoration: none;
+  &:hover {
+    transform: translateY(-4px);
   }
 
   // Color variants (cycle 1-2-3)
@@ -46,11 +45,11 @@
 
   &-body {
     flex: 1;
-    padding: 24px 32px;
+    padding: 32px 32px 40px;
     background-color: $light-color;
 
     p {
-      margin: 0 0 16px;
+      margin: 0 0 54px;
       color: $color-dark-light;
       font-size: 0.9375rem;
     }

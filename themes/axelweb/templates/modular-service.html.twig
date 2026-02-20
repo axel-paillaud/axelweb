@@ -9,10 +9,6 @@
 {% endblock %}
 
 {% block hero %}
-    <div class="modular-service-breadcrumb">
-        {% include 'partials/components/breadcrumb.html.twig' %}
-    </div>
-
     {% for module in page.collection() if module.template == 'modular/hero' %}
         <div id="{{ module.menu|hyphenize }}"></div>
         {{ module.content|raw }}

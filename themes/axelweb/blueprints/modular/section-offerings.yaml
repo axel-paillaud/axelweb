@@ -35,6 +35,14 @@ form:
                   label: Excerpt
                   help: Short description (1-2 lines)
                   rows: 2
+                .highlights:
+                  type: list
+                  label: Highlights
+                  help: 'Key points (2-3 items)'
+                  style: vertical
+                  fields:
+                    value:
+                      type: text
                 .url:
                   type: text
                   label: URL
