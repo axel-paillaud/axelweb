@@ -1,0 +1,39 @@
+title: FAQ
+'@extends':
+    type: default
+    context: 'blueprints://pages'
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        faq:
+          type: tab
+          title: FAQ
+
+          fields:
+            header.description:
+              type: textarea
+              label: Description
+              help: Introduction text displayed below the title
+              rows: 2
+
+            header.items:
+              type: list
+              label: Questions
+              style: vertical
+              fields:
+                .question:
+                  type: text
+                  label: Question
+                  validate:
+                    required: true
+                .answer:
+                  type: textarea
+                  label: Answer
+                  rows: 3
+                  validate:
+                    required: true

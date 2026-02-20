@@ -1,0 +1,46 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="default-content">
+        {% include 'partials/components/breadcrumb.html.twig' %}
+
+        <div class="faq-page">
+            <h1>{{ page.title }}</h1>
+
+            {% if page.header.description %}
+                <p class="faq-page-description">{{ page.header.description|french_typo }}</p>
+            {% endif %}
+
+            <div class="faq-page-list">
+                {% for item in page.header.items %}
+                    <div class="faq-page-item separator">
+                        {% include 'partials/components/faq-item.html.twig' with {
+                            question: item.question,
+                            answer: item.answer,
+                            index: loop.index
+                        } %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {% for item in page.header.items %}
+            {
+                "@type": "Question",
+                "name": {{ item.question|json_encode|raw }},
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": {{ item.answer|json_encode|raw }}
+                }
+            }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ]
+    }
+    </script>
+{% endblock %}

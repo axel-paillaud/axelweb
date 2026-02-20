@@ -1,0 +1,12 @@
+// =============================================================================
+// Separator
+// Reusable horizontal divider between stacked items
+// =============================================================================
+
+.separator {
+  border-bottom: 2px solid $color-bg-accent;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

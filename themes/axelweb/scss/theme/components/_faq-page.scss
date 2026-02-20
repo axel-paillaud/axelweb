@@ -1,0 +1,62 @@
+// =============================================================================
+// FAQ Page
+// Standalone FAQ page with light background overrides
+// =============================================================================
+
+.faq-page {
+  max-width: 800px;
+
+  h1 {
+    margin-bottom: 16px;
+  }
+
+  &-description {
+    color: $color-dark-light;
+    margin-bottom: 48px;
+    max-width: 65ch;
+  }
+
+  &-item {
+    padding: 32px 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+  // Override faq-item colors for light background
+  .faq-item {
+    border-bottom: none;
+    padding: 0;
+
+    + .faq-item {
+      padding-top: 0;
+    }
+
+    &-title {
+      color: $color-dark;
+    }
+
+    .collapse-content {
+      max-width: 65ch;
+      color: $color-dark-light;
+    }
+  }
+
+  .btn-collapse {
+    background-color: $color-bg-grey;
+    color: $color-dark;
+
+    &::before {
+      background: linear-gradient($color-dark, $color-dark),
+                  linear-gradient($color-dark, $color-dark);
+      background-size: 12px 2px, 2px 12px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &.active::before {
+      background-size: 12px 2px, 0 0;
+    }
+  }
+}
