@@ -72,10 +72,13 @@
   }
 
   &-description {
-    text-align: center;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(.22,.61,.36,1);
+
+    @media (max-width: $size-md) {
+      text-align: center;
+    }
 
     p {
       margin: 12px 0 0;
