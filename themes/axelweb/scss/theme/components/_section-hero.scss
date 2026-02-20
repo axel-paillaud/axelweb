@@ -3,21 +3,50 @@
 // Two-column hero: heading (left) + description & CTAs (right)
 // =============================================================================
 
-.section-hero {
-  padding: 125px $horiz-padding;
+.section-hero-wrapper {
+  position: relative;
+  overflow-x: clip;
+}
+
+.section-hero-bg {
+  position: absolute;
+  right: calc(50% - #{$size-xl / 2});
+  top: 85%;
+  transform: translateY(-50%);
+  width: 500px;
+  height: auto;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+  animation: hero-float 6s ease-in-out infinite;
 
   @media (max-width: $size-md) {
-    padding: 80px $horiz-padding;
+    width: 350px;
+    right: $horiz-padding;
   }
 
   @media (max-width: $size-sm) {
-    padding: 60px $horiz-padding;
+    width: 250px;
+  }
+}
+
+.section-hero {
+  padding: 160px $horiz-padding;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: $size-md) {
+    padding: 100px $horiz-padding;
+  }
+
+  @media (max-width: $size-sm) {
+    padding: 72px $horiz-padding;
   }
 
   &-inner {
     display: flex;
     gap: 196px;
-    max-width: $content-max-width;
+    max-width: $size-xl;
     margin: 0 auto;
     align-items: flex-end;
 
@@ -47,7 +76,13 @@
 
   &-actions {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 24px;
   }
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(-50%); }
+  50% { transform: translateY(calc(-50% - 12px)); }
 }

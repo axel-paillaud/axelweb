@@ -1,15 +1,18 @@
-<section class="section-hero">
-    <div class="section-hero-inner">
-        <div class="section-hero-heading">
-            <h1>{{ page.header.heading|french_typo }}</h1>
-        </div>
-        <div class="section-hero-content">
-            <p>{{ page.header.description|french_typo }}</p>
-            <div class="section-hero-actions">
-                {% for cta in page.header.ctas %}
-                    <a href="{{ cta.url }}" class="btn {{ cta.class }}">{{ cta.label }}</a>
-                {% endfor %}
+<div class="section-hero-wrapper">
+    <img class="section-hero-bg" src="{{ url('theme://images/logo-bg.svg') }}" alt="" aria-hidden="true" loading="eager">
+    <section class="section-hero">
+        <div class="section-hero-inner">
+            <div class="section-hero-heading">
+                <h1>{{ page.header.heading|french_typo }}</h1>
+            </div>
+            <div class="section-hero-content">
+                <p>{{ page.header.description|french_typo }}</p>
+                <div class="section-hero-actions">
+                    {% for cta in page.header.ctas %}
+                        <a href="{{ cta.url }}" class="btn {{ cta.class }}">{{ cta.label }}</a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
