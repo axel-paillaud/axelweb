@@ -1,0 +1,16 @@
+<section class="section-offerings">
+    <div class="section-offerings-inner">
+        <h2>{{ page.header.heading }}</h2>
+        <div class="section-offerings-grid">
+            {% for item in page.header.items %}
+                {% include 'partials/components/offering-card.html.twig' with {
+                    icon: item.icon,
+                    title: item.title,
+                    excerpt: item.excerpt,
+                    url: item.url,
+                    index: loop.index
+                } %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

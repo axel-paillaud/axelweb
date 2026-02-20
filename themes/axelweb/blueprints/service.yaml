@@ -1,0 +1,32 @@
+title: Service
+'@extends':
+    type: default
+    context: 'blueprints://pages'
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        service:
+          type: tab
+          title: Service
+
+          fields:
+            header.subtitle:
+              type: text
+              label: Subtitle
+              help: Short subtitle displayed below the page title
+
+            header.excerpt:
+              type: textarea
+              label: Excerpt
+              help: Short description displayed in the parent page listing
+              rows: 2
+
+            header.taxonomy:
+              type: taxonomy
+              label: Taxonomy
+              multiple: true

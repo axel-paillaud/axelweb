@@ -1,0 +1,10 @@
+<a href="{{ url }}" class="offering-card offering-card--{{ ((index - 1) % 3) + 1 }}">
+    <div class="offering-card-header">
+        <i class="fa {{ icon }}"></i>
+        <h3>{{ title|french_typo }}</h3>
+    </div>
+    <div class="offering-card-body">
+        <p>{{ excerpt|french_typo }}</p>
+        <span class="offering-card-link">En savoir plus</span>
+    </div>
+</a>

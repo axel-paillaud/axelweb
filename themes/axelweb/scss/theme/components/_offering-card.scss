@@ -1,0 +1,66 @@
+// =============================================================================
+// Offering Card
+// Service offering card with colored header (intercalaire style)
+// =============================================================================
+
+.offering-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  border-bottom: 2px solid $color-bg-accent;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    text-decoration: none;
+    transform: translateY(-4px);
+  }
+
+  &:visited {
+    text-decoration: none;
+  }
+
+  // Color variants (cycle 1-2-3)
+  &--1 .offering-card-header { background-color: $color-accent-2; }
+  &--2 .offering-card-header { background-color: $color-dark; }
+  &--3 .offering-card-header { background-color: $color-dark-light; }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 32px;
+    border-radius: 20px 20px 0 0;
+    color: $color-bg-accent;
+
+    i {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    h3 {
+      margin: 0;
+      color: inherit;
+      font-size: 1.25rem;
+    }
+  }
+
+  &-body {
+    flex: 1;
+    padding: 24px 32px;
+    background-color: $light-color;
+
+    p {
+      margin: 0 0 16px;
+      color: $color-dark-light;
+      font-size: 0.9375rem;
+    }
+  }
+
+  &-link {
+    font-family: $title-font-family;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $primary-color;
+    letter-spacing: 0.03em;
+  }
+}

@@ -9,3 +9,14 @@
     color: $primary-color;
   }
 }
+
+// Breadcrumb container for modular service pages (above hero)
+.modular-service-breadcrumb {
+  max-width: $content-max-width;
+  margin: 0 auto;
+  padding: 16px $horiz-padding 0;
+
+  .breadcrumb {
+    margin-bottom: 0;
+  }
+}

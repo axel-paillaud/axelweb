@@ -1,0 +1,35 @@
+// =============================================================================
+// Section Offerings
+// Grid layout for service offering cards
+// =============================================================================
+
+.section-offerings {
+  padding: 0 $horiz-padding;
+
+  &-inner {
+    max-width: $content-max-width;
+    margin: 0 auto;
+
+    h2 {
+      margin: 0 0 40px;
+
+      @media (max-width: $size-md) {
+        text-align: center;
+      }
+    }
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: $size-md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $size-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+title: Section Offerings
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        offerings:
+          type: tab
+          title: Offerings
+
+          fields:
+            header.heading:
+              type: text
+              label: Heading
+              help: Section title displayed above the grid
+
+            header.items:
+              type: list
+              label: Offerings
+              style: vertical
+              fields:
+                .icon:
+                  type: text
+                  label: Icon
+                  help: 'Font Awesome class (e.g. fa-puzzle-piece)'
+                  placeholder: 'fa-puzzle-piece'
+                .title:
+                  type: text
+                  label: Title
+                  validate:
+                    required: true
+                .excerpt:
+                  type: textarea
+                  label: Excerpt
+                  help: Short description (1-2 lines)
+                  rows: 2
+                .url:
+                  type: text
+                  label: URL
+                  help: Link to the service detail page
+                  placeholder: '/services/prestashop/modules-sur-mesure'
