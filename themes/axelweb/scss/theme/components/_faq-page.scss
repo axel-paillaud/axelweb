@@ -43,6 +43,15 @@
     }
   }
 
+  &-cta {
+    margin-top: 48px;
+
+    p {
+      color: $color-dark-light;
+      margin-bottom: 16px;
+    }
+  }
+
   .btn-collapse {
     background-color: $color-bg-grey;
     color: $color-dark;
