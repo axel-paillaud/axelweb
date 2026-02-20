@@ -1,14 +1,14 @@
 ---
 title: Hero
-heading: 'Titre avec la proposition de valeur'
-description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
+heading: 'Votre développeur e-commerce PrestaShop'
+description: 'Modules sur mesure, migrations, optimisation de performance — j''aide les e-commerçants à tirer le meilleur de leur boutique PrestaShop.'
 ctas:
     -
-        label: 'Les services'
-        url: '/services'
+        label: 'Découvrir mes services'
+        url: '/services/prestashop'
         class: btn-primary
     -
-        label: 'Le support'
+        label: 'Me contacter'
         url: '/contact'
         class: btn-secondary
 ---

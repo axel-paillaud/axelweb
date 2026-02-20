@@ -4,19 +4,18 @@ heading: 'Comment je travaille'
 items:
     -
         tag: 'Etape 1'
-        title: 'Analyse et cadrage du projet'
-        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
+        title: 'Échange et cadrage'
+        description: 'On discute de votre besoin, j''audite l''existant et je vous propose un périmètre clair avec un planning réaliste.'
     -
         tag: 'Etape 2'
-        title: 'Développement et itérations'
-        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
+        title: 'Développement itératif'
+        description: 'Je développe par étapes avec des points réguliers. Vous suivez l''avancement et validez au fur et à mesure.'
     -
         tag: 'Etape 3'
-        title: 'Livraison et suivi'
-        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
+        title: 'Tests et recette'
+        description: 'Tests techniques et fonctionnels sur un environnement de pré-production avant toute mise en ligne.'
     -
         tag: 'Etape 4'
-        title: 'Livraison et suivi'
-        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
+        title: 'Mise en ligne et suivi'
+        description: 'Déploiement, monitoring post-lancement et support réactif pour garantir la stabilité de votre boutique.'
 ---
-
