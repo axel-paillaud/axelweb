@@ -1,7 +1,23 @@
 {% extends 'partials/base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {% do assets.addJs('theme://js/toc.js', {group: 'bottom', defer: null}) %}
+{% endblock %}
+
 {% block content %}
     <div class="default-content">
-        {{ page.content|raw }}
+        {% include 'partials/components/breadcrumb.html.twig' %}
+
+        <article class="content-layout">
+            <aside class="content-layout-toc"></aside>
+            <div class="content-layout-main">
+                <h1>{{ page.title }}</h1>
+
+                <div class="prose" data-toc-content>
+                    {{ page.content|raw }}
+                </div>
+            </div>
+        </article>
     </div>
 {% endblock %}

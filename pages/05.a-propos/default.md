@@ -3,153 +3,29 @@ title: 'À propos'
 visible: false
 ---
 
-! Details on the full capabilities of Spectre.css can be found in the [Official Spectre Documentation](https://picturepan2.github.io/spectre/elements.html)
+## Un parcours pas tout à fait classique
 
-The [Quark theme](https://github.com/getgrav/grav-theme-quark) is the new default theme for Grav built with [Spectre.css](https://picturepan2.github.io/spectre/) the lightweight, responsive and modern CSS framework. Spectre provides  basic styles for typography, elements, and a responsive layout system that utilizes best practices and consistent language design.
+Je n'ai pas fait d'école d'ingénieur. De 17 à 22 ans, j'ai travaillé en cuisine, un métier exigeant qui m'a appris la rigueur, l'efficacité sous pression et la créativité dans les contraintes. Des qualités que j'applique aujourd'hui dans chaque projet de développement.
 
-### Headings
+Après la restauration, j'ai pris le large : 8 mois de voyage à travers l'Europe à bord d'un véhicule que j'avais aménagé moi-même. Une parenthèse qui m'a donné le recul nécessaire pour savoir ce que je voulais vraiment faire.
 
-# H1 Heading `40px`
+## La découverte du développement
 
-## H2 Heading `32px`
+De retour en France, je suis devenu électrotechnicien pour véhicules de loisir, une suite logique de mon expérience sur la route. En parallèle, j'ai commencé à apprendre le développement web, tous les matins de 5h à 7h avant d'aller travailler.
 
-### H3 Heading `28px`
+Au bout d'un an d'apprentissage en autodidacte, j'ai trouvé une alternance dans une agence web à Orléans. J'ai obtenu mon diplôme RNCP (bac +2 développement web), puis enchaîné sur deux ans en CDI en tant que développeur fullstack : WordPress, PrestaShop, sites sur mesure.
 
-#### H4 Heading `24px`
+## Le freelance et la spécialisation PrestaShop
 
-##### H5 Heading `20px`
+Après ces deux années en agence, je me suis lancé en freelance. Au début, je prenais des missions variées, mais un CMS m'attirait plus que les autres : PrestaShop. La communauté, l'écosystème, l'énergie autour de ce projet. Et surtout les e-commerçants que j'accompagnais, des gens concrets qui font tourner de vrais business.
 
-###### H6 Heading `16px`
+Mission après mission, la spécialisation s'est imposée naturellement. Aujourd'hui, je suis freelance depuis trois ans, spécialisé sur PrestaShop. Mon activité se porte bien, je fais ce que j'aime, et je prépare déjà la suite avec Sylius pour les projets qui demandent plus de flexibilité technique.
 
-```html
-# H1 Heading
-# H1 Heading `40px`</small>`
+## Ce que j'apporte à vos projets
 
-<span class="h1">H1 Heading</span>
-```
+- **La rigueur**, acquise en cuisine, où l'approximation n'existe pas
+- **L'autonomie**, formé en grande partie en autodidacte, je sais me débrouiller et trouver des solutions
+- **L'expertise PrestaShop**, 3 ans d'agence + 3 ans de freelance, des dizaines de boutiques accompagnées
+- **La communication directe**, un seul interlocuteur, pas d'intermédiaire, des échanges clairs et réguliers
 
-### Paragraphs
-
-Lorem ipsum dolor sit amet, consectetur [adipiscing elit. Praesent risus leo, dictum in vehicula sit amet](#), feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.
-
-Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up on goofballs.
-
-### Markdown Semantic Text Elements
-
-**Bold** `**Bold**`
-
-_Italic_ `_Italic_`
-
-~~Deleted~~ `~~Deleted~~`
-
-`Inline Code` `` `Inline Code` ``
-
-### HTML Semantic Text Elements
-
-<abbr>I18N</abbr> `<abbr>`
-
-<cite>Citation</cite> `<cite>`
-
-<kbd>Ctrl + S</kbd> `<kbd>`
-
-Text<sup>Superscripted</sup> `<sup>`
-
-Text<sub>Subscripted</sub> `<sub>`
-
-<u>Underlined</u> `<u>`
-
-<mark>Highlighted</mark> `<mark>`
-
-<time>20:14</time> `<time>`
-
-<var>x = y + 2</var> `<var>`
-
-### Blockquote
-
-> The advance of technology is based on making it fit in so that you don't really even notice it,
-> so it's part of everyday life.
->
-> <cite>- Bill Gates</cite>
-
-```markdown
-> The advance of technology is based on making it fit in so that you don't really even notice it,
-> so it's part of everyday life.
->
-> <cite>- Bill Gates</cite>
-```
-
-### Unordered List
-
-* list item 1
-* list item 2
-    * list item 2.1
-    * list item 2.2
-    * list item 2.3
-* list item 3
-
-```markdown
-* list item 1
-* list item 2
-    * list item 2.1
-    * list item 2.2
-    * list item 2.3
-* list item 3
-```
-
-### Ordered List
-
-1. list item 1
-1. list item 2
-    1. list item 2.1
-    1. list item 2.2
-    1. list item 2.3
-1. list item 3
-
-```markdown
-1. list item 1
-1. list item 2
-    1. list item 2.1
-    1. list item 2.2
-    1. list item 2.3
-1. list item 3
-```
-
-### Table
-
-| Name                        | Genre                         | Release date         |
-| :-------------------------- | :---------------------------: | -------------------: |
-| The Shawshank Redemption    | Crime, Drama                  | 14 October 1994      |
-| The Godfather               | Crime, Drama                  | 24 March 1972        |
-| Schindler's List            | Biography, Drama, History     | 4 February 1994      |
-| Se7en                       | Crime, Drama, Mystery         | 22 September 1995    |
-
-```markdown
-| Name                        | Genre                         | Release date         |
-| :-------------------------- | :---------------------------: | -------------------: |
-| The Shawshank Redemption    | Crime, Drama                  | 14 October 1994      |
-| The Godfather               | Crime, Drama                  | 24 March 1972        |
-| Schindler's List            | Biography, Drama, History     | 4 February 1994      |
-| Se7en                       | Crime, Drama, Mystery         | 22 September 1995    |
-```
-
-### Notices
-
-The notices styles are actually provided by the `markdown-notices` plugin but are useful enough to include here:
-
-! This is a warning notification
-
-!! This is a error notification
-
-!!! This is a default notification
-
-!!!! This is a success notification
-
-```markdown
-! This is a warning notification
-
-!! This is a error notification
-
-!!! This is a default notification
-
-!!!! This is a success notification
-```
+Basé à Orléans, je travaille avec des clients partout en France et me déplace sur Paris, Tours et Blois quand le projet le nécessite.
