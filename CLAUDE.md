@@ -92,14 +92,20 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 
 **Header menu:**
 1. Accueil → /
-2. Services (dropdown with PrestaShop + Sylius sub-items)
+2. Services → /services/prestashop/ (via `menu_url` override on `/services/` page)
 3. Projets → /projets/
 4. Blog → /blog/
-5. À propos → /a-propos/
+5. FAQ → /faq/
 6. Contact (CTA button) → /contact/
 
 **Footer menu:**
-- Mentions légales, Politique de confidentialité, Cookies, FAQ
+- Ressources: À propos, FAQ
+- Légal: Mentions légales, Politique de confidentialité, Cookies
+
+**Nav notes:**
+- "À propos" page has `visible: false` — removed from header nav, linked manually in footer
+- `/services/` page uses custom `menu_url: /services/prestashop` frontmatter to redirect nav link
+- Header template supports `menu_url` override: `{% set link_url = p.header.menu_url ?: p.url %}`
 
 ## Roles & Responsibilities
 
@@ -135,7 +141,7 @@ The SEO strategy is managed by an external SEO consultant. The information archi
 - Source: `user/themes/axelweb/scss/`
 - Spectre framework source: `scss/spectre/`
 - Custom theme styles: `scss/theme/`
-- Components: `scss/theme/components/` (buttons, tag, collapse, chevron, faq, section-faq, process-card, section-process, section-hero, section-about, service-item, section-services, section-logo-band)
+- Components: `scss/theme/components/` (buttons, tag, collapse, chevron, faq, faq-page, section-faq, process-card, section-process, section-hero, section-about, service-card, section-services, section-logo-band, offering-card, section-offerings, breadcrumb, service-detail, separator, blog-card, blog-detail, article-card, section-articles, section-contact, content-layout, mobile-nav, projet-card, projet-detail, pagination)
 - Compiled output: `css-compiled/`
 - Always compile via Gulp, never edit `css-compiled/` directly
 - Import order in `theme.scss`: `theme/variables` → `spectre/variables` → `spectre/mixins` → `theme/fonts` → rest of theme → `theme/components/*`
@@ -166,11 +172,17 @@ Reusable UI components in `scss/theme/components/`:
 | Section Process | `_section-process.scss` | `modular/section-process.html.twig` | `js/carousel.js` | "Comment je travaille" carousel. 3 visible cards, chevron nav, peek effect |
 | Article Card | `_article-card.scss` | `partials/components/article-card.html.twig` | — | Blog article card. Two-column (image left, content right). White bg, border, 20px radius |
 | Section Articles | `_section-articles.scss` | `modular/section-articles.html.twig` | `js/carousel.js` | "Derniers articles" carousel. 1 card per slide, dynamic collection from /blog |
-| Section Hero | `_section-hero.scss` | `modular/hero.html.twig` | — | Two-column hero: H1 left, description + CTA buttons right. Rendered in `{% block hero %}` (before other sections) |
+| Section Hero | `_section-hero.scss` | `modular/hero.html.twig` | — | Two-column hero: H1 left, description + CTA buttons right. Rendered in `{% block hero %}` (before other sections). Background SVG logo (opacity 0.3, float animation, anchored to $size-xl center). Wrapped in `.section-hero-wrapper` with `overflow-x: clip` for independent axis control. Inner widened to $size-xl |
 | Section About | `_section-about.scss` | `modular/section-about.html.twig` | — | Two-column: photo left (border-radius 20px), content right (heading, 2 paragraphs side by side, badge image, primary CTA). Images from page media |
-| Service Item | `_service-item.scss` | `partials/components/service-item.html.twig` | `js/services.js` | Accordion item: 3 fixed-width columns (icon+title, subtitle+description, btn-secondary). Colors via SCSS variables per item. `h2.h3` for SEO h2 with h3 visual size |
+| Service Card | `_service-card.scss` | `partials/components/service-card.html.twig` | `js/services.js` | Accordion item: 3 fixed-width columns (icon+title, subtitle+description, btn-secondary). Colors via SCSS variables per item. `h2.h3` for SEO h2 with h3 visual size |
 | Section Services | `_section-services.scss` | `modular/section-services.html.twig` | `js/services.js` | Stacked "tab divider" effect: 3 items with negative margin overlap, z-index stacking. Hover opens on desktop, touch tap on mobile. JS-driven max-height animation via scrollHeight |
-| Section Logo Band | `_section-logo-band.scss` | `modular/section-logo-band.html.twig` | — | CSS marquee (3x content duplication, translateX -33.33%). Full-width, logos grayscale+opacity → color on hover. Links with `target="_blank" rel="noopener noreferrer nofollow"`. Pause on hover |
+| Section Logo Band | `_section-logo-band.scss` | `modular/section-logo-band.html.twig` | — | CSS marquee (3x content duplication, translateX -33.33%). Full-width, logos grayscale+opacity → color on hover. Links with `target="_blank" rel="noopener noreferrer nofollow"`. Pause on hover. Responsive padding (40px → 24px → 12px) and logo size (30px at mobile) |
+| Offering Card | `_offering-card.scss` | `partials/components/offering-card.html.twig` | — | Card with colored header (intercalaire style, border-radius 20px 20px 0 0), icon + title, excerpt, "En savoir plus" link. Color cycle: 1,4=$color-accent-2, 2,5=$color-dark, 3,6=$color-dark-light. Hover translateY(-4px). Border-bottom 2px $color-bg-accent |
+| Section Offerings | `_section-offerings.scss` | `modular/section-offerings.html.twig` | — | CSS grid 3 columns (2 at $size-md, 1 at $size-sm), gap 24px. Heading + grid of offering cards. Max-width $content-max-width |
+| Breadcrumb | `_breadcrumb.scss` | `partials/components/breadcrumb.html.twig` | — | Schema.org BreadcrumbList microdata. Uses Spectre `.breadcrumb` class on `<ol>`. Minimal override: margin-bottom 24px, `.is-active` color $primary-color |
+| Service Detail | `_service-detail.scss` | `service.html.twig` | `js/toc.js` | Individual service page (prose content). Breadcrumb, content-layout with TOC sidebar, CTA to contact. Used by PrestaShop/Sylius child pages |
+| Separator | `_separator.scss` | — | — | Reusable `border-bottom: 2px solid $color-bg-accent`, removed on `:last-child` |
+| FAQ Page | `_faq-page.scss` | `faq.html.twig` | `js/collapse.js` | Standalone FAQ page with light background. Schema.org FAQPage JSON-LD. Accordion items, separator between items, CTA "Vous n'avez pas trouvé votre réponse ?" at bottom. Max-width 800px |
 | Header | `_header.scss` | `partials/header.html.twig` | `js/header.js` | Sticky header (`position: sticky; top: 0; z-index: 100`). Logo "Axelweb" + desktop nav (`.site-nav.hide-sm`) + burger button (`.site-burger.show-sm`). Shrinks on scroll via `.is-scrolled` class (JS). Mobile: always shrunk (padding 12px, logo 1.5rem). Desktop nav in rounded bordered container, Contact CTA via URL detection |
 | Section Contact | `_section-contact.scss` | `modular/section-contact.html.twig` | — | Contact form in footer (homepage only). Rendered via `{% embed %}` in `modular.html.twig` into `{% block footer_cta %}`. Uses Grav form plugin with honeypot. Surtitle (Space Grotesk 500) + large title (Jakarta 700, uppercase). Excluded from `.modular-sections` flow |
 | Footer | `_footer.scss` | `partials/footer.html.twig` | — | 3 columns (Ressources, Légal, Réseaux) + copyright signature. Full-width bg #e5e6e2, border-top-radius 40px. Hardcoded links. `{% block footer_cta %}` used by Section Contact via `{% embed %}` in `modular.html.twig` |
@@ -305,76 +317,90 @@ user/
 ## Current Status
 
 ### Done
-- Component library: buttons (primary + secondary), tag, collapse, chevron, FAQ item, section FAQ
-- Homepage converted to modular page
-- Section FAQ modular template working with frontmatter data
-- Spectre overrides: `$html-font-size`, `$font-size`, `$size-xl`
-- Grid container set to `grid-xl` (1440px)
-- Zed editor config (`.zed/settings.json`) for 4-space Twig indentation
-- `default.html.twig` contains component examples for visual testing
-- Section "Comment je travaille" (process carousel with cards, tags, chevrons, JS carousel)
-- Section "Derniers articles" (article carousel, dynamic blog collection, 1 card per slide)
-- `$content-max-width` variable for consistent section inner widths
-- `$body-bg` override for page background (#f9f9f6)
-- `.modular-sections` wrapper with gap for section spacing
-- `carousel.js` supports `data-visible-count` attribute for configurable visible cards
+
+#### Core Infrastructure
+- Spectre overrides: `$html-font-size`, `$font-size`, `$size-xl`, `$body-bg`, `$primary-color`
+- Grid container set to `grid-xl` (1440px), `$content-max-width: 1250px`
 - `|french_typo` custom Twig filter for non-breaking spaces
-- Blog structure with category folders and taxonomy tags
-- Section Hero (two-column, H1 left, description + CTAs right, own padding independent of modular-sections gap)
-- Cleaned up Quark legacy hero styles from `_framework.scss` and `_onepage.scss`, removed `partials/hero.html.twig`
-- Section About (two-column: photo + content with heading, dual paragraphs, badge, CTA). Frontmatter-driven content, images via page media
-- Section Services (3 accordion items with "tab divider" overlap effect). Fixed-width columns for alignment, SCSS variables for per-item colors, `h2.h3` pattern for SEO/visual decoupling, JS scrollHeight animation, hover (desktop) + pointerup touch (mobile)
-- Section Logo Band (CSS marquee, 3x duplication for seamless loop up to 2K+, full-width, grayscale→color hover, linked logos with nofollow)
-- `.section-wide` utility class in `_framework.scss` (padding 0 5%) for wider-than-default sections
-- Header navigation: logo text "Axelweb" + nav with rounded bordered container. Dynamic Grav nav (`pages.children.visible`), Contact as CTA (detected via URL `/contact`). Modular `header_navigation` override removed. Requires pages to exist in `user/pages/` for nav items to appear
-- Footer: 3 columns (Ressources, Légal, Réseaux) + copyright signature. Full-width bg, border-top-radius 40px, hardcoded links. `{% block footer_cta %}` ready for future homepage contact form
-- `default.html.twig` cleaned up (removed component demo examples)
-- `blog.html.twig` cleaned up (removed reference to deleted Quark `partials/hero.html.twig`)
-- Section Contact form in footer (homepage only). Module `07._contact/section-contact.md` with Grav form plugin. Rendered via `{% embed %}` of footer partial in `modular.html.twig`. Fields: firstname, lastname, company, email, phone, select (request type), textarea, checkbox RGPD, honeypot. Excluded from `.modular-sections`, injected into `{% block footer_cta %}`
-- Page `/contact` (`pages/06.contact/form.md`) with same form fields. Theme override `form.html.twig` with `.default-content` max-width wrapper
-- Page `/merci` (`pages/merci/default.md`) — post-submission confirmation page, `visible: false`
-- `$primary-color` changed from `$color-accent-1` (orange) to `$color-accent-2` (blue-green). Orange preserved on `.btn-primary`, `.site-nav-cta`, `@mixin button-primary`
-- Global form styles in `_forms.scss`: field sizing, border-radius, colors, columns layout, sr-only labels, checkbox customization
-- `.sr-only` utility class in `_framework.scss`
-- `.default-content` layout class in `_framework.scss` (max-width 1250px)
-- Email plugin configured: `user/config/plugins/email.yaml` (SMTP localhost:1025 for DDEV/Mailpit)
-- Projects (portfolio) structure: listing page `projets.md` with child pages pattern, `projet.md` template for individual projects, admin blueprints for both, `data-category` attributes for future JS filtering. Two example projects created
-- Projects listing styled: `.projets-list` flex column, two-column cards (image+content), gap 20px vertical spacing in card content, btn-secondary link (url_projet/url_github), pagination
-- Projects listing page title "Projets Axelweb" (SEO) with `menu: Projets` nav override
-- Project card tags switched from `taxonomy.category` to `taxonomy.tag` (categories = structural pages, tags = display labels)
-- Project card image link: `aria-hidden="true"` + `tabindex="-1"` for accessibility (decorative duplicate)
-- Blueprint `projet.yaml`: added `url_github` field (fallback when no url_projet)
-- Pagination plugin installed (v1.4.6). Custom `_pagination.scss`: centered, no border, Space Grotesk font, `$color-dark-light` / `$primary-color` active
-- Project detail page: `.content-layout` 3-column layout (toc sidebar 200px + main content). Header, hero image (border-radius 20px via `.prose`), `.prose` content (70ch), actions bar (space-between)
-- `.prose` styles merged into `_typography.scss`: unified Markdown content styles, `max-width: 70ch`, images with border-radius 20px. Applied on blog `.e-content` and project content. `_prose.scss` deleted
-- `.content-layout` component (`_content-layout.scss`): reusable 3-column flex layout for editorial pages. Includes TOC styles (sticky, white bg, border-radius 20px, border `$color-bg-accent`). Responsive: TOC 200px at <= 840px, hidden at <= 600px
-- `toc.js`: auto-generates sticky TOC from h2/h3 headings. Intersection Observer for active state (border-left indicator on `li`). Loaded conditionally via `{% block javascripts %}` only on content pages
-- `scroll-behavior: smooth` on `html` in `_framework.scss`
-- 20 dummy projects created for pagination testing (`dummy-projet-01` to `dummy-projet-20`)
-- Tag filter on projects listing: server-side via Grav native taxonomy URL params (`/projets/tag:xxx`). Mono-tag toggle (click active = deactivate). Styles: inactive `$color-bg-grey`, active `$color-dark-light` bg with `$color-bg-accent` text
-- Projects listing intro text: Markdown content in `projets.md`, displayed in `.prose` wrapper above filters
-- Typography fixes: code block bg `$light-color` (white), `.notices.green` bg `rgb(236, 236, 194)`, `a:visited` color `$link-color-dark` (darker instead of lighter)
-- Sticky header: `position: sticky; top: 0; z-index: 100`, shrinks on scroll (padding 28px→12px, logo 2.25rem→1.5rem, nav links smaller). JS in `header.js` toggles `.is-scrolled` class
-- Mobile header: always shrunk via CSS media query (no scroll effect)
-- Mobile burger menu: `.site-burger` in header (`.show-sm`), `.mobile-nav` as sibling of header (`.show-sm`). Fixed panel slides down from under header via `translateY(-100%→0)`. Toggled by `.is-nav-open` on `body`. Desktop nav hidden via Spectre `.hide-sm`. Old Grav mobile overlay system removed (`_mobile.scss` import removed, overlay block deleted from `base.html.twig`)
-- Responsive: project cards stack vertically at <= 600px, `#body-wrapper .container` padding reduced to 0.5rem on mobile
-- Blog listing rewritten: `@self.descendants` collection with `filter.type: item` (excludes category pages). Grid of vertical blog-cards (3/2/1 cols). No sidebar, no breadcrumbs. Old Quark card/layout styles removed from `_blog.scss`
-- Blog card: single `<a>` wrapping entire card (no nested links). First tag only. `.blog-card--no-image` variant. Hover translateY effect. `|raw` after `truncate` for `&hellip;`
-- Blog detail page (`item.html.twig`): same structure as project detail (`.content-layout` + TOC + `.prose`). Tags, h1, date in header. No cover image from template (avoids duplication with Markdown content). Prev/next article navigation + "Tous les articles" in actions bar
-- `.btn-no-arrow` modifier on `btn-secondary` to hide auto `::after` arrow
-- Blog tag filter: server-side via Grav native taxonomy URL params (`/blog/tag:xxx`), same pattern as projects. Mono-tag toggle. Tags collected recursively from `item` children (handles category subfolder structure). Styles: `.blog-filters` in `_blog-card.scss`, same visual as `.projets-filters`
+- `.sr-only`, `.section-wide`, `.default-content` utility classes in `_framework.scss`
+- `scroll-behavior: smooth` on `html`
+- Zed editor config (`.zed/settings.json`) for 4-space Twig indentation
+
+#### Component Library
+- Buttons (primary CTA orange + secondary ghost/link with arrow, `.btn-no-arrow` modifier)
+- Tag, Collapse (+/- toggle with max-height CSS animation), Chevron
+- FAQ Item (Q&A block with collapse)
+- Process Card, Article Card, Blog Card, Projet Card, Offering Card, Service Card
+- Breadcrumb (schema.org BreadcrumbList microdata, Spectre `.breadcrumb` class)
+- Separator (reusable border-bottom, hidden on `:last-child`)
+- Content Layout (3-column flex: TOC sidebar + main + empty, responsive)
+- `toc.js` (auto-generated sticky TOC from h2/h3, Intersection Observer active state)
+- `carousel.js` (configurable via `data-visible-count`)
+- `collapse.js` (max-height animation via scrollHeight, shared by FAQ sections and FAQ page)
+
+#### Homepage (Modular)
+- Modular page (`pages/01.home/modular.md`) with real content (all lorem ipsum replaced)
+- Section Hero: two-column (H1 left, description + CTAs right), background SVG logo (opacity 0.3, float animation, anchored to $size-xl center), `.section-hero-wrapper` with `overflow-x: clip`, inner widened to $size-xl
+- Section Services: 3 accordion items, "tab divider" overlap effect, JS scrollHeight animation
+- Section Logo Band: CSS marquee, responsive padding/sizing
+- Section Process: carousel with 3 visible cards
+- Section Articles: carousel, dynamic blog collection
+- Section About: two-column (photo + content), images via page media
+- Section FAQ: 2-column layout (heading left, FAQ items right)
+- Section Contact: form in footer via `{% embed %}`, Grav form plugin with honeypot
+
+#### Services Pages
+- `/services/` page redirects nav to `/services/prestashop/` via custom `menu_url` frontmatter
+- `/services/prestashop/` modular hub page (`modular-service.html.twig`):
+  - Hero section with PrestaShop-specific content
+  - Offerings grid (3x2 cards linking to child pages, color-cycled headers)
+  - Process section (contextualized PrestaShop steps)
+  - FAQ section (PrestaShop-specific questions)
+  - Contact section in footer
+- 6 PrestaShop child pages: modules-sur-mesure, theme-sur-mesure, maintenance, optimisation-performance, migration, audit — each using `service.html.twig`
+- Sylius child pages structure created (placeholder for future)
+- Blueprints: `section-offerings.yaml`, `service.yaml`
+
+#### Standalone Pages
+- FAQ page (`/faq/`): standalone template with schema.org FAQPage JSON-LD, light background, accordion items with separators, CTA at bottom. Blueprint `faq.yaml`
+- About page (`/a-propos/`): real biographical content, `visible: false` (footer only)
+- Contact page (`/contact/`): form with `.default-content` wrapper
+- Merci page (`/merci/`): post-submission confirmation, `visible: false`
+
+#### Blog
+- Listing: `@self.descendants` collection, grid of blog-cards (3/2/1 cols), tag filter (server-side via taxonomy URL params)
+- Detail: `.content-layout` + TOC + `.prose`, prev/next navigation
+- Blog card: single `<a>` wrapping, `.blog-card--no-image` variant, hover translateY
+
+#### Projects (Portfolio)
+- Listing: child pages pattern, `.projets-list` flex column, two-column cards, tag filter, pagination (v1.4.6)
+- Detail: `.content-layout` + TOC + `.prose`, actions bar (space-between)
+- Blueprints: `projets.yaml`, `projet.yaml`
+- 20 dummy projects for pagination testing
+
+#### Navigation & Layout
+- Header: sticky, shrinks on scroll (`.is-scrolled`), `menu_url` support for nav link override
+- Mobile: burger menu, `.mobile-nav` sibling panel, `.is-nav-open` body class
+- Footer: 3 columns (Ressources incl. À propos, Légal, Réseaux), border-top-radius 40px, `{% block footer_cta %}`
+- `default.html.twig`: upgraded with breadcrumb, content-layout (TOC sidebar), prose wrapper — applies to all standard markdown pages
+
+#### Typography & Styling
+- `.prose` styles in `_typography.scss` (max-width 70ch, image border-radius 20px)
+- Typography fixes: code block bg, `.notices.green` bg, `a:visited` color
+- `$primary-color` = `$color-accent-2` (blue-green). Orange preserved on `.btn-primary`, `.site-nav-cta`
+- Global form styles in `_forms.scss`
 
 ### Next Steps
-- Responsive: homepage sections (hero, services, about, process, articles, contact, footer)
-- Animations pass (collapse transitions, hover states, etc.)
+- Animations/interactions pass (scroll-triggered reveals, hover refinements, page transitions)
+- Responsive: full pass on all homepage sections and service pages
+- Content: fill in PrestaShop child service pages with real prose content
+- Content: fill in Sylius pages when ready
 
 ### Pending — Design System
 - Waiting on graphic designer for component specs (states, spacings, variants)
-- Missing: hover/focus states on most components, card designs, form field styles
 
 ### Cleanup (Low Priority)
 - `system.yaml` still references `theme: quark` — intentional until dev setup is ready
-- Demo pages (typography) need to be replaced with actual content
 - Quark branding: `assets/quark-screenshots.jpg`, `screenshot.jpg`, `thumbnail.jpg` to replace
 - `README.md` / `CHANGELOG.md` in theme are Quark originals — to rewrite or remove
 - `css/custom.css` is empty — decide if keeping as override layer or removing
