@@ -1,0 +1,33 @@
+{% set crumbs = [] %}
+{% set current = page %}
+
+{% set crumbs = [current] %}
+
+{% set ancestor = current.parent %}
+{% for i in 0..10 %}
+    {% if ancestor and ancestor.route != '' %}
+        {% set crumbs = [ancestor]|merge(crumbs) %}
+        {% set ancestor = ancestor.parent %}
+    {% endif %}
+{% endfor %}
+
+{% if crumbs|length > 1 %}
+<nav aria-label="Fil d'Ariane">
+    <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="/" itemprop="item"><span itemprop="name">Accueil</span></a>
+            <meta itemprop="position" content="1">
+        </li>
+        {% for crumb in crumbs %}
+            <li class="breadcrumb-item{% if loop.last %} is-active{% endif %}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                {% if loop.last %}
+                    <span itemprop="name">{{ crumb.title }}</span>
+                {% else %}
+                    <a href="{{ crumb.url }}" itemprop="item"><span itemprop="name">{{ crumb.title }}</span></a>
+                {% endif %}
+                <meta itemprop="position" content="{{ loop.index + 1 }}">
+            </li>
+        {% endfor %}
+    </ol>
+</nav>
+{% endif %}

@@ -1,13 +1,13 @@
 .section-services {
 
   // Overlap between items
-  .service-item + .service-item {
+  .service-card + .service-card {
     margin-top: -32px;
   }
 
   // Z-index stacking: 1st under 2nd under 3rd
   @for $i from 1 through 3 {
-    .service-item:nth-child(#{$i}) {
+    .service-card:nth-child(#{$i}) {
       z-index: $i;
     }
   }

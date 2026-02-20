@@ -1,7 +1,7 @@
 <section class="section-services section-wide">
     <div class="section-services-inner">
         {% for item in page.header.items %}
-            {% include 'partials/components/service-item.html.twig' with {
+            {% include 'partials/components/service-card.html.twig' with {
                 icon: item.icon,
                 title: item.title,
                 subtitle: item.subtitle,

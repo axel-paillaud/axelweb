@@ -1,0 +1,11 @@
+// =============================================================================
+// Breadcrumb overrides (extends Spectre .breadcrumb)
+// =============================================================================
+
+.breadcrumb {
+  margin-bottom: 24px;
+
+  .breadcrumb-item.is-active {
+    color: $primary-color;
+  }
+}
