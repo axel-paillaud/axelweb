@@ -7,11 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.setAttribute('aria-expanded', isActive);
 
     const targetId = btn.getAttribute('aria-controls');
-    if (targetId) {
-      const content = document.getElementById(targetId);
-      if (content) {
-        content.style.display = isActive ? 'block' : 'none';
-      }
+    if (!targetId) return;
+
+    const content = document.getElementById(targetId);
+    if (!content) return;
+
+    if (isActive) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    } else {
+      content.style.maxHeight = '';
     }
   });
 });

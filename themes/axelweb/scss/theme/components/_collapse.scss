@@ -37,9 +37,7 @@
 }
 
 .collapse-content {
-  display: none;
-
-  .btn-collapse.active + & {
-    display: block;
-  }
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
 }
